@@ -1,0 +1,497 @@
+<p><a href="./README.html"><strong>Back to README</strong></a></p>
+<h1 id="top">PathParametersAPI</h1>
+<h3>Methods</h3>
+<ul>
+<li><a href="#testAllTheThingsPathParam"><strong>testAllTheThingsPathParam</strong></a></li>
+<li><a href="#testBooleanPathParam"><strong>testBooleanPathParam</strong></a></li>
+<li><a href="#testCSVPathParam"><strong>testCSVPathParam</strong></a></li>
+<li><a href="#testDoublePathParam"><strong>testDoublePathParam</strong></a></li>
+<li><a href="#testFloatPathParam"><strong>testFloatPathParam</strong></a></li>
+<li><a href="#testIntegerPathParam"><strong>testIntegerPathParam</strong></a></li>
+<li><a href="#testLongPathParam"><strong>testLongPathParam</strong></a></li>
+<li><a href="#testPipesPathParam"><strong>testPipesPathParam</strong></a></li>
+<li><a href="#testSSVPathParam"><strong>testSSVPathParam</strong></a></li>
+<li><a href="#testStringPathParam"><strong>testStringPathParam</strong></a></li>
+<li><a href="#testTSVPathParam"><strong>testTSVPathParam</strong></a></li>
+</ul>
+<h3 id="testAllTheThingsPathParam"><strong>testAllTheThingsPathParam</strong></h3>
+<hr />
+<pre><code>public static func testAllTheThingsPathParam(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], completionHandler: (PathModel?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>string</strong>  (required)</li>
+<li><strong>float</strong>  (required)</li>
+<li><strong>double</strong>  (required)</li>
+<li><strong>integer</strong>  (required)</li>
+<li><strong>long</strong>  (required)</li>
+<li><strong>boolean</strong>  (required)</li>
+<li><strong>csvArray</strong>  (required)</li>
+<li><strong>ssvArray</strong>  (required)</li>
+<li><strong>tsvArray</strong>  (required)</li>
+<li><strong>pipesArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>PathModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="PathModel.html"><strong>PathModel</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let string = "string_example" // String (required) | 
+let float = 3.4 // Float (required) | 
+let double = 1.2 // Double (required) | 
+let integer = 56 // Int (required) | 
+let long = 789 // Int64 (required) | 
+let boolean = true // Bool (required) | 
+let csvArray = ["example"] // [String] (required) | 
+let ssvArray = ["example"] // [String] (required) | 
+let tsvArray = ["example"] // [String] (required) | 
+let pipesArray = ["example"] // [String] (required) | 
+
+PathParametersAPI.testAllTheThingsPathParam(string: string, float: float, double: double, integer: integer, long: long, boolean: boolean, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testBooleanPathParam"><strong>testBooleanPathParam</strong></h3>
+<hr />
+<pre><code>public static func testBooleanPathParam(boolean: Bool, completionHandler: (Bool?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>boolean</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Bool?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Bool</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let boolean = true // Bool (required) | 
+
+PathParametersAPI.testBooleanPathParam(boolean: boolean) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testCSVPathParam"><strong>testCSVPathParam</strong></h3>
+<hr />
+<pre><code>public static func testCSVPathParam(csvArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>csvArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let csvArray = ["example"] // [String] (required) | 
+
+PathParametersAPI.testCSVPathParam(csvArray: csvArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDoublePathParam"><strong>testDoublePathParam</strong></h3>
+<hr />
+<pre><code>public static func testDoublePathParam(double: Double, completionHandler: (Double?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>double</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Double?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Double</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let double = 1.2 // Double (required) | 
+
+PathParametersAPI.testDoublePathParam(double: double) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testFloatPathParam"><strong>testFloatPathParam</strong></h3>
+<hr />
+<pre><code>public static func testFloatPathParam(float: Float, completionHandler: (Float?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>float</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Float?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Float</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let float = 3.4 // Float (required) | 
+
+PathParametersAPI.testFloatPathParam(float: float) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testIntegerPathParam"><strong>testIntegerPathParam</strong></h3>
+<hr />
+<pre><code>public static func testIntegerPathParam(integer: Int, completionHandler: (Int?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>integer</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Int?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Int</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let integer = 56 // Int (required) | 
+
+PathParametersAPI.testIntegerPathParam(integer: integer) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testLongPathParam"><strong>testLongPathParam</strong></h3>
+<hr />
+<pre><code>public static func testLongPathParam(long: Int64, completionHandler: (Int64?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>long</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Int64?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Int64</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let long = 789 // Int64 (required) | 
+
+PathParametersAPI.testLongPathParam(long: long) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testPipesPathParam"><strong>testPipesPathParam</strong></h3>
+<hr />
+<pre><code>public static func testPipesPathParam(pipesArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>pipesArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let pipesArray = ["example"] // [String] (required) | 
+
+PathParametersAPI.testPipesPathParam(pipesArray: pipesArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testSSVPathParam"><strong>testSSVPathParam</strong></h3>
+<hr />
+<pre><code>public static func testSSVPathParam(ssvArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>ssvArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let ssvArray = ["example"] // [String] (required) | 
+
+PathParametersAPI.testSSVPathParam(ssvArray: ssvArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testStringPathParam"><strong>testStringPathParam</strong></h3>
+<hr />
+<pre><code>public static func testStringPathParam(string: String, completionHandler: (String?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>string</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>String?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>String</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let string = "string_example" // String (required) | 
+
+PathParametersAPI.testStringPathParam(string: string) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testTSVPathParam"><strong>testTSVPathParam</strong></h3>
+<hr />
+<pre><code>public static func testTSVPathParam(tsvArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>tsvArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let tsvArray = ["example"] // [String] (required) | 
+
+PathParametersAPI.testTSVPathParam(tsvArray: tsvArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<p><a href="#top"><strong>Back to Top</strong></a></p>

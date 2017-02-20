@@ -1,0 +1,28 @@
+<p><a href="./README.html"><strong>Back to README</strong></a></p>
+<h1 id="top">ErrorModel</h1>
+<h3>Examples</h3>
+<pre><code>// Maps JSON string to Swift Object
+let errorModel: ErrorModel = ErrorModel(JSONString: jsonString)
+
+// Maps JSON string to array of ErrorModel
+let errorModelArray: [ErrorModel] = Mapper&lt;ErrorModel&gt;().mapArray(JSONString: jsonString)
+
+// Maps JSON String to Dictionary mapping String to ErrorModel
+let Dictionary: [String: ErrorModel] = Mapper&lt;ErrorModel&gt;().mapDictionary(JSONString: jsonString);
+
+// Converts Swift Object to JSON string
+let jsonString: String = errorModel.toJSONString(prettyPrint: true)
+</code></pre>
+<h3>Fields</h3>
+<ul>
+<li><a href="#message"><strong>message</strong></a></li>
+</ul>
+<hr />
+<h4 id="message">message</h4>
+<pre><code>var message: String?
+</code></pre>
+<ul>
+<li></li>
+</ul>
+<hr />
+<p><a href="#top"><strong>Back to Top</strong></a></p>

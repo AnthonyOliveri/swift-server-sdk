@@ -1,0 +1,1652 @@
+<p><a href="./README.html"><strong>Back to README</strong></a></p>
+<h1 id="top">FormParametersAPI</h1>
+<h3>Methods</h3>
+<ul>
+<li><a href="#testAllTheThingsFormData"><strong>testAllTheThingsFormData</strong></a></li>
+<li><a href="#testAllTheThingsUrlEncoded"><strong>testAllTheThingsUrlEncoded</strong></a></li>
+<li><a href="#testBinaryFormData"><strong>testBinaryFormData</strong></a></li>
+<li><a href="#testBinaryUrlEncoded"><strong>testBinaryUrlEncoded</strong></a></li>
+<li><a href="#testBooleanFormData"><strong>testBooleanFormData</strong></a></li>
+<li><a href="#testBooleanUrlEncoded"><strong>testBooleanUrlEncoded</strong></a></li>
+<li><a href="#testByteFormData"><strong>testByteFormData</strong></a></li>
+<li><a href="#testByteUrlEncoded"><strong>testByteUrlEncoded</strong></a></li>
+<li><a href="#testCSVFormData"><strong>testCSVFormData</strong></a></li>
+<li><a href="#testCSVUrlEncoded"><strong>testCSVUrlEncoded</strong></a></li>
+<li><a href="#testDateFormData"><strong>testDateFormData</strong></a></li>
+<li><a href="#testDateTimeFormData"><strong>testDateTimeFormData</strong></a></li>
+<li><a href="#testDateTimeUrlEncoded"><strong>testDateTimeUrlEncoded</strong></a></li>
+<li><a href="#testDateUrlEncoded"><strong>testDateUrlEncoded</strong></a></li>
+<li><a href="#testDoubleFormData"><strong>testDoubleFormData</strong></a></li>
+<li><a href="#testDoubleUrlEncoded"><strong>testDoubleUrlEncoded</strong></a></li>
+<li><a href="#testFileFormData"><strong>testFileFormData</strong></a></li>
+<li><a href="#testFileUrlEncoded"><strong>testFileUrlEncoded</strong></a></li>
+<li><a href="#testFloatFormData"><strong>testFloatFormData</strong></a></li>
+<li><a href="#testFloatUrlEncoded"><strong>testFloatUrlEncoded</strong></a></li>
+<li><a href="#testIntegerFormData"><strong>testIntegerFormData</strong></a></li>
+<li><a href="#testIntegerUrlEncoded"><strong>testIntegerUrlEncoded</strong></a></li>
+<li><a href="#testLongFormData"><strong>testLongFormData</strong></a></li>
+<li><a href="#testLongUrlEncoded"><strong>testLongUrlEncoded</strong></a></li>
+<li><a href="#testMultiFormData"><strong>testMultiFormData</strong></a></li>
+<li><a href="#testMultiUrlEncoded"><strong>testMultiUrlEncoded</strong></a></li>
+<li><a href="#testOptionalsFormData"><strong>testOptionalsFormData</strong></a></li>
+<li><a href="#testOptionalsUrlEncoded"><strong>testOptionalsUrlEncoded</strong></a></li>
+<li><a href="#testPipesFormData"><strong>testPipesFormData</strong></a></li>
+<li><a href="#testPipesUrlEncoded"><strong>testPipesUrlEncoded</strong></a></li>
+<li><a href="#testSSVFormData"><strong>testSSVFormData</strong></a></li>
+<li><a href="#testSSVUrlEncoded"><strong>testSSVUrlEncoded</strong></a></li>
+<li><a href="#testStringFormData"><strong>testStringFormData</strong></a></li>
+<li><a href="#testStringUrlEncoded"><strong>testStringUrlEncoded</strong></a></li>
+<li><a href="#testTSVFormData"><strong>testTSVFormData</strong></a></li>
+<li><a href="#testTSVUrlEncoded"><strong>testTSVUrlEncoded</strong></a></li>
+</ul>
+<h3 id="testAllTheThingsFormData"><strong>testAllTheThingsFormData</strong></h3>
+<hr />
+<pre><code>public static func testAllTheThingsFormData(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, completionHandler: (FormModel?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>string</strong>  (required)</li>
+<li><strong>float</strong>  (required)</li>
+<li><strong>double</strong>  (required)</li>
+<li><strong>integer</strong>  (required)</li>
+<li><strong>long</strong>  (required)</li>
+<li><strong>boolean</strong>  (required)</li>
+<li><strong>csvArray</strong>  (required)</li>
+<li><strong>ssvArray</strong>  (required)</li>
+<li><strong>tsvArray</strong>  (required)</li>
+<li><strong>pipesArray</strong>  (required)</li>
+<li><strong>multi</strong>  (required)</li>
+<li><strong>date</strong>  (required)</li>
+<li><strong>dateTime</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>FormModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="FormModel.html"><strong>FormModel</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let string = "string_example" // String (required) | 
+let float = 3.4 // Float (required) | 
+let double = 1.2 // Double (required) | 
+let integer = 56 // Int (required) | 
+let long = 789 // Int64 (required) | 
+let boolean = true // Bool (required) | 
+let csvArray = ["example"] // [String] (required) | 
+let ssvArray = ["example"] // [String] (required) | 
+let tsvArray = ["example"] // [String] (required) | 
+let pipesArray = ["example"] // [String] (required) | 
+let multi = ["example"] // [String] (required) | 
+let date = Date() // Date (required) | 
+let dateTime = Date() // Date (required) | 
+
+FormParametersAPI.testAllTheThingsFormData(string: string, float: float, double: double, integer: integer, long: long, boolean: boolean, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, multi: multi, date: date, dateTime: dateTime) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testAllTheThingsUrlEncoded"><strong>testAllTheThingsUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testAllTheThingsUrlEncoded(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], date: Date, dateTime: Date, completionHandler: (FormModel?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>string</strong>  (required)</li>
+<li><strong>float</strong>  (required)</li>
+<li><strong>double</strong>  (required)</li>
+<li><strong>integer</strong>  (required)</li>
+<li><strong>long</strong>  (required)</li>
+<li><strong>boolean</strong>  (required)</li>
+<li><strong>csvArray</strong>  (required)</li>
+<li><strong>ssvArray</strong>  (required)</li>
+<li><strong>tsvArray</strong>  (required)</li>
+<li><strong>pipesArray</strong>  (required)</li>
+<li><strong>date</strong>  (required)</li>
+<li><strong>dateTime</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>FormModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="FormModel.html"><strong>FormModel</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let string = "string_example" // String (required) | 
+let float = 3.4 // Float (required) | 
+let double = 1.2 // Double (required) | 
+let integer = 56 // Int (required) | 
+let long = 789 // Int64 (required) | 
+let boolean = true // Bool (required) | 
+let csvArray = ["example"] // [String] (required) | 
+let ssvArray = ["example"] // [String] (required) | 
+let tsvArray = ["example"] // [String] (required) | 
+let pipesArray = ["example"] // [String] (required) | 
+let date = Date() // Date (required) | 
+let dateTime = Date() // Date (required) | 
+
+FormParametersAPI.testAllTheThingsUrlEncoded(string: string, float: float, double: double, integer: integer, long: long, boolean: boolean, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, date: date, dateTime: dateTime) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testBinaryFormData"><strong>testBinaryFormData</strong></h3>
+<hr />
+<pre><code>public static func testBinaryFormData(binary: Data, completionHandler: (Data?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>binary</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Data?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Data.html"><strong>Data</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let binary = Data() // Data (required) | 
+
+FormParametersAPI.testBinaryFormData(binary: binary) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testBinaryUrlEncoded"><strong>testBinaryUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testBinaryUrlEncoded(binary: Data, completionHandler: (Data?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>binary</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Data?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Data.html"><strong>Data</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let binary = Data() // Data (required) | 
+
+FormParametersAPI.testBinaryUrlEncoded(binary: binary) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testBooleanFormData"><strong>testBooleanFormData</strong></h3>
+<hr />
+<pre><code>public static func testBooleanFormData(boolean: Bool, completionHandler: (Bool?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>boolean</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Bool?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Bool</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let boolean = true // Bool (required) | 
+
+FormParametersAPI.testBooleanFormData(boolean: boolean) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testBooleanUrlEncoded"><strong>testBooleanUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testBooleanUrlEncoded(boolean: Bool, completionHandler: (Bool?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>boolean</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Bool?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Bool</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let boolean = true // Bool (required) | 
+
+FormParametersAPI.testBooleanUrlEncoded(boolean: boolean) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testByteFormData"><strong>testByteFormData</strong></h3>
+<hr />
+<pre><code>public static func testByteFormData(byte: Data, completionHandler: (Data?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>byte</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Data?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Data.html"><strong>Data</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let byte = Data() // Data (required) | 
+
+FormParametersAPI.testByteFormData(byte: byte) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testByteUrlEncoded"><strong>testByteUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testByteUrlEncoded(byte: Data, completionHandler: (Data?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>byte</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Data?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Data.html"><strong>Data</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let byte = Data() // Data (required) | 
+
+FormParametersAPI.testByteUrlEncoded(byte: byte) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testCSVFormData"><strong>testCSVFormData</strong></h3>
+<hr />
+<pre><code>public static func testCSVFormData(csvArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>csvArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let csvArray = ["example"] // [String] (required) | 
+
+FormParametersAPI.testCSVFormData(csvArray: csvArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testCSVUrlEncoded"><strong>testCSVUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testCSVUrlEncoded(csvArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>csvArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let csvArray = ["example"] // [String] (required) | 
+
+FormParametersAPI.testCSVUrlEncoded(csvArray: csvArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDateFormData"><strong>testDateFormData</strong></h3>
+<hr />
+<pre><code>public static func testDateFormData(date: Date, completionHandler: (Date?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>date</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Date?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Date.html"><strong>Date</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let date = Date() // Date (required) | 
+
+FormParametersAPI.testDateFormData(date: date) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDateTimeFormData"><strong>testDateTimeFormData</strong></h3>
+<hr />
+<pre><code>public static func testDateTimeFormData(dateTime: Date, completionHandler: (Date?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>dateTime</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Date?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Date.html"><strong>Date</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let dateTime = Date() // Date (required) | 
+
+FormParametersAPI.testDateTimeFormData(dateTime: dateTime) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDateTimeUrlEncoded"><strong>testDateTimeUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testDateTimeUrlEncoded(dateTime: Date, completionHandler: (Date?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>dateTime</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Date?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Date.html"><strong>Date</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let dateTime = Date() // Date (required) | 
+
+FormParametersAPI.testDateTimeUrlEncoded(dateTime: dateTime) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDateUrlEncoded"><strong>testDateUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testDateUrlEncoded(date: Date, completionHandler: (Date?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>date</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Date?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Date.html"><strong>Date</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let date = Date() // Date (required) | 
+
+FormParametersAPI.testDateUrlEncoded(date: date) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDoubleFormData"><strong>testDoubleFormData</strong></h3>
+<hr />
+<pre><code>public static func testDoubleFormData(double: Double, completionHandler: (Double?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>double</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Double?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Double</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let double = 1.2 // Double (required) | 
+
+FormParametersAPI.testDoubleFormData(double: double) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDoubleUrlEncoded"><strong>testDoubleUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testDoubleUrlEncoded(double: Double, completionHandler: (Double?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>double</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Double?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Double</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let double = 1.2 // Double (required) | 
+
+FormParametersAPI.testDoubleUrlEncoded(double: double) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testFileFormData"><strong>testFileFormData</strong></h3>
+<hr />
+<pre><code>public static func testFileFormData(file: URL, completionHandler: (URL?, Response?, Error?) -&gt; Void) throws -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>file</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>URL?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="URL.html"><strong>URL</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let file = URL(string: "/path/to/file.txt") // URL (required) | 
+
+try FormParametersAPI.testFileFormData(file: file) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testFileUrlEncoded"><strong>testFileUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testFileUrlEncoded(file: URL, completionHandler: (URL?, Response?, Error?) -&gt; Void) throws -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>file</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>URL?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="URL.html"><strong>URL</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let file = URL(string: "/path/to/file.txt") // URL (required) | 
+
+try FormParametersAPI.testFileUrlEncoded(file: file) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testFloatFormData"><strong>testFloatFormData</strong></h3>
+<hr />
+<pre><code>public static func testFloatFormData(float: Float, completionHandler: (Float?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>float</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Float?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Float</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let float = 3.4 // Float (required) | 
+
+FormParametersAPI.testFloatFormData(float: float) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testFloatUrlEncoded"><strong>testFloatUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testFloatUrlEncoded(float: Float, completionHandler: (Float?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>float</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Float?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Float</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let float = 3.4 // Float (required) | 
+
+FormParametersAPI.testFloatUrlEncoded(float: float) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testIntegerFormData"><strong>testIntegerFormData</strong></h3>
+<hr />
+<pre><code>public static func testIntegerFormData(integer: Int, completionHandler: (Int?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>integer</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Int?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Int</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let integer = 56 // Int (required) | 
+
+FormParametersAPI.testIntegerFormData(integer: integer) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testIntegerUrlEncoded"><strong>testIntegerUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testIntegerUrlEncoded(integer: Int, completionHandler: (Int?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>integer</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Int?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Int</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let integer = 56 // Int (required) | 
+
+FormParametersAPI.testIntegerUrlEncoded(integer: integer) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testLongFormData"><strong>testLongFormData</strong></h3>
+<hr />
+<pre><code>public static func testLongFormData(long: Int64, completionHandler: (Int64?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>long</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Int64?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Int64</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let long = 789 // Int64 (required) | 
+
+FormParametersAPI.testLongFormData(long: long) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testLongUrlEncoded"><strong>testLongUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testLongUrlEncoded(long: Int64, completionHandler: (Int64?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>long</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Int64?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Int64</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let long = 789 // Int64 (required) | 
+
+FormParametersAPI.testLongUrlEncoded(long: long) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testMultiFormData"><strong>testMultiFormData</strong></h3>
+<hr />
+<pre><code>public static func testMultiFormData(multi: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>multi</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let multi = ["example"] // [String] (required) | 
+
+FormParametersAPI.testMultiFormData(multi: multi) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testMultiUrlEncoded"><strong>testMultiUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testMultiUrlEncoded(multi: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>multi</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let multi = ["example"] // [String] (required) | 
+
+FormParametersAPI.testMultiUrlEncoded(multi: multi) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testOptionalsFormData"><strong>testOptionalsFormData</strong></h3>
+<hr />
+<pre><code>public static func testOptionalsFormData(float: Float, double: Double, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, string: String?, integer: Int?, long: Int64?, boolean: Bool = false, completionHandler: (FormModel?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>float</strong>  (required)</li>
+<li><strong>double</strong>  (required)</li>
+<li><strong>csvArray</strong>  (required)</li>
+<li><strong>ssvArray</strong>  (required)</li>
+<li><strong>tsvArray</strong>  (required)</li>
+<li><strong>pipesArray</strong>  (required)</li>
+<li><strong>multi</strong>  (required)</li>
+<li><strong>date</strong>  (required)</li>
+<li><strong>dateTime</strong>  (required)</li>
+<li><strong>string</strong>  (optional)</li>
+<li><strong>integer</strong>  (optional)</li>
+<li><strong>long</strong>  (optional)</li>
+<li><strong>boolean</strong>  (optional)<ul>
+<li>defaults to false</li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>FormModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="FormModel.html"><strong>FormModel</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let float = 3.4 // Float (required) | 
+let double = 1.2 // Double (required) | 
+let csvArray = ["example"] // [String] (required) | 
+let ssvArray = ["example"] // [String] (required) | 
+let tsvArray = ["example"] // [String] (required) | 
+let pipesArray = ["example"] // [String] (required) | 
+let multi = ["example"] // [String] (required) | 
+let date = Date() // Date (required) | 
+let dateTime = Date() // Date (required) | 
+var string: String? // String? (optional) | 
+var integer: Int? // Int? (optional) | 
+var long: Int64? // Int64? (optional) | 
+var boolean: Bool? // Bool? (optional) | 
+
+FormParametersAPI.testOptionalsFormData(float: float, double: double, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, multi: multi, date: date, dateTime: dateTime, string: string, integer: integer, long: long, boolean: boolean) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testOptionalsUrlEncoded"><strong>testOptionalsUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testOptionalsUrlEncoded(float: Float, double: Double, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], date: Date, dateTime: Date, string: String?, integer: Int?, long: Int64?, boolean: Bool = false, completionHandler: (FormModel?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>float</strong>  (required)</li>
+<li><strong>double</strong>  (required)</li>
+<li><strong>csvArray</strong>  (required)</li>
+<li><strong>ssvArray</strong>  (required)</li>
+<li><strong>tsvArray</strong>  (required)</li>
+<li><strong>pipesArray</strong>  (required)</li>
+<li><strong>date</strong>  (required)</li>
+<li><strong>dateTime</strong>  (required)</li>
+<li><strong>string</strong>  (optional)</li>
+<li><strong>integer</strong>  (optional)</li>
+<li><strong>long</strong>  (optional)</li>
+<li><strong>boolean</strong>  (optional)<ul>
+<li>defaults to false</li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>FormModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="FormModel.html"><strong>FormModel</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let float = 3.4 // Float (required) | 
+let double = 1.2 // Double (required) | 
+let csvArray = ["example"] // [String] (required) | 
+let ssvArray = ["example"] // [String] (required) | 
+let tsvArray = ["example"] // [String] (required) | 
+let pipesArray = ["example"] // [String] (required) | 
+let date = Date() // Date (required) | 
+let dateTime = Date() // Date (required) | 
+var string: String? // String? (optional) | 
+var integer: Int? // Int? (optional) | 
+var long: Int64? // Int64? (optional) | 
+var boolean: Bool? // Bool? (optional) | 
+
+FormParametersAPI.testOptionalsUrlEncoded(float: float, double: double, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, date: date, dateTime: dateTime, string: string, integer: integer, long: long, boolean: boolean) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testPipesFormData"><strong>testPipesFormData</strong></h3>
+<hr />
+<pre><code>public static func testPipesFormData(pipesArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>pipesArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let pipesArray = ["example"] // [String] (required) | 
+
+FormParametersAPI.testPipesFormData(pipesArray: pipesArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testPipesUrlEncoded"><strong>testPipesUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testPipesUrlEncoded(pipesArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>pipesArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let pipesArray = ["example"] // [String] (required) | 
+
+FormParametersAPI.testPipesUrlEncoded(pipesArray: pipesArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testSSVFormData"><strong>testSSVFormData</strong></h3>
+<hr />
+<pre><code>public static func testSSVFormData(ssvArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>ssvArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let ssvArray = ["example"] // [String] (required) | 
+
+FormParametersAPI.testSSVFormData(ssvArray: ssvArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testSSVUrlEncoded"><strong>testSSVUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testSSVUrlEncoded(ssvArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>ssvArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let ssvArray = ["example"] // [String] (required) | 
+
+FormParametersAPI.testSSVUrlEncoded(ssvArray: ssvArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testStringFormData"><strong>testStringFormData</strong></h3>
+<hr />
+<pre><code>public static func testStringFormData(string: String, completionHandler: (String?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>string</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>String?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>String</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let string = "string_example" // String (required) | 
+
+FormParametersAPI.testStringFormData(string: string) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testStringUrlEncoded"><strong>testStringUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testStringUrlEncoded(string: String, completionHandler: (String?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>string</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>String?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>String</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let string = "string_example" // String (required) | 
+
+FormParametersAPI.testStringUrlEncoded(string: string) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testTSVFormData"><strong>testTSVFormData</strong></h3>
+<hr />
+<pre><code>public static func testTSVFormData(tsvArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>tsvArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let tsvArray = ["example"] // [String] (required) | 
+
+FormParametersAPI.testTSVFormData(tsvArray: tsvArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testTSVUrlEncoded"><strong>testTSVUrlEncoded</strong></h3>
+<hr />
+<pre><code>public static func testTSVUrlEncoded(tsvArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>tsvArray</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let tsvArray = ["example"] // [String] (required) | 
+
+FormParametersAPI.testTSVUrlEncoded(tsvArray: tsvArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<p><a href="#top"><strong>Back to Top</strong></a></p>

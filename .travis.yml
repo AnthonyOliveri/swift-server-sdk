@@ -1,0 +1,26 @@
+os:
+  - linux
+  - osx
+
+osx_image: xcode8.2
+
+dist: trusty
+
+language: generic
+
+env:
+  global:
+  - SWIFT_VERSION=3.0.2
+
+sudo: required
+
+install:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      eval "$(cat ./install-swiftenv.sh)";
+      sudo apt-get install -y libcurl4-openssl-dev libblocksruntime-dev libkqueue-dev libpthread-workqueue-dev libbsd-dev;
+      sudo rm /usr/bin/ld && sudo ln -s /usr/bin/ld.gold /usr/bin/ld;
+    fi
+
+script:
+  - swift build --clean
+  - swift build

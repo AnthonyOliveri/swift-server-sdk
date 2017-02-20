@@ -1,0 +1,186 @@
+<p><a href="./README.html"><strong>Back to README</strong></a></p>
+<h1 id="top">EnumTestAPI</h1>
+<h3>Methods</h3>
+<ul>
+<li><a href="#testEnum"><strong>testEnum</strong></a></li>
+<li><a href="#testEnumThree"><strong>testEnumThree</strong></a></li>
+<li><a href="#testEnumTwo"><strong>testEnumTwo</strong></a></li>
+</ul>
+<h3 id="testEnum"><strong>testEnum</strong></h3>
+<hr />
+<pre><code>public static func testEnum(string: String = xvii, float: Float = 1.9, double: Double = 1.7, integer: Int = 17, long: Int64 = 19, completionHandler: (EnumModel?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>string</strong>  (optional)<ul>
+<li>defaults to xvii</li>
+<li>enum:<ul>
+<li>,</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>float</strong>  (optional)<ul>
+<li>defaults to 1.9</li>
+</ul>
+</li>
+<li><strong>double</strong>  (optional)<ul>
+<li>defaults to 1.7</li>
+</ul>
+</li>
+<li><strong>integer</strong>  (optional)<ul>
+<li>defaults to 17</li>
+</ul>
+</li>
+<li><strong>long</strong>  (optional)<ul>
+<li>defaults to 19</li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>EnumModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="EnumModel.html"><strong>EnumModel</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>var string: String? // String? (optional) | 
+var float: Float? // Float? (optional) | 
+var double: Double? // Double? (optional) | 
+var integer: Int? // Int? (optional) | 
+var long: Int64? // Int64? (optional) | 
+
+EnumTestAPI.testEnum(string: string, float: float, double: double, integer: integer, long: long) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+    }
+}
+</code></pre>
+<h3 id="testEnumThree"><strong>testEnumThree</strong></h3>
+<hr />
+<pre><code>public static func testEnumThree(string: String = xvii, float: Float = 1.9, double: Double = 1.7, integer: Int = 17, long: Int64 = 19, completionHandler: (EnumModel?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>string</strong>  (optional)<ul>
+<li>defaults to xvii</li>
+<li>enum:<ul>
+<li>,</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>float</strong>  (optional)<ul>
+<li>defaults to 1.9</li>
+</ul>
+</li>
+<li><strong>double</strong>  (optional)<ul>
+<li>defaults to 1.7</li>
+</ul>
+</li>
+<li><strong>integer</strong>  (optional)<ul>
+<li>defaults to 17</li>
+</ul>
+</li>
+<li><strong>long</strong>  (optional)<ul>
+<li>defaults to 19</li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>EnumModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="EnumModel.html"><strong>EnumModel</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>var string: String? // String? (optional) | 
+var float: Float? // Float? (optional) | 
+var double: Double? // Double? (optional) | 
+var integer: Int? // Int? (optional) | 
+var long: Int64? // Int64? (optional) | 
+
+EnumTestAPI.testEnumThree(string: string, float: float, double: double, integer: integer, long: long) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+    }
+}
+</code></pre>
+<h3 id="testEnumTwo"><strong>testEnumTwo</strong></h3>
+<hr />
+<pre><code>public static func testEnumTwo(string: String = xvii, float: Float = 1.9, double: Double = 1.7, integer: Int = 17, long: Int64 = 19, completionHandler: (EnumModel?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>string</strong>  (optional)<ul>
+<li>defaults to xvii</li>
+<li>enum:<ul>
+<li>,</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>float</strong>  (optional)<ul>
+<li>defaults to 1.9</li>
+</ul>
+</li>
+<li><strong>double</strong>  (optional)<ul>
+<li>defaults to 1.7</li>
+</ul>
+</li>
+<li><strong>integer</strong>  (optional)<ul>
+<li>defaults to 17</li>
+</ul>
+</li>
+<li><strong>long</strong>  (optional)<ul>
+<li>defaults to 19</li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>EnumModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="EnumModel.html"><strong>EnumModel</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>var string: String? // String? (optional) | 
+var float: Float? // Float? (optional) | 
+var double: Double? // Double? (optional) | 
+var integer: Int? // Int? (optional) | 
+var long: Int64? // Int64? (optional) | 
+
+EnumTestAPI.testEnumTwo(string: string, float: float, double: double, integer: integer, long: long) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+    }
+}
+</code></pre>
+<p><a href="#top"><strong>Back to Top</strong></a></p>

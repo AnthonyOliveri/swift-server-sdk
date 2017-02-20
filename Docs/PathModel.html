@@ -1,0 +1,104 @@
+<p><a href="./README.html"><strong>Back to README</strong></a></p>
+<h1 id="top">PathModel</h1>
+<h3>Examples</h3>
+<pre><code>// Maps JSON string to Swift Object
+let pathModel: PathModel = PathModel(JSONString: jsonString)
+
+// Maps JSON string to array of PathModel
+let pathModelArray: [PathModel] = Mapper&lt;PathModel&gt;().mapArray(JSONString: jsonString)
+
+// Maps JSON String to Dictionary mapping String to PathModel
+let Dictionary: [String: PathModel] = Mapper&lt;PathModel&gt;().mapDictionary(JSONString: jsonString);
+
+// Converts Swift Object to JSON string
+let jsonString: String = pathModel.toJSONString(prettyPrint: true)
+</code></pre>
+<h3>Fields</h3>
+<ul>
+<li><a href="#pathString"><strong>pathString</strong></a></li>
+<li><a href="#pathFloat"><strong>pathFloat</strong></a></li>
+<li><a href="#pathDouble"><strong>pathDouble</strong></a></li>
+<li><a href="#pathInteger"><strong>pathInteger</strong></a></li>
+<li><a href="#pathLong"><strong>pathLong</strong></a></li>
+<li><a href="#pathBoolean"><strong>pathBoolean</strong></a></li>
+<li><a href="#pathCSV"><strong>pathCSV</strong></a></li>
+<li><a href="#pathSSV"><strong>pathSSV</strong></a></li>
+<li><a href="#pathTSV"><strong>pathTSV</strong></a></li>
+<li><a href="#pathPipes"><strong>pathPipes</strong></a></li>
+</ul>
+<hr />
+<h4 id="pathString">pathString</h4>
+<pre><code>var pathString: String?
+</code></pre>
+<ul>
+<li></li>
+</ul>
+<hr />
+<h4 id="pathFloat">pathFloat</h4>
+<pre><code>var pathFloat: Float?
+</code></pre>
+<ul>
+<li></li>
+</ul>
+<hr />
+<h4 id="pathDouble">pathDouble</h4>
+<pre><code>var pathDouble: Double?
+</code></pre>
+<ul>
+<li></li>
+</ul>
+<hr />
+<h4 id="pathInteger">pathInteger</h4>
+<pre><code>var pathInteger: Int?
+</code></pre>
+<ul>
+<li></li>
+</ul>
+<hr />
+<h4 id="pathLong">pathLong</h4>
+<pre><code>var pathLong: Int64?
+</code></pre>
+<ul>
+<li></li>
+</ul>
+<hr />
+<h4 id="pathBoolean">pathBoolean</h4>
+<pre><code>var pathBoolean: Bool?
+</code></pre>
+<ul>
+<li></li>
+</ul>
+<hr />
+<h4 id="pathCSV">pathCSV</h4>
+<pre><code>var pathCSV: [String]?
+</code></pre>
+<ul>
+<li></li>
+<li>see <a href=".html"><strong></strong></a></li>
+</ul>
+<hr />
+<h4 id="pathSSV">pathSSV</h4>
+<pre><code>var pathSSV: [String]?
+</code></pre>
+<ul>
+<li></li>
+<li>see <a href=".html"><strong></strong></a></li>
+</ul>
+<hr />
+<h4 id="pathTSV">pathTSV</h4>
+<pre><code>var pathTSV: [String]?
+</code></pre>
+<ul>
+<li></li>
+<li>see <a href=".html"><strong></strong></a></li>
+</ul>
+<hr />
+<h4 id="pathPipes">pathPipes</h4>
+<pre><code>var pathPipes: [String]?
+</code></pre>
+<ul>
+<li></li>
+<li>see <a href=".html"><strong></strong></a></li>
+</ul>
+<hr />
+<p><a href="#top"><strong>Back to Top</strong></a></p>

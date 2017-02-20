@@ -1,0 +1,1353 @@
+<p><a href="./README.html"><strong>Back to README</strong></a></p>
+<h1 id="top">BodyParametersAPI</h1>
+<h3>Methods</h3>
+<ul>
+<li><a href="#testBodyBooleanParam"><strong>testBodyBooleanParam</strong></a></li>
+<li><a href="#testBodyDoubleParam"><strong>testBodyDoubleParam</strong></a></li>
+<li><a href="#testBodyFloatParam"><strong>testBodyFloatParam</strong></a></li>
+<li><a href="#testBodyIntegerParam"><strong>testBodyIntegerParam</strong></a></li>
+<li><a href="#testBodyLongParam"><strong>testBodyLongParam</strong></a></li>
+<li><a href="#testBodyStringParam"><strong>testBodyStringParam</strong></a></li>
+<li><a href="#testBooleanArrayBodyParam"><strong>testBooleanArrayBodyParam</strong></a></li>
+<li><a href="#testBooleanMapBodyParam"><strong>testBooleanMapBodyParam</strong></a></li>
+<li><a href="#testDateArrayBodyParam"><strong>testDateArrayBodyParam</strong></a></li>
+<li><a href="#testDateBodyParam"><strong>testDateBodyParam</strong></a></li>
+<li><a href="#testDateMapBodyParam"><strong>testDateMapBodyParam</strong></a></li>
+<li><a href="#testDateTimeArrayBodyParam"><strong>testDateTimeArrayBodyParam</strong></a></li>
+<li><a href="#testDateTimeBodyParam"><strong>testDateTimeBodyParam</strong></a></li>
+<li><a href="#testDateTimeMapBodyParam"><strong>testDateTimeMapBodyParam</strong></a></li>
+<li><a href="#testDoubleArrayBodyParam"><strong>testDoubleArrayBodyParam</strong></a></li>
+<li><a href="#testDoubleMapBodyParam"><strong>testDoubleMapBodyParam</strong></a></li>
+<li><a href="#testFloatArrayBodyParam"><strong>testFloatArrayBodyParam</strong></a></li>
+<li><a href="#testFloatMapBodyParam"><strong>testFloatMapBodyParam</strong></a></li>
+<li><a href="#testGenericObject"><strong>testGenericObject</strong></a></li>
+<li><a href="#testGenericObjectArray"><strong>testGenericObjectArray</strong></a></li>
+<li><a href="#testGenericObjectMap"><strong>testGenericObjectMap</strong></a></li>
+<li><a href="#testIntegerArrayBodyParam"><strong>testIntegerArrayBodyParam</strong></a></li>
+<li><a href="#testIntegerMapBodyParam"><strong>testIntegerMapBodyParam</strong></a></li>
+<li><a href="#testLongArrayBodyParam"><strong>testLongArrayBodyParam</strong></a></li>
+<li><a href="#testLongMapBodyParam"><strong>testLongMapBodyParam</strong></a></li>
+<li><a href="#testModelArrayBodyParam"><strong>testModelArrayBodyParam</strong></a></li>
+<li><a href="#testModelBodyParam"><strong>testModelBodyParam</strong></a></li>
+<li><a href="#testModelMapBodyParam"><strong>testModelMapBodyParam</strong></a></li>
+<li><a href="#testStringArrayBodyParam"><strong>testStringArrayBodyParam</strong></a></li>
+<li><a href="#testStringMapBodyParam"><strong>testStringMapBodyParam</strong></a></li>
+</ul>
+<h3 id="testBodyBooleanParam"><strong>testBodyBooleanParam</strong></h3>
+<hr />
+<pre><code>public static func testBodyBooleanParam(boolean: Bool, completionHandler: (Bool?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>boolean</strong>  (required)<ul>
+<li>see <a href="Bool.html"><strong>Bool</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Bool?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Bool</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let boolean = true // Bool (required) | 
+
+BodyParametersAPI.testBodyBooleanParam(boolean: boolean) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testBodyDoubleParam"><strong>testBodyDoubleParam</strong></h3>
+<hr />
+<pre><code>public static func testBodyDoubleParam(double: Double, completionHandler: (Double?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>double</strong>  (required)<ul>
+<li>see <a href="Double.html"><strong>Double</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Double?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Double</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let double = 1.2 // Double (required) | 
+
+BodyParametersAPI.testBodyDoubleParam(double: double) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testBodyFloatParam"><strong>testBodyFloatParam</strong></h3>
+<hr />
+<pre><code>public static func testBodyFloatParam(float: Float, completionHandler: (Float?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>float</strong>  (required)<ul>
+<li>see <a href="Float.html"><strong>Float</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Float?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Float</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let float = 3.4 // Float (required) | 
+
+BodyParametersAPI.testBodyFloatParam(float: float) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testBodyIntegerParam"><strong>testBodyIntegerParam</strong></h3>
+<hr />
+<pre><code>public static func testBodyIntegerParam(integer: Int, completionHandler: (Int?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>integer</strong>  (required)<ul>
+<li>see <a href="Int.html"><strong>Int</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Int?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Int</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let integer = 56 // Int (required) | 
+
+BodyParametersAPI.testBodyIntegerParam(integer: integer) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testBodyLongParam"><strong>testBodyLongParam</strong></h3>
+<hr />
+<pre><code>public static func testBodyLongParam(long: Int64, completionHandler: (Int64?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>long</strong>  (required)<ul>
+<li>see <a href="Int64.html"><strong>Int64</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Int64?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Int64</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let long = 789 // Int64 (required) | 
+
+BodyParametersAPI.testBodyLongParam(long: long) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testBodyStringParam"><strong>testBodyStringParam</strong></h3>
+<hr />
+<pre><code>public static func testBodyStringParam(string: String, completionHandler: (String?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>string</strong>  (required)<ul>
+<li>see <a href="String.html"><strong>String</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>String?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>String</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let string = "string_example" // String (required) | 
+
+BodyParametersAPI.testBodyStringParam(string: string) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testBooleanArrayBodyParam"><strong>testBooleanArrayBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testBooleanArrayBodyParam(boolean: [Bool], completionHandler: ([Bool]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>boolean</strong>  (required)<ul>
+<li>see <a href=".html"><strong>[Bool]</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[Bool]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[Bool]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let boolean = [[Bool]()] // [Bool] (required) | 
+
+BodyParametersAPI.testBooleanArrayBodyParam(boolean: boolean) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testBooleanMapBodyParam"><strong>testBooleanMapBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testBooleanMapBodyParam(boolean: Any, completionHandler: ([String:Bool]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>boolean</strong>  (required)<ul>
+<li>see <a href="Any.html"><strong>Any</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String:Bool]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String:Bool]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let boolean = nil // Any (required) | 
+
+BodyParametersAPI.testBooleanMapBodyParam(boolean: boolean) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDateArrayBodyParam"><strong>testDateArrayBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testDateArrayBodyParam(date: [Date], completionHandler: ([Date]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>date</strong>  (required)<ul>
+<li>see <a href="Date.html"><strong>[Date]</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[Date]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Date.html"><strong>[Date]</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let date = [Date()] // [Date] (required) | 
+
+BodyParametersAPI.testDateArrayBodyParam(date: date) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDateBodyParam"><strong>testDateBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testDateBodyParam(date: Date, completionHandler: (Date?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>date</strong>  (required)<ul>
+<li>see <a href="Date.html"><strong>Date</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Date?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Date.html"><strong>Date</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let date = Date() // Date (required) | 
+
+BodyParametersAPI.testDateBodyParam(date: date) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDateMapBodyParam"><strong>testDateMapBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testDateMapBodyParam(date: Any, completionHandler: ([String:Date]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>date</strong>  (required)<ul>
+<li>see <a href="Any.html"><strong>Any</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String:Date]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Date.html"><strong>[String:Date]</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let date = nil // Any (required) | 
+
+BodyParametersAPI.testDateMapBodyParam(date: date) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(Mapper&lt;Date&gt;().toJSONString(result, prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDateTimeArrayBodyParam"><strong>testDateTimeArrayBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testDateTimeArrayBodyParam(dateTime: [Date], completionHandler: ([Date]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>dateTime</strong>  (required)<ul>
+<li>see <a href="Date.html"><strong>[Date]</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[Date]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Date.html"><strong>[Date]</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let dateTime = [Date()] // [Date] (required) | 
+
+BodyParametersAPI.testDateTimeArrayBodyParam(dateTime: dateTime) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDateTimeBodyParam"><strong>testDateTimeBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testDateTimeBodyParam(dateTime: Date, completionHandler: (Date?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>dateTime</strong>  (required)<ul>
+<li>see <a href="Date.html"><strong>Date</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Date?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Date.html"><strong>Date</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let dateTime = Date() // Date (required) | 
+
+BodyParametersAPI.testDateTimeBodyParam(dateTime: dateTime) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDateTimeMapBodyParam"><strong>testDateTimeMapBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testDateTimeMapBodyParam(dateTime: Any, completionHandler: ([String:Date]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>dateTime</strong>  (required)<ul>
+<li>see <a href="Any.html"><strong>Any</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String:Date]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="Date.html"><strong>[String:Date]</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let dateTime = nil // Any (required) | 
+
+BodyParametersAPI.testDateTimeMapBodyParam(dateTime: dateTime) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(Mapper&lt;Date&gt;().toJSONString(result, prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDoubleArrayBodyParam"><strong>testDoubleArrayBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testDoubleArrayBodyParam(double: [Double], completionHandler: ([Double]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>double</strong>  (required)<ul>
+<li>see <a href=".html"><strong>[Double]</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[Double]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[Double]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let double = [[Double]()] // [Double] (required) | 
+
+BodyParametersAPI.testDoubleArrayBodyParam(double: double) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testDoubleMapBodyParam"><strong>testDoubleMapBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testDoubleMapBodyParam(double: Any, completionHandler: ([String:Double]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>double</strong>  (required)<ul>
+<li>see <a href="Any.html"><strong>Any</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String:Double]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String:Double]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let double = nil // Any (required) | 
+
+BodyParametersAPI.testDoubleMapBodyParam(double: double) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testFloatArrayBodyParam"><strong>testFloatArrayBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testFloatArrayBodyParam(float: [Float], completionHandler: ([Float]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>float</strong>  (required)<ul>
+<li>see <a href=".html"><strong>[Float]</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[Float]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[Float]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let float = [[Float]()] // [Float] (required) | 
+
+BodyParametersAPI.testFloatArrayBodyParam(float: float) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testFloatMapBodyParam"><strong>testFloatMapBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testFloatMapBodyParam(float: Any, completionHandler: ([String:Float]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>float</strong>  (required)<ul>
+<li>see <a href="Any.html"><strong>Any</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String:Float]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String:Float]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let float = nil // Any (required) | 
+
+BodyParametersAPI.testFloatMapBodyParam(float: float) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testGenericObject"><strong>testGenericObject</strong></h3>
+<hr />
+<pre><code>public static func testGenericObject(body: Any, completionHandler: (Any?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>body</strong>  (required)<ul>
+<li>see <a href="Any.html"><strong>Any</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Any?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Any</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let body = nil // Any (required) | 
+
+BodyParametersAPI.testGenericObject(body: body) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+    }
+}
+</code></pre>
+<h3 id="testGenericObjectArray"><strong>testGenericObjectArray</strong></h3>
+<hr />
+<pre><code>public static func testGenericObjectArray(objectArray: Any, completionHandler: (Any?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>objectArray</strong>  (required)<ul>
+<li>see <a href="Any.html"><strong>Any</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Any?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Any</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let objectArray = nil // Any (required) | 
+
+BodyParametersAPI.testGenericObjectArray(objectArray: objectArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+    }
+}
+</code></pre>
+<h3 id="testGenericObjectMap"><strong>testGenericObjectMap</strong></h3>
+<hr />
+<pre><code>public static func testGenericObjectMap(objectMap: Any, completionHandler: (Any?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>objectMap</strong>  (required)<ul>
+<li>see <a href="Any.html"><strong>Any</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>Any?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>Any</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let objectMap = nil // Any (required) | 
+
+BodyParametersAPI.testGenericObjectMap(objectMap: objectMap) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result)
+    } else  {
+        switch response!.statusCode {
+    }
+}
+</code></pre>
+<h3 id="testIntegerArrayBodyParam"><strong>testIntegerArrayBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testIntegerArrayBodyParam(integer: [Int], completionHandler: ([Int]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>integer</strong>  (required)<ul>
+<li>see <a href=".html"><strong>[Int]</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[Int]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[Int]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let integer = [[Int]()] // [Int] (required) | 
+
+BodyParametersAPI.testIntegerArrayBodyParam(integer: integer) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testIntegerMapBodyParam"><strong>testIntegerMapBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testIntegerMapBodyParam(integer: Any, completionHandler: ([String:Int]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>integer</strong>  (required)<ul>
+<li>see <a href="Any.html"><strong>Any</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String:Int]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String:Int]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let integer = nil // Any (required) | 
+
+BodyParametersAPI.testIntegerMapBodyParam(integer: integer) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testLongArrayBodyParam"><strong>testLongArrayBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testLongArrayBodyParam(long: [Int64], completionHandler: ([Int64]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>long</strong>  (required)<ul>
+<li>see <a href=".html"><strong>[Int64]</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[Int64]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[Int64]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let long = [[Int64]()] // [Int64] (required) | 
+
+BodyParametersAPI.testLongArrayBodyParam(long: long) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testLongMapBodyParam"><strong>testLongMapBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testLongMapBodyParam(long: Any, completionHandler: ([String:Int64]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>long</strong>  (required)<ul>
+<li>see <a href="Any.html"><strong>Any</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String:Int64]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String:Int64]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let long = nil // Any (required) | 
+
+BodyParametersAPI.testLongMapBodyParam(long: long) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testModelArrayBodyParam"><strong>testModelArrayBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testModelArrayBodyParam(modelArray: [BodyModel], completionHandler: ([BodyModel]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>modelArray</strong>  (required)<ul>
+<li>see <a href="BodyModel.html"><strong>[BodyModel]</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[BodyModel]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="BodyModel.html"><strong>[BodyModel]</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let modelArray = [BodyModel()] // [BodyModel] (required) | 
+
+BodyParametersAPI.testModelArrayBodyParam(modelArray: modelArray) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testModelBodyParam"><strong>testModelBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testModelBodyParam(model: BodyModel, completionHandler: (BodyModel?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>model</strong>  (required)<ul>
+<li>see <a href="BodyModel.html"><strong>BodyModel</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>BodyModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="BodyModel.html"><strong>BodyModel</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let model = BodyModel() // BodyModel (required) | 
+
+BodyParametersAPI.testModelBodyParam(model: model) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.toJSONString(prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testModelMapBodyParam"><strong>testModelMapBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testModelMapBodyParam(modelMap: Any, completionHandler: ([String:BodyModel]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>modelMap</strong>  (required)<ul>
+<li>see <a href="Any.html"><strong>Any</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String:BodyModel]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><a href="BodyModel.html"><strong>[String:BodyModel]</strong></a></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let modelMap = nil // Any (required) | 
+
+BodyParametersAPI.testModelMapBodyParam(modelMap: modelMap) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(Mapper&lt;BodyModel&gt;().toJSONString(result, prettyPrint: true))
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testStringArrayBodyParam"><strong>testStringArrayBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testStringArrayBodyParam(string: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>string</strong>  (required)<ul>
+<li>see <a href=".html"><strong>[String]</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let string = [[String]()] // [String] (required) | 
+
+BodyParametersAPI.testStringArrayBodyParam(string: string) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<h3 id="testStringMapBodyParam"><strong>testStringMapBodyParam</strong></h3>
+<hr />
+<pre><code>public static func testStringMapBodyParam(string: Any, completionHandler: ([String:String]?, Response?, Error?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>string</strong>  (required)<ul>
+<li>see <a href="Any.html"><strong>Any</strong></a></li>
+</ul>
+</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>[String:String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><strong>[String:String]</strong></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let string = nil // Any (required) | 
+
+BodyParametersAPI.testStringMapBodyParam(string: string) { (result, response, error) in
+    if let error = error {
+        print(error)
+    }
+    if let result = result {
+        print(result.description)
+    } else  {
+        switch response!.statusCode {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+            ErrorModel(JSONString: response!.responseText!)
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+            ErrorModel(JSONString: response!.responseText!)
+        default:
+            print(response!.responseText!)
+        }
+    }
+}
+</code></pre>
+<p><a href="#top"><strong>Back to Top</strong></a></p>
