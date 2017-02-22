@@ -1097,12 +1097,13 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         
 
         - parameter file: 
+        - parameter destinationURL: The file that you want the response data to be written to
         - parameter completionHandler: The callback that will be executed once the underlying HTTP call completes
         - parameter returnedData: The data that this method is retrieving from the server
         - parameter response: The HTTP response returned by the server
         - parameter error: An error that prevented a successful request
     */
-    public static func testFileFormData(file: URL, completionHandler: @escaping (_ returnedData: URL?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) throws {
+    public static func testFileFormData(file: URL, destinationURL: URL?, completionHandler: @escaping (_ returnedData: URL?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) throws {
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -1168,12 +1169,13 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         
 
         - parameter file: 
+        - parameter destinationURL: The file that you want the response data to be written to
         - parameter completionHandler: The callback that will be executed once the underlying HTTP call completes
         - parameter returnedData: The data that this method is retrieving from the server
         - parameter response: The HTTP response returned by the server
         - parameter error: An error that prevented a successful request
     */
-    public static func testFileUrlEncoded(file: URL, completionHandler: @escaping (_ returnedData: URL?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) throws {
+    public static func testFileUrlEncoded(file: URL, destinationURL: URL?, completionHandler: @escaping (_ returnedData: URL?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) throws {
 
         let path = "/params/form/urlencoded/file"
         let components = URLComponents(string: self.basePath + path)

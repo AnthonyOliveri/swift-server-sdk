@@ -33,6 +33,43 @@ public class TestSdkStandaloneUtility {
 }
 
 
+// MARK: Convert header of any type to String
+// Covers all types except for Date, which is handled by the `Date` extension in this file
+public extension TestSdkStandaloneUtility {
+
+    internal static func convertToString<T>(_ input: T) -> String? {
+
+        var string: String? = nil
+
+        switch input {
+
+        case is String:
+            string = (input as! String)
+        case is Int,
+             is Int32,
+             is Int64,
+             is Double,
+             is Float,
+             is Bool:
+            string = String(describing: input)
+        case is Data:
+            string = String(data: (input as! Data), encoding: .utf8)
+        default:
+            break
+        }
+
+        return string
+    }
+
+    internal static func convertToString(_ input: [String], collectionFormat: String) -> String? {
+
+        return input.reduce("") { (result, string) -> String in
+            result.isEmpty ? string : "\(result)\(delimeter(forCollectionFormat: collectionFormat))\(string)"
+        }
+    }
+}
+
+
 // MARK: Converts API parameter to http body
 public extension TestSdkStandaloneUtility {
 
@@ -228,4 +265,23 @@ public extension TestSdkStandaloneUtility {
         return responseData
     }
 
+}
+
+
+// MARK: Get ISO 8601 string representations of Date
+internal extension Date {
+
+    internal var iso8601DateString: String {
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self)
+    }
+
+    internal var iso8601DateTimeString: String {
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        return dateFormatter.string(from: self)
+    }
 }
