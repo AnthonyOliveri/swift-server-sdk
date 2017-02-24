@@ -1,3 +1,14 @@
+<link rel="stylesheet" href="markdown.css">
+<style>
+    .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+    }
+</style>
+<article class="markdown-body">
 <p><a href="./README.html"><strong>Back to README</strong></a></p>
 <h1 id="top">EnumTestAPI</h1>
 <h3>Methods</h3>
@@ -8,17 +19,16 @@
 </ul>
 <h3 id="testEnum"><strong>testEnum</strong></h3>
 <hr />
-<pre><code>public static func testEnum(string: String = xvii, float: Float = 1.9, double: Double = 1.7, integer: Int = 17, long: Int64 = 19, completionHandler: (EnumModel?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testEnum(string: String? = nil, float: Float? = nil, double: Double? = nil, integer: Int? = nil, long: Int64? = nil, completionHandler: @escaping (_ returnedData: EnumModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>string</strong>  (optional)<ul>
 <li>defaults to xvii</li>
-<li>enum:<ul>
-<li>,</li>
-<li></li>
-</ul>
+<li>enum:<pre><code>- xvii
+- xix
+</code></pre>
 </li>
 </ul>
 </li>
@@ -39,45 +49,46 @@
 </ul>
 </li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>EnumModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>EnumModel?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><a href="EnumModel.html"><strong>EnumModel</strong></a></p>
+<p><a href="EnumModel.html"><code>EnumModel</code></a></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>var string: String? // String? (optional) | 
-var float: Float? // Float? (optional) | 
-var double: Double? // Double? (optional) | 
-var integer: Int? // Int? (optional) | 
-var long: Int64? // Int64? (optional) | 
+<pre><code>let string: String = "xvii" // 
+let float: Float = 1.9 // 
+let double: Double = 1.7 // 
+let integer: Int = 17 // 
+let long: Int64 = 19 // 
 
-EnumTestAPI.testEnum(string: string, float: float, double: double, integer: integer, long: long) { (result, response, error) in
-    if let error = error {
-        print(error)
+EnumTestAPI.testEnum(string: string, float: float, double: double, integer: integer, long: long) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        // No documented non-default responses
     }
 }
 </code></pre>
 <h3 id="testEnumThree"><strong>testEnumThree</strong></h3>
 <hr />
-<pre><code>public static func testEnumThree(string: String = xvii, float: Float = 1.9, double: Double = 1.7, integer: Int = 17, long: Int64 = 19, completionHandler: (EnumModel?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testEnumThree(string: String? = nil, float: Float? = nil, double: Double? = nil, integer: Int? = nil, long: Int64? = nil, completionHandler: @escaping (_ returnedData: EnumModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>string</strong>  (optional)<ul>
 <li>defaults to xvii</li>
-<li>enum:<ul>
-<li>,</li>
-<li></li>
-</ul>
+<li>enum:<pre><code>- xvii
+- xix
+</code></pre>
 </li>
 </ul>
 </li>
@@ -98,45 +109,46 @@ EnumTestAPI.testEnum(string: string, float: float, double: double, integer: inte
 </ul>
 </li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>EnumModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>EnumModel?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><a href="EnumModel.html"><strong>EnumModel</strong></a></p>
+<p><a href="EnumModel.html"><code>EnumModel</code></a></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>var string: String? // String? (optional) | 
-var float: Float? // Float? (optional) | 
-var double: Double? // Double? (optional) | 
-var integer: Int? // Int? (optional) | 
-var long: Int64? // Int64? (optional) | 
+<pre><code>let string: String = "xvii" // 
+let float: Float = 1.9 // 
+let double: Double = 1.7 // 
+let integer: Int = 17 // 
+let long: Int64 = 19 // 
 
-EnumTestAPI.testEnumThree(string: string, float: float, double: double, integer: integer, long: long) { (result, response, error) in
-    if let error = error {
-        print(error)
+EnumTestAPI.testEnumThree(string: string, float: float, double: double, integer: integer, long: long) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        // No documented non-default responses
     }
 }
 </code></pre>
 <h3 id="testEnumTwo"><strong>testEnumTwo</strong></h3>
 <hr />
-<pre><code>public static func testEnumTwo(string: String = xvii, float: Float = 1.9, double: Double = 1.7, integer: Int = 17, long: Int64 = 19, completionHandler: (EnumModel?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testEnumTwo(string: String? = nil, float: Float? = nil, double: Double? = nil, integer: Int? = nil, long: Int64? = nil, completionHandler: @escaping (_ returnedData: EnumModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>string</strong>  (optional)<ul>
 <li>defaults to xvii</li>
-<li>enum:<ul>
-<li>,</li>
-<li></li>
-</ul>
+<li>enum:<pre><code>- xvii
+- xix
+</code></pre>
 </li>
 </ul>
 </li>
@@ -157,30 +169,33 @@ EnumTestAPI.testEnumThree(string: string, float: float, double: double, integer:
 </ul>
 </li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>EnumModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>EnumModel?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><a href="EnumModel.html"><strong>EnumModel</strong></a></p>
+<p><a href="EnumModel.html"><code>EnumModel</code></a></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>var string: String? // String? (optional) | 
-var float: Float? // Float? (optional) | 
-var double: Double? // Double? (optional) | 
-var integer: Int? // Int? (optional) | 
-var long: Int64? // Int64? (optional) | 
+<pre><code>let string: String = "xvii" // 
+let float: Float = 1.9 // 
+let double: Double = 1.7 // 
+let integer: Int = 17 // 
+let long: Int64 = 19 // 
 
-EnumTestAPI.testEnumTwo(string: string, float: float, double: double, integer: integer, long: long) { (result, response, error) in
-    if let error = error {
-        print(error)
+EnumTestAPI.testEnumTwo(string: string, float: float, double: double, integer: integer, long: long) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        // No documented non-default responses
     }
 }
 </code></pre>
 <p><a href="#top"><strong>Back to Top</strong></a></p>
+</article>

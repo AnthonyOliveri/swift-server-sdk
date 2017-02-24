@@ -1,3 +1,14 @@
+<link rel="stylesheet" href="markdown.css">
+<style>
+    .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+    }
+</style>
+<article class="markdown-body">
 <p><a href="./README.html"><strong>Back to README</strong></a></p>
 <h1 id="top">HeaderParametersAPI</h1>
 <h3>Methods</h3>
@@ -14,11 +25,12 @@
 <li><a href="#testOptionalHeaderParam"><strong>testOptionalHeaderParam</strong></a></li>
 <li><a href="#testPipesHeaderParam"><strong>testPipesHeaderParam</strong></a></li>
 <li><a href="#testSSVHeaderParam"><strong>testSSVHeaderParam</strong></a></li>
+<li><a href="#testStringHeaderParam"><strong>testStringHeaderParam</strong></a></li>
 <li><a href="#testTSVHeaderParam"><strong>testTSVHeaderParam</strong></a></li>
 </ul>
 <h3 id="testAllTheThingsHeaderParam"><strong>testAllTheThingsHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testAllTheThingsHeaderParam(xString: String, xFloat: Float, xDouble: Double, xInteger: Int, xLong: Int64, xBoolean: Bool, xCsvArray: [String], xSsvArray: [String], xTsvArray: [String], xPipesArray: [String], date: Date, dateTime: Date, completionHandler: (HeaderModel?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testAllTheThingsHeaderParam(xString: String, xFloat: Float, xDouble: Double, xInteger: Int, xLong: Int64, xBoolean: Bool, xCsvArray: [String], xSsvArray: [String], xTsvArray: [String], xPipesArray: [String], date: Date, dateTime: Date, completionHandler: @escaping (_ returnedData: HeaderModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
@@ -36,378 +48,388 @@
 <li><strong>date</strong>  (required)</li>
 <li><strong>dateTime</strong>  (required)</li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>HeaderModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>HeaderModel?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><a href="HeaderModel.html"><strong>HeaderModel</strong></a></p>
+<p><a href="HeaderModel.html"><code>HeaderModel</code></a></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let xString = "xString_example" // String (required) | 
-let xFloat = 3.4 // Float (required) | 
-let xDouble = 1.2 // Double (required) | 
-let xInteger = 56 // Int (required) | 
-let xLong = 789 // Int64 (required) | 
-let xBoolean = true // Bool (required) | 
-let xCsvArray = ["example"] // [String] (required) | 
-let xSsvArray = ["example"] // [String] (required) | 
-let xTsvArray = ["example"] // [String] (required) | 
-let xPipesArray = ["example"] // [String] (required) | 
-let date = Date() // Date (required) | 
-let dateTime = Date() // Date (required) | 
+<pre><code>let xString: String = "xString_example" // 
+let xFloat: Float = 3.4 // 
+let xDouble: Double = 1.2 // 
+let xInteger: Int = 56 // 
+let xLong: Int64 = 789 // 
+let xBoolean: Bool = true // 
+let xCsvArray: [String] = [] // 
+let xSsvArray: [String] = [] // 
+let xTsvArray: [String] = [] // 
+let xPipesArray: [String] = [] // 
+let date: Date = Date() // 
+let dateTime: Date = Date() // 
 
-HeaderParametersAPI.testAllTheThingsHeaderParam(xString: xString, xFloat: xFloat, xDouble: xDouble, xInteger: xInteger, xLong: xLong, xBoolean: xBoolean, xCsvArray: xCsvArray, xSsvArray: xSsvArray, xTsvArray: xTsvArray, xPipesArray: xPipesArray, date: date, dateTime: dateTime) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testAllTheThingsHeaderParam(xString: xString, xFloat: xFloat, xDouble: xDouble, xInteger: xInteger, xLong: xLong, xBoolean: xBoolean, xCsvArray: xCsvArray, xSsvArray: xSsvArray, xTsvArray: xTsvArray, xPipesArray: xPipesArray, date: date, dateTime: dateTime) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 </code></pre>
 <h3 id="testBooleanHeaderParam"><strong>testBooleanHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testBooleanHeaderParam(xBoolean: Bool, completionHandler: (Bool?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testBooleanHeaderParam(xBoolean: Bool, completionHandler: @escaping (_ returnedData: Bool?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>xBoolean</strong>  (required)</li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>Bool?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>Bool?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><strong>Bool</strong></p>
+<p><code>Bool</code></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let xBoolean = true // Bool (required) | 
+<pre><code>let xBoolean: Bool = true // 
 
-HeaderParametersAPI.testBooleanHeaderParam(xBoolean: xBoolean) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testBooleanHeaderParam(xBoolean: xBoolean) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 </code></pre>
 <h3 id="testCSVHeaderParam"><strong>testCSVHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testCSVHeaderParam(xCsvArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testCSVHeaderParam(xCsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>xCsvArray</strong>  (required)</li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>[String]?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><strong>[String]</strong></p>
+<p><code>[String]</code></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let xCsvArray = ["example"] // [String] (required) | 
+<pre><code>let xCsvArray: [String] = [] // 
 
-HeaderParametersAPI.testCSVHeaderParam(xCsvArray: xCsvArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testCSVHeaderParam(xCsvArray: xCsvArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 </code></pre>
 <h3 id="testDateHeaderParam"><strong>testDateHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testDateHeaderParam(date: Date, completionHandler: (Date?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testDateHeaderParam(date: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>date</strong>  (required)</li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>Date?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>Date?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><a href="Date.html"><strong>Date</strong></a></p>
+<p><a href="Date.html"><code>Date</code></a></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let date = Date() // Date (required) | 
+<pre><code>let date: Date = Date() // 
 
-HeaderParametersAPI.testDateHeaderParam(date: date) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testDateHeaderParam(date: date) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        // No documented non-default responses
     }
 }
 </code></pre>
 <h3 id="testDateTimeHeaderParam"><strong>testDateTimeHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testDateTimeHeaderParam(dateTime: Date, completionHandler: (Date?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testDateTimeHeaderParam(dateTime: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>dateTime</strong>  (required)</li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>Date?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>Date?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><a href="Date.html"><strong>Date</strong></a></p>
+<p><a href="Date.html"><code>Date</code></a></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let dateTime = Date() // Date (required) | 
+<pre><code>let dateTime: Date = Date() // 
 
-HeaderParametersAPI.testDateTimeHeaderParam(dateTime: dateTime) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testDateTimeHeaderParam(dateTime: dateTime) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 </code></pre>
 <h3 id="testDoubleHeaderParam"><strong>testDoubleHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testDoubleHeaderParam(xDouble: Double, completionHandler: (Double?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testDoubleHeaderParam(xDouble: Double, completionHandler: @escaping (_ returnedData: Double?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>xDouble</strong>  (required)</li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>Double?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>Double?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><strong>Double</strong></p>
+<p><code>Double</code></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let xDouble = 1.2 // Double (required) | 
+<pre><code>let xDouble: Double = 1.2 // 
 
-HeaderParametersAPI.testDoubleHeaderParam(xDouble: xDouble) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testDoubleHeaderParam(xDouble: xDouble) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 </code></pre>
 <h3 id="testFloatHeaderParam"><strong>testFloatHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testFloatHeaderParam(xFloat: Float, completionHandler: (Float?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testFloatHeaderParam(xFloat: Float, completionHandler: @escaping (_ returnedData: Float?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>xFloat</strong>  (required)</li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>Float?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>Float?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><strong>Float</strong></p>
+<p><code>Float</code></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let xFloat = 3.4 // Float (required) | 
+<pre><code>let xFloat: Float = 3.4 // 
 
-HeaderParametersAPI.testFloatHeaderParam(xFloat: xFloat) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testFloatHeaderParam(xFloat: xFloat) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 </code></pre>
 <h3 id="testIntegerHeaderParam"><strong>testIntegerHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testIntegerHeaderParam(xInteger: Int, completionHandler: (Int?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testIntegerHeaderParam(xInteger: Int, completionHandler: @escaping (_ returnedData: Int?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>xInteger</strong>  (required)</li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>Int?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>Int?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><strong>Int</strong></p>
+<p><code>Int</code></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let xInteger = 56 // Int (required) | 
+<pre><code>let xInteger: Int = 56 // 
 
-HeaderParametersAPI.testIntegerHeaderParam(xInteger: xInteger) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testIntegerHeaderParam(xInteger: xInteger) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 </code></pre>
 <h3 id="testLongHeaderParam"><strong>testLongHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testLongHeaderParam(xLong: Int64, completionHandler: (Int64?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testLongHeaderParam(xLong: Int64, completionHandler: @escaping (_ returnedData: Int64?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>xLong</strong>  (required)</li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>Int64?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>Int64?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><strong>Int64</strong></p>
+<p><code>Int64</code></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let xLong = 789 // Int64 (required) | 
+<pre><code>let xLong: Int64 = 789 // 
 
-HeaderParametersAPI.testLongHeaderParam(xLong: xLong) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testLongHeaderParam(xLong: xLong) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 </code></pre>
 <h3 id="testOptionalHeaderParam"><strong>testOptionalHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testOptionalHeaderParam(xFloat: Float, xDouble: Double, xCsvArray: [String], xSsvArray: [String], xTsvArray: [String], xPipesArray: [String], date: Date, dateTime: Date, xString: String?, xInteger: Int = 17, xLong: Int64?, xBoolean: Bool = false, completionHandler: (HeaderModel?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testOptionalHeaderParam(xFloat: Float, xDouble: Double, xCsvArray: [String], xSsvArray: [String], xTsvArray: [String], xPipesArray: [String], date: Date, dateTime: Date, xString: String? = nil, xInteger: Int? = nil, xLong: Int64? = nil, xBoolean: Bool? = nil, completionHandler: @escaping (_ returnedData: HeaderModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
@@ -431,174 +453,222 @@ HeaderParametersAPI.testLongHeaderParam(xLong: xLong) { (result, response, error
 </ul>
 </li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>HeaderModel?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>HeaderModel?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><a href="HeaderModel.html"><strong>HeaderModel</strong></a></p>
+<p><a href="HeaderModel.html"><code>HeaderModel</code></a></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let xFloat = 3.4 // Float (required) | 
-let xDouble = 1.2 // Double (required) | 
-let xCsvArray = ["example"] // [String] (required) | 
-let xSsvArray = ["example"] // [String] (required) | 
-let xTsvArray = ["example"] // [String] (required) | 
-let xPipesArray = ["example"] // [String] (required) | 
-let date = Date() // Date (required) | 
-let dateTime = Date() // Date (required) | 
-var xString: String? // String? (optional) | 
-var xInteger: Int? // Int? (optional) | 
-var xLong: Int64? // Int64? (optional) | 
-var xBoolean: Bool? // Bool? (optional) | 
+<pre><code>let xFloat: Float = 3.4 // 
+let xDouble: Double = 1.2 // 
+let xCsvArray: [String] = [] // 
+let xSsvArray: [String] = [] // 
+let xTsvArray: [String] = [] // 
+let xPipesArray: [String] = [] // 
+let date: Date = Date() // 
+let dateTime: Date = Date() // 
+let xString: String = "xString_example" // 
+let xInteger: Int = 17 // 
+let xLong: Int64 = 789 // 
+let xBoolean: Bool = false // 
 
-HeaderParametersAPI.testOptionalHeaderParam(xFloat: xFloat, xDouble: xDouble, xCsvArray: xCsvArray, xSsvArray: xSsvArray, xTsvArray: xTsvArray, xPipesArray: xPipesArray, date: date, dateTime: dateTime, xString: xString, xInteger: xInteger, xLong: xLong, xBoolean: xBoolean) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testOptionalHeaderParam(xFloat: xFloat, xDouble: xDouble, xCsvArray: xCsvArray, xSsvArray: xSsvArray, xTsvArray: xTsvArray, xPipesArray: xPipesArray, date: date, dateTime: dateTime, xString: xString, xInteger: xInteger, xLong: xLong, xBoolean: xBoolean) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 </code></pre>
 <h3 id="testPipesHeaderParam"><strong>testPipesHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testPipesHeaderParam(xPipesArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testPipesHeaderParam(xPipesArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>xPipesArray</strong>  (required)</li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>[String]?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><strong>[String]</strong></p>
+<p><code>[String]</code></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let xPipesArray = ["example"] // [String] (required) | 
+<pre><code>let xPipesArray: [String] = [] // 
 
-HeaderParametersAPI.testPipesHeaderParam(xPipesArray: xPipesArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testPipesHeaderParam(xPipesArray: xPipesArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 </code></pre>
 <h3 id="testSSVHeaderParam"><strong>testSSVHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testSSVHeaderParam(xSsvArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testSSVHeaderParam(xSsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>xSsvArray</strong>  (required)</li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>[String]?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><strong>[String]</strong></p>
+<p><code>[String]</code></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let xSsvArray = ["example"] // [String] (required) | 
+<pre><code>let xSsvArray: [String] = [] // 
 
-HeaderParametersAPI.testSSVHeaderParam(xSsvArray: xSsvArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testSSVHeaderParam(xSsvArray: xSsvArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
+    }
+}
+</code></pre>
+<h3 id="testStringHeaderParam"><strong>testStringHeaderParam</strong></h3>
+<hr />
+<pre><code>public static func testStringHeaderParam(xString: String, completionHandler: @escaping (_ returnedData: String?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
+</code></pre>
+<blockquote></blockquote>
+<h4>Parameters</h4>
+<ul>
+<li><strong>xString</strong>  (required)</li>
+<li><strong>completionHandler</strong> (required)<ul>
+<li>closure takes as arguments <code>String?</code>, Int?, [String: String]?, HttpError?</li>
+</ul>
+</li>
+</ul>
+<h4>Response</h4>
+<p><code>String</code></p>
+<h3>Authentication</h3>
+<p>No authentication required</p>
+<h3>Example</h3>
+<pre><code>let xString: String = "xString_example" // 
+
+HeaderParametersAPI.testStringHeaderParam(xString: xString) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
+    }
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
+        case 400:
+            // Response body is of type ErrorModel
+            print("bad request")
+        case 500:
+            // Response body is of type ErrorModel
+            print("server error")
+        default:
+            break
+        }
+        print(responseHeaders)
     }
 }
 </code></pre>
 <h3 id="testTSVHeaderParam"><strong>testTSVHeaderParam</strong></h3>
 <hr />
-<pre><code>public static func testTSVHeaderParam(xTsvArray: [String], completionHandler: ([String]?, Response?, Error?) -&gt; Void) -&gt; Void
+<pre><code>public static func testTSVHeaderParam(xTsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -&gt; Void) -&gt; Void
 </code></pre>
 <blockquote></blockquote>
 <h4>Parameters</h4>
 <ul>
 <li><strong>xTsvArray</strong>  (required)</li>
 <li><strong>completionHandler</strong> (required)<ul>
-<li>closure takes as arguments <code>[String]?</code>, <code>Response?</code> and  <code>Error?</code></li>
+<li>closure takes as arguments <code>[String]?</code>, Int?, [String: String]?, HttpError?</li>
 </ul>
 </li>
 </ul>
 <h4>Response</h4>
-<p><strong>[String]</strong></p>
+<p><code>[String]</code></p>
 <h3>Authentication</h3>
 <p>No authentication required</p>
 <h3>Example</h3>
-<pre><code>let xTsvArray = ["example"] // [String] (required) | 
+<pre><code>let xTsvArray: [String] = [] // 
 
-HeaderParametersAPI.testTSVHeaderParam(xTsvArray: xTsvArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+HeaderParametersAPI.testTSVHeaderParam(xTsvArray: xTsvArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 </code></pre>
 <p><a href="#top"><strong>Back to Top</strong></a></p>
+</article>

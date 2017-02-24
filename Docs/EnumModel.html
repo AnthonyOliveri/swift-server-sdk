@@ -1,17 +1,36 @@
+<link rel="stylesheet" href="markdown.css">
+<style>
+    .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+    }
+</style>
+<article class="markdown-body">
 <p><a href="./README.html"><strong>Back to README</strong></a></p>
 <h1 id="top">EnumModel</h1>
 <h3>Examples</h3>
 <pre><code>// Maps JSON string to Swift Object
-let enumModel: EnumModel = EnumModel(JSONString: jsonString)
-
-// Maps JSON string to array of EnumModel
-let enumModelArray: [EnumModel] = Mapper&lt;EnumModel&gt;().mapArray(JSONString: jsonString)
-
-// Maps JSON String to Dictionary mapping String to EnumModel
-let Dictionary: [String: EnumModel] = Mapper&lt;EnumModel&gt;().mapDictionary(JSONString: jsonString);
-
-// Converts Swift Object to JSON string
-let jsonString: String = enumModel.toJSONString(prettyPrint: true)
+let jsonString = ""
+let enumModel: EnumModel? = EnumModel(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Maps JSON string to array of EnumModel
+let jsonString = ""
+let enumModelArray: [EnumModel]? = Mapper&lt;EnumModel&gt;().mapArray(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Maps JSON String to Dictionary mapping String to EnumModel
+let jsonString = ""
+let Dictionary: [String: EnumModel]? = Mapper&lt;EnumModel&gt;().mapDictionary(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Converts Swift Object to JSON string
+let json: [String: Any] = [:]
+let enumModel = EnumModel(JSON: json)
+let jsonString: String? = enumModel?.toJSONString(prettyPrint: true)
 </code></pre>
 <h3>Fields</h3>
 <ul>
@@ -26,10 +45,10 @@ let jsonString: String = enumModel.toJSONString(prettyPrint: true)
 <pre><code>var stringEnum: stringenum?
 </code></pre>
 <ul>
-<li>( <strong><em>Enum</em></strong> )</li>
-<li>Values:<ul>
-<li>``</li>
-<li>``</li>
+<li>(<strong>Enum</strong>)</li>
+<li>Possible values:<ul>
+<li><code>xvii = "xvii"</code></li>
+<li><code>xix = "xix"</code></li>
 </ul>
 </li>
 </ul>
@@ -38,10 +57,10 @@ let jsonString: String = enumModel.toJSONString(prettyPrint: true)
 <pre><code>var floatEnum: floatenum?
 </code></pre>
 <ul>
-<li>( <strong><em>Enum</em></strong> )</li>
-<li>Values:<ul>
-<li>``</li>
-<li>``</li>
+<li>(<strong>Enum</strong>)</li>
+<li>Possible values:<ul>
+<li><code>number17 = 1.7</code></li>
+<li><code>number19 = 1.9</code></li>
 </ul>
 </li>
 </ul>
@@ -50,10 +69,10 @@ let jsonString: String = enumModel.toJSONString(prettyPrint: true)
 <pre><code>var doubleEnum: doubleenum?
 </code></pre>
 <ul>
-<li>( <strong><em>Enum</em></strong> )</li>
-<li>Values:<ul>
-<li>``</li>
-<li>``</li>
+<li>(<strong>Enum</strong>)</li>
+<li>Possible values:<ul>
+<li><code>number17 = 1.7</code></li>
+<li><code>number19 = 1.9</code></li>
 </ul>
 </li>
 </ul>
@@ -62,10 +81,10 @@ let jsonString: String = enumModel.toJSONString(prettyPrint: true)
 <pre><code>var integerEnum: integerenum?
 </code></pre>
 <ul>
-<li>( <strong><em>Enum</em></strong> )</li>
-<li>Values:<ul>
-<li>``</li>
-<li>``</li>
+<li>(<strong>Enum</strong>)</li>
+<li>Possible values:<ul>
+<li><code>number17 = 17</code></li>
+<li><code>number19 = 19</code></li>
 </ul>
 </li>
 </ul>
@@ -74,12 +93,13 @@ let jsonString: String = enumModel.toJSONString(prettyPrint: true)
 <pre><code>var longEnum: longenum?
 </code></pre>
 <ul>
-<li>( <strong><em>Enum</em></strong> )</li>
-<li>Values:<ul>
-<li>``</li>
-<li>``</li>
+<li>(<strong>Enum</strong>)</li>
+<li>Possible values:<ul>
+<li><code>number17 = 17</code></li>
+<li><code>number19 = 19</code></li>
 </ul>
 </li>
 </ul>
 <hr />
 <p><a href="#top"><strong>Back to Top</strong></a></p>
+</article>

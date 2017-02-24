@@ -1,17 +1,36 @@
+<link rel="stylesheet" href="markdown.css">
+<style>
+    .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+    }
+</style>
+<article class="markdown-body">
 <p><a href="./README.html"><strong>Back to README</strong></a></p>
 <h1 id="top">HeaderModel</h1>
 <h3>Examples</h3>
 <pre><code>// Maps JSON string to Swift Object
-let headerModel: HeaderModel = HeaderModel(JSONString: jsonString)
-
-// Maps JSON string to array of HeaderModel
-let headerModelArray: [HeaderModel] = Mapper&lt;HeaderModel&gt;().mapArray(JSONString: jsonString)
-
-// Maps JSON String to Dictionary mapping String to HeaderModel
-let Dictionary: [String: HeaderModel] = Mapper&lt;HeaderModel&gt;().mapDictionary(JSONString: jsonString);
-
-// Converts Swift Object to JSON string
-let jsonString: String = headerModel.toJSONString(prettyPrint: true)
+let jsonString = ""
+let headerModel: HeaderModel? = HeaderModel(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Maps JSON string to array of HeaderModel
+let jsonString = ""
+let headerModelArray: [HeaderModel]? = Mapper&lt;HeaderModel&gt;().mapArray(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Maps JSON String to Dictionary mapping String to HeaderModel
+let jsonString = ""
+let Dictionary: [String: HeaderModel]? = Mapper&lt;HeaderModel&gt;().mapDictionary(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Converts Swift Object to JSON string
+let json: [String: Any] = [:]
+let headerModel = HeaderModel(JSON: json)
+let jsonString: String? = headerModel?.toJSONString(prettyPrint: true)
 </code></pre>
 <h3>Fields</h3>
 <ul>
@@ -76,7 +95,6 @@ let jsonString: String = headerModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="headerSSV">headerSSV</h4>
@@ -84,7 +102,6 @@ let jsonString: String = headerModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="headerTSV">headerTSV</h4>
@@ -92,7 +109,6 @@ let jsonString: String = headerModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="headerPipes">headerPipes</h4>
@@ -100,7 +116,6 @@ let jsonString: String = headerModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="headerDate">headerDate</h4>
@@ -118,3 +133,4 @@ let jsonString: String = headerModel.toJSONString(prettyPrint: true)
 </ul>
 <hr />
 <p><a href="#top"><strong>Back to Top</strong></a></p>
+</article>

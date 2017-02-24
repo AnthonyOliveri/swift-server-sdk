@@ -29,6 +29,7 @@ public class EnumTestAPI: TestSdkStandaloneUtility {
     */
     public static func testEnum(string: String? = nil, float: Float? = nil, double: Double? = nil, integer: Int? = nil, long: Int64? = nil, completionHandler: @escaping (_ returnedData: EnumModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/enum/1"
         var components = URLComponents(string: self.basePath + path)
         var queryParameters: [URLQueryItem] = []
@@ -60,7 +61,7 @@ public class EnumTestAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -94,6 +95,7 @@ public class EnumTestAPI: TestSdkStandaloneUtility {
     */
     public static func testEnumThree(string: String? = nil, float: Float? = nil, double: Double? = nil, integer: Int? = nil, long: Int64? = nil, completionHandler: @escaping (_ returnedData: EnumModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/enum/3"
         var components = URLComponents(string: self.basePath + path)
         var queryParameters: [URLQueryItem] = []
@@ -125,7 +127,7 @@ public class EnumTestAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -159,6 +161,7 @@ public class EnumTestAPI: TestSdkStandaloneUtility {
     */
     public static func testEnumTwo(string: String? = nil, float: Float? = nil, double: Double? = nil, integer: Int? = nil, long: Int64? = nil, completionHandler: @escaping (_ returnedData: EnumModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/enum/2"
         var components = URLComponents(string: self.basePath + path)
         var queryParameters: [URLQueryItem] = []
@@ -190,7 +193,7 @@ public class EnumTestAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }

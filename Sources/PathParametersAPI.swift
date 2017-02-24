@@ -34,6 +34,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testAllTheThingsPathParam(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], completionHandler: @escaping (_ returnedData: PathModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         var path = "/params/path/allTheThings/{string}/{float}/{double}/{integer}/{long}/{boolean}/{csv-array}/{ssv-array}/{tsv-array}/{pipes-array}"
         path = path.replacingOccurrences(of: "{string}", with: "\(string)")
         path = path.replacingOccurrences(of: "{float}", with: "\(float)")
@@ -63,7 +64,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -93,6 +94,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testBooleanPathParam(boolean: Bool, completionHandler: @escaping (_ returnedData: Bool?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         var path = "/params/path/boolean/{boolean}"
         path = path.replacingOccurrences(of: "{boolean}", with: "\(boolean)")
 
@@ -113,7 +115,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -143,6 +145,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testCSVPathParam(csvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         var path = "/params/path/csv/{csv-array}"
         path = path.replacingOccurrences(of: "{csvArray}", with: "\(csvArray)")
 
@@ -163,7 +166,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -193,6 +196,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDoublePathParam(double: Double, completionHandler: @escaping (_ returnedData: Double?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         var path = "/params/path/double/{double}"
         path = path.replacingOccurrences(of: "{double}", with: "\(double)")
 
@@ -213,7 +217,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -243,6 +247,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testFloatPathParam(float: Float, completionHandler: @escaping (_ returnedData: Float?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         var path = "/params/path/float/{float}"
         path = path.replacingOccurrences(of: "{float}", with: "\(float)")
 
@@ -263,7 +268,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -293,6 +298,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testIntegerPathParam(integer: Int, completionHandler: @escaping (_ returnedData: Int?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         var path = "/params/path/integer/{integer}"
         path = path.replacingOccurrences(of: "{integer}", with: "\(integer)")
 
@@ -313,7 +319,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -343,6 +349,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testLongPathParam(long: Int64, completionHandler: @escaping (_ returnedData: Int64?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         var path = "/params/path/long/{long}"
         path = path.replacingOccurrences(of: "{long}", with: "\(long)")
 
@@ -363,7 +370,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -393,6 +400,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testPipesPathParam(pipesArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         var path = "/params/path/pipes/{pipes-array}"
         path = path.replacingOccurrences(of: "{pipesArray}", with: "\(pipesArray)")
 
@@ -413,7 +421,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -443,6 +451,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testSSVPathParam(ssvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         var path = "/params/path/ssv/{ssv-array}"
         path = path.replacingOccurrences(of: "{ssvArray}", with: "\(ssvArray)")
 
@@ -463,7 +472,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -493,6 +502,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testStringPathParam(string: String, completionHandler: @escaping (_ returnedData: String?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         var path = "/params/path/string/{string}"
         path = path.replacingOccurrences(of: "{string}", with: "\(string)")
 
@@ -513,7 +523,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -543,6 +553,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testTSVPathParam(tsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         var path = "/params/path/tsv/{tsv-array}"
         path = path.replacingOccurrences(of: "{tsvArray}", with: "\(tsvArray)")
 
@@ -563,7 +574,7 @@ public class PathParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }

@@ -5,16 +5,27 @@
 ### Examples
 ```swift
 // Maps JSON string to Swift Object
-let pathModel: PathModel = PathModel(JSONString: jsonString)
-
+let jsonString = ""
+let pathModel: PathModel? = PathModel(JSONString: jsonString)
+```
+###
+```swift
 // Maps JSON string to array of PathModel
-let pathModelArray: [PathModel] = Mapper<PathModel>().mapArray(JSONString: jsonString)
-
+let jsonString = ""
+let pathModelArray: [PathModel]? = Mapper<PathModel>().mapArray(JSONString: jsonString)
+```
+###
+```swift
 // Maps JSON String to Dictionary mapping String to PathModel
-let Dictionary: [String: PathModel] = Mapper<PathModel>().mapDictionary(JSONString: jsonString);
-
+let jsonString = ""
+let Dictionary: [String: PathModel]? = Mapper<PathModel>().mapDictionary(JSONString: jsonString)
+```
+###
+```swift
 // Converts Swift Object to JSON string
-let jsonString: String = pathModel.toJSONString(prettyPrint: true)
+let json: [String: Any] = [:]
+let pathModel = PathModel(JSON: json)
+let jsonString: String? = pathModel?.toJSONString(prettyPrint: true)
 ```
 
 ### Fields 
@@ -105,7 +116,6 @@ var pathCSV: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -117,7 +127,6 @@ var pathSSV: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -129,7 +138,6 @@ var pathTSV: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -141,7 +149,6 @@ var pathPipes: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 

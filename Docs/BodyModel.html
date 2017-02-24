@@ -1,17 +1,36 @@
+<link rel="stylesheet" href="markdown.css">
+<style>
+    .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+    }
+</style>
+<article class="markdown-body">
 <p><a href="./README.html"><strong>Back to README</strong></a></p>
 <h1 id="top">BodyModel</h1>
 <h3>Examples</h3>
 <pre><code>// Maps JSON string to Swift Object
-let bodyModel: BodyModel = BodyModel(JSONString: jsonString)
-
-// Maps JSON string to array of BodyModel
-let bodyModelArray: [BodyModel] = Mapper&lt;BodyModel&gt;().mapArray(JSONString: jsonString)
-
-// Maps JSON String to Dictionary mapping String to BodyModel
-let Dictionary: [String: BodyModel] = Mapper&lt;BodyModel&gt;().mapDictionary(JSONString: jsonString);
-
-// Converts Swift Object to JSON string
-let jsonString: String = bodyModel.toJSONString(prettyPrint: true)
+let jsonString = ""
+let bodyModel: BodyModel? = BodyModel(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Maps JSON string to array of BodyModel
+let jsonString = ""
+let bodyModelArray: [BodyModel]? = Mapper&lt;BodyModel&gt;().mapArray(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Maps JSON String to Dictionary mapping String to BodyModel
+let jsonString = ""
+let Dictionary: [String: BodyModel]? = Mapper&lt;BodyModel&gt;().mapDictionary(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Converts Swift Object to JSON string
+let json: [String: Any] = [:]
+let bodyModel = BodyModel(JSON: json)
+let jsonString: String? = bodyModel?.toJSONString(prettyPrint: true)
 </code></pre>
 <h3>Fields</h3>
 <ul>
@@ -102,7 +121,6 @@ let jsonString: String = bodyModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="bodyFloatArray">bodyFloatArray</h4>
@@ -110,7 +128,6 @@ let jsonString: String = bodyModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="bodyDoubleArray">bodyDoubleArray</h4>
@@ -118,7 +135,6 @@ let jsonString: String = bodyModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="bodyIntegerArray">bodyIntegerArray</h4>
@@ -126,7 +142,6 @@ let jsonString: String = bodyModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="bodyLongArray">bodyLongArray</h4>
@@ -134,7 +149,6 @@ let jsonString: String = bodyModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="bodyBooleanArray">bodyBooleanArray</h4>
@@ -142,7 +156,6 @@ let jsonString: String = bodyModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="bodyDateArray">bodyDateArray</h4>
@@ -164,57 +177,40 @@ let jsonString: String = bodyModel.toJSONString(prettyPrint: true)
 <h4 id="bodyStringMap">bodyStringMap</h4>
 <pre><code>var bodyStringMap: [String:String]?
 </code></pre>
-<ul>
-<li>An array of <strong></strong>s of this BodyModel object</li>
-</ul>
 <hr />
 <h4 id="bodyFloatMap">bodyFloatMap</h4>
 <pre><code>var bodyFloatMap: [String:Float]?
 </code></pre>
-<ul>
-<li>An array of <strong></strong>s of this BodyModel object</li>
-</ul>
 <hr />
 <h4 id="bodyDoubleMap">bodyDoubleMap</h4>
 <pre><code>var bodyDoubleMap: [String:Double]?
 </code></pre>
-<ul>
-<li>An array of <strong></strong>s of this BodyModel object</li>
-</ul>
 <hr />
 <h4 id="bodyIntegerMap">bodyIntegerMap</h4>
 <pre><code>var bodyIntegerMap: [String:Int]?
 </code></pre>
-<ul>
-<li>An array of <strong></strong>s of this BodyModel object</li>
-</ul>
 <hr />
 <h4 id="bodyLongMap">bodyLongMap</h4>
 <pre><code>var bodyLongMap: [String:Int64]?
 </code></pre>
-<ul>
-<li>An array of <strong></strong>s of this BodyModel object</li>
-</ul>
 <hr />
 <h4 id="bodyBooleanMap">bodyBooleanMap</h4>
 <pre><code>var bodyBooleanMap: [String:Bool]?
 </code></pre>
-<ul>
-<li>An array of <strong></strong>s of this BodyModel object</li>
-</ul>
 <hr />
 <h4 id="bodyDateMap">bodyDateMap</h4>
 <pre><code>var bodyDateMap: [String:Date]?
 </code></pre>
 <ul>
-<li>An array of <a href="Date.html"><strong>Date</strong></a>s of this BodyModel object</li>
+<li>see <a href="Date.html"><strong>Date</strong></a></li>
 </ul>
 <hr />
 <h4 id="bodyDateTimeMap">bodyDateTimeMap</h4>
 <pre><code>var bodyDateTimeMap: [String:Date]?
 </code></pre>
 <ul>
-<li>An array of <a href="Date.html"><strong>Date</strong></a>s of this BodyModel object</li>
+<li>see <a href="Date.html"><strong>Date</strong></a></li>
 </ul>
 <hr />
 <p><a href="#top"><strong>Back to Top</strong></a></p>
+</article>

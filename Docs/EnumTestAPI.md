@@ -10,7 +10,7 @@
 ### **testEnum**  {#testEnum}
 ---
 ```swift
-public static func testEnum(string: String = xvii, float: Float = 1.9, double: Double = 1.7, integer: Int = 17, long: Int64 = 19, completionHandler: (EnumModel?, Response?, Error?) -> Void) -> Void
+public static func testEnum(string: String? = nil, float: Float? = nil, double: Double? = nil, integer: Int? = nil, long: Int64? = nil, completionHandler: @escaping (_ returnedData: EnumModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -20,8 +20,8 @@ public static func testEnum(string: String = xvii, float: Float = 1.9, double: D
 - **string**  (optional) 
     - defaults to xvii
     - enum:
-        - , 
-        - 
+            - xvii
+            - xix
 - **float**  (optional) 
     - defaults to 1.9
 - **double**  (optional) 
@@ -31,10 +31,10 @@ public static func testEnum(string: String = xvii, float: Float = 1.9, double: D
 - **long**  (optional) 
     - defaults to 19
 - **completionHandler** (required)
-    - closure takes as arguments `EnumModel?`, `Response?` and  `Error?`
+    - closure takes as arguments `EnumModel?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**EnumModel**](EnumModel.md)
+[`EnumModel`](EnumModel.md)
 
 ### Authentication
 
@@ -45,20 +45,22 @@ No authentication required
 
 ```swift
 
-var string: String? // String? (optional) | 
-var float: Float? // Float? (optional) | 
-var double: Double? // Double? (optional) | 
-var integer: Int? // Int? (optional) | 
-var long: Int64? // Int64? (optional) | 
+let string: String = "xvii" // 
+let float: Float = 1.9 // 
+let double: Double = 1.7 // 
+let integer: Int = 17 // 
+let long: Int64 = 19 // 
 
-EnumTestAPI.testEnum(string: string, float: float, double: double, integer: integer, long: long) { (result, response, error) in
-    if let error = error {
-        print(error)
+EnumTestAPI.testEnum(string: string, float: float, double: double, integer: integer, long: long) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        // No documented non-default responses
     }
 }
 ```
@@ -67,7 +69,7 @@ EnumTestAPI.testEnum(string: string, float: float, double: double, integer: inte
 ### **testEnumThree**  {#testEnumThree}
 ---
 ```swift
-public static func testEnumThree(string: String = xvii, float: Float = 1.9, double: Double = 1.7, integer: Int = 17, long: Int64 = 19, completionHandler: (EnumModel?, Response?, Error?) -> Void) -> Void
+public static func testEnumThree(string: String? = nil, float: Float? = nil, double: Double? = nil, integer: Int? = nil, long: Int64? = nil, completionHandler: @escaping (_ returnedData: EnumModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -77,8 +79,8 @@ public static func testEnumThree(string: String = xvii, float: Float = 1.9, doub
 - **string**  (optional) 
     - defaults to xvii
     - enum:
-        - , 
-        - 
+            - xvii
+            - xix
 - **float**  (optional) 
     - defaults to 1.9
 - **double**  (optional) 
@@ -88,10 +90,10 @@ public static func testEnumThree(string: String = xvii, float: Float = 1.9, doub
 - **long**  (optional) 
     - defaults to 19
 - **completionHandler** (required)
-    - closure takes as arguments `EnumModel?`, `Response?` and  `Error?`
+    - closure takes as arguments `EnumModel?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**EnumModel**](EnumModel.md)
+[`EnumModel`](EnumModel.md)
 
 ### Authentication
 
@@ -102,20 +104,22 @@ No authentication required
 
 ```swift
 
-var string: String? // String? (optional) | 
-var float: Float? // Float? (optional) | 
-var double: Double? // Double? (optional) | 
-var integer: Int? // Int? (optional) | 
-var long: Int64? // Int64? (optional) | 
+let string: String = "xvii" // 
+let float: Float = 1.9 // 
+let double: Double = 1.7 // 
+let integer: Int = 17 // 
+let long: Int64 = 19 // 
 
-EnumTestAPI.testEnumThree(string: string, float: float, double: double, integer: integer, long: long) { (result, response, error) in
-    if let error = error {
-        print(error)
+EnumTestAPI.testEnumThree(string: string, float: float, double: double, integer: integer, long: long) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        // No documented non-default responses
     }
 }
 ```
@@ -124,7 +128,7 @@ EnumTestAPI.testEnumThree(string: string, float: float, double: double, integer:
 ### **testEnumTwo**  {#testEnumTwo}
 ---
 ```swift
-public static func testEnumTwo(string: String = xvii, float: Float = 1.9, double: Double = 1.7, integer: Int = 17, long: Int64 = 19, completionHandler: (EnumModel?, Response?, Error?) -> Void) -> Void
+public static func testEnumTwo(string: String? = nil, float: Float? = nil, double: Double? = nil, integer: Int? = nil, long: Int64? = nil, completionHandler: @escaping (_ returnedData: EnumModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -134,8 +138,8 @@ public static func testEnumTwo(string: String = xvii, float: Float = 1.9, double
 - **string**  (optional) 
     - defaults to xvii
     - enum:
-        - , 
-        - 
+            - xvii
+            - xix
 - **float**  (optional) 
     - defaults to 1.9
 - **double**  (optional) 
@@ -145,10 +149,10 @@ public static func testEnumTwo(string: String = xvii, float: Float = 1.9, double
 - **long**  (optional) 
     - defaults to 19
 - **completionHandler** (required)
-    - closure takes as arguments `EnumModel?`, `Response?` and  `Error?`
+    - closure takes as arguments `EnumModel?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**EnumModel**](EnumModel.md)
+[`EnumModel`](EnumModel.md)
 
 ### Authentication
 
@@ -159,20 +163,22 @@ No authentication required
 
 ```swift
 
-var string: String? // String? (optional) | 
-var float: Float? // Float? (optional) | 
-var double: Double? // Double? (optional) | 
-var integer: Int? // Int? (optional) | 
-var long: Int64? // Int64? (optional) | 
+let string: String = "xvii" // 
+let float: Float = 1.9 // 
+let double: Double = 1.7 // 
+let integer: Int = 17 // 
+let long: Int64 = 19 // 
 
-EnumTestAPI.testEnumTwo(string: string, float: float, double: double, integer: integer, long: long) { (result, response, error) in
-    if let error = error {
-        print(error)
+EnumTestAPI.testEnumTwo(string: string, float: float, double: double, integer: integer, long: long) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        // No documented non-default responses
     }
 }
 ```

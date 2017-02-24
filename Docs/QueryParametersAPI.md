@@ -22,7 +22,7 @@
 ### **testAllTheThingsQueryParam**  {#testAllTheThingsQueryParam}
 ---
 ```swift
-public static func testAllTheThingsQueryParam(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, completionHandler: (QueryModel?, Response?, Error?) -> Void) -> Void
+public static func testAllTheThingsQueryParam(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, completionHandler: @escaping (_ returnedData: QueryModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -43,10 +43,10 @@ public static func testAllTheThingsQueryParam(string: String, float: Float, doub
 - **date**  (required) 
 - **dateTime**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `QueryModel?`, `Response?` and  `Error?`
+    - closure takes as arguments `QueryModel?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**QueryModel**](QueryModel.md)
+[`QueryModel`](QueryModel.md)
 
 ### Authentication
 
@@ -57,39 +57,40 @@ No authentication required
 
 ```swift
 
-let string = "string_example" // String (required) | 
-let float = 3.4 // Float (required) | 
-let double = 1.2 // Double (required) | 
-let integer = 56 // Int (required) | 
-let long = 789 // Int64 (required) | 
-let boolean = true // Bool (required) | 
-let csvArray = ["example"] // [String] (required) | 
-let ssvArray = ["example"] // [String] (required) | 
-let tsvArray = ["example"] // [String] (required) | 
-let pipesArray = ["example"] // [String] (required) | 
-let multi = ["example"] // [String] (required) | 
-let date = Date() // Date (required) | 
-let dateTime = Date() // Date (required) | 
+let string: String = "string_example" // 
+let float: Float = 3.4 // 
+let double: Double = 1.2 // 
+let integer: Int = 56 // 
+let long: Int64 = 789 // 
+let boolean: Bool = true // 
+let csvArray: [String] = [] // 
+let ssvArray: [String] = [] // 
+let tsvArray: [String] = [] // 
+let pipesArray: [String] = [] // 
+let multi: [String] = [] // 
+let date: Date = Date() // 
+let dateTime: Date = Date() // 
 
-QueryParametersAPI.testAllTheThingsQueryParam(string: string, float: float, double: double, integer: integer, long: long, boolean: boolean, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, multi: multi, date: date, dateTime: dateTime) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testAllTheThingsQueryParam(string: string, float: float, double: double, integer: integer, long: long, boolean: boolean, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, multi: multi, date: date, dateTime: dateTime) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -98,7 +99,7 @@ QueryParametersAPI.testAllTheThingsQueryParam(string: string, float: float, doub
 ### **testBooleanQueryParam**  {#testBooleanQueryParam}
 ---
 ```swift
-public static func testBooleanQueryParam(boolean: Bool, completionHandler: (Bool?, Response?, Error?) -> Void) -> Void
+public static func testBooleanQueryParam(boolean: Bool, completionHandler: @escaping (_ returnedData: Bool?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -107,10 +108,10 @@ public static func testBooleanQueryParam(boolean: Bool, completionHandler: (Bool
 
 - **boolean**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Bool?`, `Response?` and  `Error?`
+    - closure takes as arguments `Bool?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Bool**
+`Bool`
 
 ### Authentication
 
@@ -121,27 +122,28 @@ No authentication required
 
 ```swift
 
-let boolean = true // Bool (required) | 
+let boolean: Bool = true // 
 
-QueryParametersAPI.testBooleanQueryParam(boolean: boolean) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testBooleanQueryParam(boolean: boolean) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -150,7 +152,7 @@ QueryParametersAPI.testBooleanQueryParam(boolean: boolean) { (result, response, 
 ### **testCSVQueryParam**  {#testCSVQueryParam}
 ---
 ```swift
-public static func testCSVQueryParam(csvArray: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testCSVQueryParam(csvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -159,10 +161,10 @@ public static func testCSVQueryParam(csvArray: [String], completionHandler: ([St
 
 - **csvArray**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -173,27 +175,28 @@ No authentication required
 
 ```swift
 
-let csvArray = ["example"] // [String] (required) | 
+let csvArray: [String] = [] // 
 
-QueryParametersAPI.testCSVQueryParam(csvArray: csvArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testCSVQueryParam(csvArray: csvArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -202,7 +205,7 @@ QueryParametersAPI.testCSVQueryParam(csvArray: csvArray) { (result, response, er
 ### **testDateQueryParam**  {#testDateQueryParam}
 ---
 ```swift
-public static func testDateQueryParam(date: Date, completionHandler: (Date?, Response?, Error?) -> Void) -> Void
+public static func testDateQueryParam(date: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -211,10 +214,10 @@ public static func testDateQueryParam(date: Date, completionHandler: (Date?, Res
 
 - **date**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Date?`, `Response?` and  `Error?`
+    - closure takes as arguments `Date?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**Date**](Date.md)
+[`Date`](Date.md)
 
 ### Authentication
 
@@ -225,27 +228,28 @@ No authentication required
 
 ```swift
 
-let date = Date() // Date (required) | 
+let date: Date = Date() // 
 
-QueryParametersAPI.testDateQueryParam(date: date) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testDateQueryParam(date: date) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -254,7 +258,7 @@ QueryParametersAPI.testDateQueryParam(date: date) { (result, response, error) in
 ### **testDateTimeQueryParam**  {#testDateTimeQueryParam}
 ---
 ```swift
-public static func testDateTimeQueryParam(dateTime: Date, completionHandler: (Date?, Response?, Error?) -> Void) -> Void
+public static func testDateTimeQueryParam(dateTime: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -263,10 +267,10 @@ public static func testDateTimeQueryParam(dateTime: Date, completionHandler: (Da
 
 - **dateTime**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Date?`, `Response?` and  `Error?`
+    - closure takes as arguments `Date?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**Date**](Date.md)
+[`Date`](Date.md)
 
 ### Authentication
 
@@ -277,27 +281,28 @@ No authentication required
 
 ```swift
 
-let dateTime = Date() // Date (required) | 
+let dateTime: Date = Date() // 
 
-QueryParametersAPI.testDateTimeQueryParam(dateTime: dateTime) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testDateTimeQueryParam(dateTime: dateTime) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -306,7 +311,7 @@ QueryParametersAPI.testDateTimeQueryParam(dateTime: dateTime) { (result, respons
 ### **testDoubleQueryParam**  {#testDoubleQueryParam}
 ---
 ```swift
-public static func testDoubleQueryParam(double: Double, completionHandler: (Double?, Response?, Error?) -> Void) -> Void
+public static func testDoubleQueryParam(double: Double, completionHandler: @escaping (_ returnedData: Double?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -315,10 +320,10 @@ public static func testDoubleQueryParam(double: Double, completionHandler: (Doub
 
 - **double**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Double?`, `Response?` and  `Error?`
+    - closure takes as arguments `Double?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Double**
+`Double`
 
 ### Authentication
 
@@ -329,27 +334,28 @@ No authentication required
 
 ```swift
 
-let double = 1.2 // Double (required) | 
+let double: Double = 1.2 // 
 
-QueryParametersAPI.testDoubleQueryParam(double: double) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testDoubleQueryParam(double: double) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -358,7 +364,7 @@ QueryParametersAPI.testDoubleQueryParam(double: double) { (result, response, err
 ### **testFloatQueryParam**  {#testFloatQueryParam}
 ---
 ```swift
-public static func testFloatQueryParam(float: Float, completionHandler: (Float?, Response?, Error?) -> Void) -> Void
+public static func testFloatQueryParam(float: Float, completionHandler: @escaping (_ returnedData: Float?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -367,10 +373,10 @@ public static func testFloatQueryParam(float: Float, completionHandler: (Float?,
 
 - **float**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Float?`, `Response?` and  `Error?`
+    - closure takes as arguments `Float?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Float**
+`Float`
 
 ### Authentication
 
@@ -381,27 +387,28 @@ No authentication required
 
 ```swift
 
-let float = 3.4 // Float (required) | 
+let float: Float = 3.4 // 
 
-QueryParametersAPI.testFloatQueryParam(float: float) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testFloatQueryParam(float: float) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -410,7 +417,7 @@ QueryParametersAPI.testFloatQueryParam(float: float) { (result, response, error)
 ### **testIntegerQueryParam**  {#testIntegerQueryParam}
 ---
 ```swift
-public static func testIntegerQueryParam(integer: Int, completionHandler: (Int?, Response?, Error?) -> Void) -> Void
+public static func testIntegerQueryParam(integer: Int, completionHandler: @escaping (_ returnedData: Int?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -419,10 +426,10 @@ public static func testIntegerQueryParam(integer: Int, completionHandler: (Int?,
 
 - **integer**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Int?`, `Response?` and  `Error?`
+    - closure takes as arguments `Int?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Int**
+`Int`
 
 ### Authentication
 
@@ -433,27 +440,28 @@ No authentication required
 
 ```swift
 
-let integer = 56 // Int (required) | 
+let integer: Int = 56 // 
 
-QueryParametersAPI.testIntegerQueryParam(integer: integer) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testIntegerQueryParam(integer: integer) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -462,7 +470,7 @@ QueryParametersAPI.testIntegerQueryParam(integer: integer) { (result, response, 
 ### **testLongQueryParam**  {#testLongQueryParam}
 ---
 ```swift
-public static func testLongQueryParam(long: Int64, completionHandler: (Int64?, Response?, Error?) -> Void) -> Void
+public static func testLongQueryParam(long: Int64, completionHandler: @escaping (_ returnedData: Int64?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -471,10 +479,10 @@ public static func testLongQueryParam(long: Int64, completionHandler: (Int64?, R
 
 - **long**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Int64?`, `Response?` and  `Error?`
+    - closure takes as arguments `Int64?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Int64**
+`Int64`
 
 ### Authentication
 
@@ -485,27 +493,28 @@ No authentication required
 
 ```swift
 
-let long = 789 // Int64 (required) | 
+let long: Int64 = 789 // 
 
-QueryParametersAPI.testLongQueryParam(long: long) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testLongQueryParam(long: long) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -514,7 +523,7 @@ QueryParametersAPI.testLongQueryParam(long: long) { (result, response, error) in
 ### **testMultiQueryParam**  {#testMultiQueryParam}
 ---
 ```swift
-public static func testMultiQueryParam(multi: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testMultiQueryParam(multi: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -523,10 +532,10 @@ public static func testMultiQueryParam(multi: [String], completionHandler: ([Str
 
 - **multi**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -537,27 +546,28 @@ No authentication required
 
 ```swift
 
-let multi = ["example"] // [String] (required) | 
+let multi: [String] = [] // 
 
-QueryParametersAPI.testMultiQueryParam(multi: multi) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testMultiQueryParam(multi: multi) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -566,7 +576,7 @@ QueryParametersAPI.testMultiQueryParam(multi: multi) { (result, response, error)
 ### **testOptionalQueryParam**  {#testOptionalQueryParam}
 ---
 ```swift
-public static func testOptionalQueryParam(float: Float, double: Double, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, string: String = xix, integer: Int?, long: Int64 = 17, boolean: Bool?, completionHandler: (QueryModel?, Response?, Error?) -> Void) -> Void
+public static func testOptionalQueryParam(float: Float, double: Double, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, string: String? = nil, integer: Int? = nil, long: Int64? = nil, boolean: Bool? = nil, completionHandler: @escaping (_ returnedData: QueryModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -589,10 +599,10 @@ public static func testOptionalQueryParam(float: Float, double: Double, csvArray
     - defaults to 17
 - **boolean**  (optional) 
 - **completionHandler** (required)
-    - closure takes as arguments `QueryModel?`, `Response?` and  `Error?`
+    - closure takes as arguments `QueryModel?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**QueryModel**](QueryModel.md)
+[`QueryModel`](QueryModel.md)
 
 ### Authentication
 
@@ -603,39 +613,40 @@ No authentication required
 
 ```swift
 
-let float = 3.4 // Float (required) | 
-let double = 1.2 // Double (required) | 
-let csvArray = ["example"] // [String] (required) | 
-let ssvArray = ["example"] // [String] (required) | 
-let tsvArray = ["example"] // [String] (required) | 
-let pipesArray = ["example"] // [String] (required) | 
-let multi = ["example"] // [String] (required) | 
-let date = Date() // Date (required) | 
-let dateTime = Date() // Date (required) | 
-var string: String? // String? (optional) | 
-var integer: Int? // Int? (optional) | 
-var long: Int64? // Int64? (optional) | 
-var boolean: Bool? // Bool? (optional) | 
+let float: Float = 3.4 // 
+let double: Double = 1.2 // 
+let csvArray: [String] = [] // 
+let ssvArray: [String] = [] // 
+let tsvArray: [String] = [] // 
+let pipesArray: [String] = [] // 
+let multi: [String] = [] // 
+let date: Date = Date() // 
+let dateTime: Date = Date() // 
+let string: String = "xix" // 
+let integer: Int = 56 // 
+let long: Int64 = 17 // 
+let boolean: Bool = true // 
 
-QueryParametersAPI.testOptionalQueryParam(float: float, double: double, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, multi: multi, date: date, dateTime: dateTime, string: string, integer: integer, long: long, boolean: boolean) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testOptionalQueryParam(float: float, double: double, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, multi: multi, date: date, dateTime: dateTime, string: string, integer: integer, long: long, boolean: boolean) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -644,7 +655,7 @@ QueryParametersAPI.testOptionalQueryParam(float: float, double: double, csvArray
 ### **testPipesQueryParam**  {#testPipesQueryParam}
 ---
 ```swift
-public static func testPipesQueryParam(pipesArray: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testPipesQueryParam(pipesArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -653,10 +664,10 @@ public static func testPipesQueryParam(pipesArray: [String], completionHandler: 
 
 - **pipesArray**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -667,27 +678,28 @@ No authentication required
 
 ```swift
 
-let pipesArray = ["example"] // [String] (required) | 
+let pipesArray: [String] = [] // 
 
-QueryParametersAPI.testPipesQueryParam(pipesArray: pipesArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testPipesQueryParam(pipesArray: pipesArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -696,7 +708,7 @@ QueryParametersAPI.testPipesQueryParam(pipesArray: pipesArray) { (result, respon
 ### **testSSVQueryParam**  {#testSSVQueryParam}
 ---
 ```swift
-public static func testSSVQueryParam(ssvArray: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testSSVQueryParam(ssvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -705,10 +717,10 @@ public static func testSSVQueryParam(ssvArray: [String], completionHandler: ([St
 
 - **ssvArray**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -719,27 +731,28 @@ No authentication required
 
 ```swift
 
-let ssvArray = ["example"] // [String] (required) | 
+let ssvArray: [String] = [] // 
 
-QueryParametersAPI.testSSVQueryParam(ssvArray: ssvArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testSSVQueryParam(ssvArray: ssvArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -748,7 +761,7 @@ QueryParametersAPI.testSSVQueryParam(ssvArray: ssvArray) { (result, response, er
 ### **testStringQueryParam**  {#testStringQueryParam}
 ---
 ```swift
-public static func testStringQueryParam(string: String, completionHandler: (String?, Response?, Error?) -> Void) -> Void
+public static func testStringQueryParam(string: String, completionHandler: @escaping (_ returnedData: String?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -757,10 +770,10 @@ public static func testStringQueryParam(string: String, completionHandler: (Stri
 
 - **string**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `String?`, `Response?` and  `Error?`
+    - closure takes as arguments `String?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**String**
+`String`
 
 ### Authentication
 
@@ -771,27 +784,28 @@ No authentication required
 
 ```swift
 
-let string = "string_example" // String (required) | 
+let string: String = "string_example" // 
 
-QueryParametersAPI.testStringQueryParam(string: string) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testStringQueryParam(string: string) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -800,7 +814,7 @@ QueryParametersAPI.testStringQueryParam(string: string) { (result, response, err
 ### **testTSVQueryParam**  {#testTSVQueryParam}
 ---
 ```swift
-public static func testTSVQueryParam(tsvArray: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testTSVQueryParam(tsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -809,10 +823,10 @@ public static func testTSVQueryParam(tsvArray: [String], completionHandler: ([St
 
 - **tsvArray**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -823,27 +837,28 @@ No authentication required
 
 ```swift
 
-let tsvArray = ["example"] // [String] (required) | 
+let tsvArray: [String] = [] // 
 
-QueryParametersAPI.testTSVQueryParam(tsvArray: tsvArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+QueryParametersAPI.testTSVQueryParam(tsvArray: tsvArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```

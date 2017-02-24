@@ -36,6 +36,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testAllTheThingsHeaderParam(xString: String, xFloat: Float, xDouble: Double, xInteger: Int, xLong: Int64, xBoolean: Bool, xCsvArray: [String], xSsvArray: [String], xTsvArray: [String], xPipesArray: [String], date: Date, dateTime: Date, completionHandler: @escaping (_ returnedData: HeaderModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/header/allTheThings"
         let components = URLComponents(string: self.basePath + path)
 
@@ -66,7 +67,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -96,6 +97,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testBooleanHeaderParam(xBoolean: Bool, completionHandler: @escaping (_ returnedData: Bool?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/header/boolean"
         let components = URLComponents(string: self.basePath + path)
 
@@ -115,7 +117,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -145,6 +147,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testCSVHeaderParam(xCsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/header/csv"
         let components = URLComponents(string: self.basePath + path)
 
@@ -164,7 +167,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -194,6 +197,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDateHeaderParam(date: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/header/date"
         let components = URLComponents(string: self.basePath + path)
 
@@ -213,7 +217,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -243,6 +247,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDateTimeHeaderParam(dateTime: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/header/dateTime"
         let components = URLComponents(string: self.basePath + path)
 
@@ -262,7 +267,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -292,6 +297,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDoubleHeaderParam(xDouble: Double, completionHandler: @escaping (_ returnedData: Double?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/header/double"
         let components = URLComponents(string: self.basePath + path)
 
@@ -311,7 +317,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -341,6 +347,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testFloatHeaderParam(xFloat: Float, completionHandler: @escaping (_ returnedData: Float?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/header/float"
         let components = URLComponents(string: self.basePath + path)
 
@@ -360,7 +367,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -390,6 +397,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testIntegerHeaderParam(xInteger: Int, completionHandler: @escaping (_ returnedData: Int?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/header/integer"
         let components = URLComponents(string: self.basePath + path)
 
@@ -409,7 +417,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -439,6 +447,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testLongHeaderParam(xLong: Int64, completionHandler: @escaping (_ returnedData: Int64?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/header/long"
         let components = URLComponents(string: self.basePath + path)
 
@@ -458,7 +467,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -499,6 +508,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testOptionalHeaderParam(xFloat: Float, xDouble: Double, xCsvArray: [String], xSsvArray: [String], xTsvArray: [String], xPipesArray: [String], date: Date, dateTime: Date, xString: String? = nil, xInteger: Int? = nil, xLong: Int64? = nil, xBoolean: Bool? = nil, completionHandler: @escaping (_ returnedData: HeaderModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/header/optionals"
         let components = URLComponents(string: self.basePath + path)
 
@@ -537,7 +547,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -567,6 +577,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testPipesHeaderParam(xPipesArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/header/pipes"
         let components = URLComponents(string: self.basePath + path)
 
@@ -586,7 +597,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -616,6 +627,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testSSVHeaderParam(xSsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/header/ssv"
         let components = URLComponents(string: self.basePath + path)
 
@@ -635,7 +647,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -657,6 +669,56 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
     /**
         
 
+        - parameter xString: 
+        - parameter completionHandler: The callback that will be executed once the underlying HTTP call completes
+        - parameter returnedData: The data that this method is retrieving from the server
+        - parameter response: The HTTP response returned by the server
+        - parameter error: An error that prevented a successful request
+    */
+    public static func testStringHeaderParam(xString: String, completionHandler: @escaping (_ returnedData: String?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
+
+        let path = "/params/header/string"
+        let components = URLComponents(string: self.basePath + path)
+
+        let requestUrl: URL = components!.url!
+        let splitUrl: [String] = requestUrl.absoluteString.components(separatedBy: "://")
+        let httpResource = HttpResource(schema: splitUrl[0], host: splitUrl[1], port: nil, path: path)
+
+        var requestHeaders: [String: String] = [:]
+        requestHeaders["Accept"] = "application/json"
+        requestHeaders["x-string"] = convertToString(xString)
+
+        HttpClient.sendRequest(to: httpResource, method: "GET", headers: requestHeaders) {
+            (error: HttpError?, status: Int?, headers: [String: String]?, data: Data?) in
+
+            guard status != nil else {
+                completionHandler(nil, nil, headers, error)
+                return
+            }
+
+            guard error == nil else {
+                completionHandler(nil, status, headers, error)
+                return
+            }
+
+            if 200 ..< 300 ~= status!,
+               status == 200,
+               let data = data {
+
+                let returnValue = extractResponseFromData(data: data, type: String.self)
+                completionHandler(returnValue, status, headers, error)
+            } else {
+                completionHandler(nil, status, headers, error)
+            }
+        }
+
+    }
+
+
+    /**
+        
+
         - parameter xTsvArray: 
         - parameter completionHandler: The callback that will be executed once the underlying HTTP call completes
         - parameter returnedData: The data that this method is retrieving from the server
@@ -664,6 +726,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testTSVHeaderParam(xTsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/header/tsv"
         let components = URLComponents(string: self.basePath + path)
@@ -684,7 +747,7 @@ public class HeaderParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }

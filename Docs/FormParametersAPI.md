@@ -43,7 +43,7 @@
 ### **testAllTheThingsFormData**  {#testAllTheThingsFormData}
 ---
 ```swift
-public static func testAllTheThingsFormData(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, completionHandler: (FormModel?, Response?, Error?) -> Void) -> Void
+public static func testAllTheThingsFormData(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, completionHandler: @escaping (_ returnedData: FormModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -64,10 +64,10 @@ public static func testAllTheThingsFormData(string: String, float: Float, double
 - **date**  (required) 
 - **dateTime**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `FormModel?`, `Response?` and  `Error?`
+    - closure takes as arguments `FormModel?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**FormModel**](FormModel.md)
+[`FormModel`](FormModel.md)
 
 ### Authentication
 
@@ -78,39 +78,40 @@ No authentication required
 
 ```swift
 
-let string = "string_example" // String (required) | 
-let float = 3.4 // Float (required) | 
-let double = 1.2 // Double (required) | 
-let integer = 56 // Int (required) | 
-let long = 789 // Int64 (required) | 
-let boolean = true // Bool (required) | 
-let csvArray = ["example"] // [String] (required) | 
-let ssvArray = ["example"] // [String] (required) | 
-let tsvArray = ["example"] // [String] (required) | 
-let pipesArray = ["example"] // [String] (required) | 
-let multi = ["example"] // [String] (required) | 
-let date = Date() // Date (required) | 
-let dateTime = Date() // Date (required) | 
+let string: String = "string_example" // 
+let float: Float = 3.4 // 
+let double: Double = 1.2 // 
+let integer: Int = 56 // 
+let long: Int64 = 789 // 
+let boolean: Bool = true // 
+let csvArray: [String] = [] // 
+let ssvArray: [String] = [] // 
+let tsvArray: [String] = [] // 
+let pipesArray: [String] = [] // 
+let multi: [String] = [] // 
+let date: Date = Date() // 
+let dateTime: Date = Date() // 
 
-FormParametersAPI.testAllTheThingsFormData(string: string, float: float, double: double, integer: integer, long: long, boolean: boolean, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, multi: multi, date: date, dateTime: dateTime) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testAllTheThingsFormData(string: string, float: float, double: double, integer: integer, long: long, boolean: boolean, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, multi: multi, date: date, dateTime: dateTime) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -119,7 +120,7 @@ FormParametersAPI.testAllTheThingsFormData(string: string, float: float, double:
 ### **testAllTheThingsUrlEncoded**  {#testAllTheThingsUrlEncoded}
 ---
 ```swift
-public static func testAllTheThingsUrlEncoded(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], date: Date, dateTime: Date, completionHandler: (FormModel?, Response?, Error?) -> Void) -> Void
+public static func testAllTheThingsUrlEncoded(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], date: Date, dateTime: Date, completionHandler: @escaping (_ returnedData: FormModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -139,10 +140,10 @@ public static func testAllTheThingsUrlEncoded(string: String, float: Float, doub
 - **date**  (required) 
 - **dateTime**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `FormModel?`, `Response?` and  `Error?`
+    - closure takes as arguments `FormModel?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**FormModel**](FormModel.md)
+[`FormModel`](FormModel.md)
 
 ### Authentication
 
@@ -153,38 +154,39 @@ No authentication required
 
 ```swift
 
-let string = "string_example" // String (required) | 
-let float = 3.4 // Float (required) | 
-let double = 1.2 // Double (required) | 
-let integer = 56 // Int (required) | 
-let long = 789 // Int64 (required) | 
-let boolean = true // Bool (required) | 
-let csvArray = ["example"] // [String] (required) | 
-let ssvArray = ["example"] // [String] (required) | 
-let tsvArray = ["example"] // [String] (required) | 
-let pipesArray = ["example"] // [String] (required) | 
-let date = Date() // Date (required) | 
-let dateTime = Date() // Date (required) | 
+let string: String = "string_example" // 
+let float: Float = 3.4 // 
+let double: Double = 1.2 // 
+let integer: Int = 56 // 
+let long: Int64 = 789 // 
+let boolean: Bool = true // 
+let csvArray: [String] = [] // 
+let ssvArray: [String] = [] // 
+let tsvArray: [String] = [] // 
+let pipesArray: [String] = [] // 
+let date: Date = Date() // 
+let dateTime: Date = Date() // 
 
-FormParametersAPI.testAllTheThingsUrlEncoded(string: string, float: float, double: double, integer: integer, long: long, boolean: boolean, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, date: date, dateTime: dateTime) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testAllTheThingsUrlEncoded(string: string, float: float, double: double, integer: integer, long: long, boolean: boolean, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, date: date, dateTime: dateTime) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -193,7 +195,7 @@ FormParametersAPI.testAllTheThingsUrlEncoded(string: string, float: float, doubl
 ### **testBinaryFormData**  {#testBinaryFormData}
 ---
 ```swift
-public static func testBinaryFormData(binary: Data, completionHandler: (Data?, Response?, Error?) -> Void) -> Void
+public static func testBinaryFormData(binary: Data, completionHandler: @escaping (_ returnedData: Data?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -202,10 +204,10 @@ public static func testBinaryFormData(binary: Data, completionHandler: (Data?, R
 
 - **binary**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Data?`, `Response?` and  `Error?`
+    - closure takes as arguments `Data?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**Data**](Data.md)
+[`Data`](Data.md)
 
 ### Authentication
 
@@ -216,27 +218,28 @@ No authentication required
 
 ```swift
 
-let binary = Data() // Data (required) | 
+let binary: Data = Data() // 
 
-FormParametersAPI.testBinaryFormData(binary: binary) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testBinaryFormData(binary: binary) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -245,7 +248,7 @@ FormParametersAPI.testBinaryFormData(binary: binary) { (result, response, error)
 ### **testBinaryUrlEncoded**  {#testBinaryUrlEncoded}
 ---
 ```swift
-public static func testBinaryUrlEncoded(binary: Data, completionHandler: (Data?, Response?, Error?) -> Void) -> Void
+public static func testBinaryUrlEncoded(binary: Data, completionHandler: @escaping (_ returnedData: Data?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -254,10 +257,10 @@ public static func testBinaryUrlEncoded(binary: Data, completionHandler: (Data?,
 
 - **binary**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Data?`, `Response?` and  `Error?`
+    - closure takes as arguments `Data?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**Data**](Data.md)
+[`Data`](Data.md)
 
 ### Authentication
 
@@ -268,27 +271,28 @@ No authentication required
 
 ```swift
 
-let binary = Data() // Data (required) | 
+let binary: Data = Data() // 
 
-FormParametersAPI.testBinaryUrlEncoded(binary: binary) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testBinaryUrlEncoded(binary: binary) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -297,7 +301,7 @@ FormParametersAPI.testBinaryUrlEncoded(binary: binary) { (result, response, erro
 ### **testBooleanFormData**  {#testBooleanFormData}
 ---
 ```swift
-public static func testBooleanFormData(boolean: Bool, completionHandler: (Bool?, Response?, Error?) -> Void) -> Void
+public static func testBooleanFormData(boolean: Bool, completionHandler: @escaping (_ returnedData: Bool?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -306,10 +310,10 @@ public static func testBooleanFormData(boolean: Bool, completionHandler: (Bool?,
 
 - **boolean**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Bool?`, `Response?` and  `Error?`
+    - closure takes as arguments `Bool?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Bool**
+`Bool`
 
 ### Authentication
 
@@ -320,27 +324,28 @@ No authentication required
 
 ```swift
 
-let boolean = true // Bool (required) | 
+let boolean: Bool = true // 
 
-FormParametersAPI.testBooleanFormData(boolean: boolean) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testBooleanFormData(boolean: boolean) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -349,7 +354,7 @@ FormParametersAPI.testBooleanFormData(boolean: boolean) { (result, response, err
 ### **testBooleanUrlEncoded**  {#testBooleanUrlEncoded}
 ---
 ```swift
-public static func testBooleanUrlEncoded(boolean: Bool, completionHandler: (Bool?, Response?, Error?) -> Void) -> Void
+public static func testBooleanUrlEncoded(boolean: Bool, completionHandler: @escaping (_ returnedData: Bool?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -358,10 +363,10 @@ public static func testBooleanUrlEncoded(boolean: Bool, completionHandler: (Bool
 
 - **boolean**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Bool?`, `Response?` and  `Error?`
+    - closure takes as arguments `Bool?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Bool**
+`Bool`
 
 ### Authentication
 
@@ -372,27 +377,28 @@ No authentication required
 
 ```swift
 
-let boolean = true // Bool (required) | 
+let boolean: Bool = true // 
 
-FormParametersAPI.testBooleanUrlEncoded(boolean: boolean) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testBooleanUrlEncoded(boolean: boolean) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -401,7 +407,7 @@ FormParametersAPI.testBooleanUrlEncoded(boolean: boolean) { (result, response, e
 ### **testByteFormData**  {#testByteFormData}
 ---
 ```swift
-public static func testByteFormData(byte: Data, completionHandler: (Data?, Response?, Error?) -> Void) -> Void
+public static func testByteFormData(byte: Data, completionHandler: @escaping (_ returnedData: Data?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -410,10 +416,10 @@ public static func testByteFormData(byte: Data, completionHandler: (Data?, Respo
 
 - **byte**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Data?`, `Response?` and  `Error?`
+    - closure takes as arguments `Data?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**Data**](Data.md)
+[`Data`](Data.md)
 
 ### Authentication
 
@@ -424,27 +430,28 @@ No authentication required
 
 ```swift
 
-let byte = Data() // Data (required) | 
+let byte: Data = Data() // 
 
-FormParametersAPI.testByteFormData(byte: byte) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testByteFormData(byte: byte) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -453,7 +460,7 @@ FormParametersAPI.testByteFormData(byte: byte) { (result, response, error) in
 ### **testByteUrlEncoded**  {#testByteUrlEncoded}
 ---
 ```swift
-public static func testByteUrlEncoded(byte: Data, completionHandler: (Data?, Response?, Error?) -> Void) -> Void
+public static func testByteUrlEncoded(byte: Data, completionHandler: @escaping (_ returnedData: Data?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -462,10 +469,10 @@ public static func testByteUrlEncoded(byte: Data, completionHandler: (Data?, Res
 
 - **byte**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Data?`, `Response?` and  `Error?`
+    - closure takes as arguments `Data?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**Data**](Data.md)
+[`Data`](Data.md)
 
 ### Authentication
 
@@ -476,27 +483,28 @@ No authentication required
 
 ```swift
 
-let byte = Data() // Data (required) | 
+let byte: Data = Data() // 
 
-FormParametersAPI.testByteUrlEncoded(byte: byte) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testByteUrlEncoded(byte: byte) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -505,7 +513,7 @@ FormParametersAPI.testByteUrlEncoded(byte: byte) { (result, response, error) in
 ### **testCSVFormData**  {#testCSVFormData}
 ---
 ```swift
-public static func testCSVFormData(csvArray: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testCSVFormData(csvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -514,10 +522,10 @@ public static func testCSVFormData(csvArray: [String], completionHandler: ([Stri
 
 - **csvArray**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -528,27 +536,28 @@ No authentication required
 
 ```swift
 
-let csvArray = ["example"] // [String] (required) | 
+let csvArray: [String] = [] // 
 
-FormParametersAPI.testCSVFormData(csvArray: csvArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testCSVFormData(csvArray: csvArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -557,7 +566,7 @@ FormParametersAPI.testCSVFormData(csvArray: csvArray) { (result, response, error
 ### **testCSVUrlEncoded**  {#testCSVUrlEncoded}
 ---
 ```swift
-public static func testCSVUrlEncoded(csvArray: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testCSVUrlEncoded(csvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -566,10 +575,10 @@ public static func testCSVUrlEncoded(csvArray: [String], completionHandler: ([St
 
 - **csvArray**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -580,27 +589,28 @@ No authentication required
 
 ```swift
 
-let csvArray = ["example"] // [String] (required) | 
+let csvArray: [String] = [] // 
 
-FormParametersAPI.testCSVUrlEncoded(csvArray: csvArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testCSVUrlEncoded(csvArray: csvArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -609,7 +619,7 @@ FormParametersAPI.testCSVUrlEncoded(csvArray: csvArray) { (result, response, err
 ### **testDateFormData**  {#testDateFormData}
 ---
 ```swift
-public static func testDateFormData(date: Date, completionHandler: (Date?, Response?, Error?) -> Void) -> Void
+public static func testDateFormData(date: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -618,10 +628,10 @@ public static func testDateFormData(date: Date, completionHandler: (Date?, Respo
 
 - **date**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Date?`, `Response?` and  `Error?`
+    - closure takes as arguments `Date?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**Date**](Date.md)
+[`Date`](Date.md)
 
 ### Authentication
 
@@ -632,27 +642,28 @@ No authentication required
 
 ```swift
 
-let date = Date() // Date (required) | 
+let date: Date = Date() // 
 
-FormParametersAPI.testDateFormData(date: date) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testDateFormData(date: date) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -661,7 +672,7 @@ FormParametersAPI.testDateFormData(date: date) { (result, response, error) in
 ### **testDateTimeFormData**  {#testDateTimeFormData}
 ---
 ```swift
-public static func testDateTimeFormData(dateTime: Date, completionHandler: (Date?, Response?, Error?) -> Void) -> Void
+public static func testDateTimeFormData(dateTime: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -670,10 +681,10 @@ public static func testDateTimeFormData(dateTime: Date, completionHandler: (Date
 
 - **dateTime**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Date?`, `Response?` and  `Error?`
+    - closure takes as arguments `Date?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**Date**](Date.md)
+[`Date`](Date.md)
 
 ### Authentication
 
@@ -684,27 +695,28 @@ No authentication required
 
 ```swift
 
-let dateTime = Date() // Date (required) | 
+let dateTime: Date = Date() // 
 
-FormParametersAPI.testDateTimeFormData(dateTime: dateTime) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testDateTimeFormData(dateTime: dateTime) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -713,7 +725,7 @@ FormParametersAPI.testDateTimeFormData(dateTime: dateTime) { (result, response, 
 ### **testDateTimeUrlEncoded**  {#testDateTimeUrlEncoded}
 ---
 ```swift
-public static func testDateTimeUrlEncoded(dateTime: Date, completionHandler: (Date?, Response?, Error?) -> Void) -> Void
+public static func testDateTimeUrlEncoded(dateTime: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -722,10 +734,10 @@ public static func testDateTimeUrlEncoded(dateTime: Date, completionHandler: (Da
 
 - **dateTime**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Date?`, `Response?` and  `Error?`
+    - closure takes as arguments `Date?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**Date**](Date.md)
+[`Date`](Date.md)
 
 ### Authentication
 
@@ -736,27 +748,28 @@ No authentication required
 
 ```swift
 
-let dateTime = Date() // Date (required) | 
+let dateTime: Date = Date() // 
 
-FormParametersAPI.testDateTimeUrlEncoded(dateTime: dateTime) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testDateTimeUrlEncoded(dateTime: dateTime) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -765,7 +778,7 @@ FormParametersAPI.testDateTimeUrlEncoded(dateTime: dateTime) { (result, response
 ### **testDateUrlEncoded**  {#testDateUrlEncoded}
 ---
 ```swift
-public static func testDateUrlEncoded(date: Date, completionHandler: (Date?, Response?, Error?) -> Void) -> Void
+public static func testDateUrlEncoded(date: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -774,10 +787,10 @@ public static func testDateUrlEncoded(date: Date, completionHandler: (Date?, Res
 
 - **date**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Date?`, `Response?` and  `Error?`
+    - closure takes as arguments `Date?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**Date**](Date.md)
+[`Date`](Date.md)
 
 ### Authentication
 
@@ -788,27 +801,28 @@ No authentication required
 
 ```swift
 
-let date = Date() // Date (required) | 
+let date: Date = Date() // 
 
-FormParametersAPI.testDateUrlEncoded(date: date) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testDateUrlEncoded(date: date) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -817,7 +831,7 @@ FormParametersAPI.testDateUrlEncoded(date: date) { (result, response, error) in
 ### **testDoubleFormData**  {#testDoubleFormData}
 ---
 ```swift
-public static func testDoubleFormData(double: Double, completionHandler: (Double?, Response?, Error?) -> Void) -> Void
+public static func testDoubleFormData(double: Double, completionHandler: @escaping (_ returnedData: Double?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -826,10 +840,10 @@ public static func testDoubleFormData(double: Double, completionHandler: (Double
 
 - **double**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Double?`, `Response?` and  `Error?`
+    - closure takes as arguments `Double?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Double**
+`Double`
 
 ### Authentication
 
@@ -840,27 +854,28 @@ No authentication required
 
 ```swift
 
-let double = 1.2 // Double (required) | 
+let double: Double = 1.2 // 
 
-FormParametersAPI.testDoubleFormData(double: double) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testDoubleFormData(double: double) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -869,7 +884,7 @@ FormParametersAPI.testDoubleFormData(double: double) { (result, response, error)
 ### **testDoubleUrlEncoded**  {#testDoubleUrlEncoded}
 ---
 ```swift
-public static func testDoubleUrlEncoded(double: Double, completionHandler: (Double?, Response?, Error?) -> Void) -> Void
+public static func testDoubleUrlEncoded(double: Double, completionHandler: @escaping (_ returnedData: Double?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -878,10 +893,10 @@ public static func testDoubleUrlEncoded(double: Double, completionHandler: (Doub
 
 - **double**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Double?`, `Response?` and  `Error?`
+    - closure takes as arguments `Double?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Double**
+`Double`
 
 ### Authentication
 
@@ -892,27 +907,28 @@ No authentication required
 
 ```swift
 
-let double = 1.2 // Double (required) | 
+let double: Double = 1.2 // 
 
-FormParametersAPI.testDoubleUrlEncoded(double: double) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testDoubleUrlEncoded(double: double) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -921,7 +937,7 @@ FormParametersAPI.testDoubleUrlEncoded(double: double) { (result, response, erro
 ### **testFileFormData**  {#testFileFormData}
 ---
 ```swift
-public static func testFileFormData(file: URL, completionHandler: (URL?, Response?, Error?) -> Void) throws -> Void
+public static func testFileFormData(file: URL, destinationURL: URL?, completionHandler: @escaping (_ returnedData: URL?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) throws -> Void
 ```
 
 >
@@ -930,10 +946,10 @@ public static func testFileFormData(file: URL, completionHandler: (URL?, Respons
 
 - **file**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `URL?`, `Response?` and  `Error?`
+    - closure takes as arguments `URL?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**URL**](URL.md)
+[`URL`](URL.md)
 
 ### Authentication
 
@@ -944,27 +960,28 @@ No authentication required
 
 ```swift
 
-let file = URL(string: "/path/to/file.txt") // URL (required) | 
+let file: URL = URL(string: "/path/to/file.txt")!
 
-try FormParametersAPI.testFileFormData(file: file) { (result, response, error) in
-    if let error = error {
-        print(error)
+try? FormParametersAPI.testFileFormData(file: file) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -973,7 +990,7 @@ try FormParametersAPI.testFileFormData(file: file) { (result, response, error) i
 ### **testFileUrlEncoded**  {#testFileUrlEncoded}
 ---
 ```swift
-public static func testFileUrlEncoded(file: URL, completionHandler: (URL?, Response?, Error?) -> Void) throws -> Void
+public static func testFileUrlEncoded(file: URL, destinationURL: URL?, completionHandler: @escaping (_ returnedData: URL?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) throws -> Void
 ```
 
 >
@@ -982,10 +999,10 @@ public static func testFileUrlEncoded(file: URL, completionHandler: (URL?, Respo
 
 - **file**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `URL?`, `Response?` and  `Error?`
+    - closure takes as arguments `URL?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**URL**](URL.md)
+[`URL`](URL.md)
 
 ### Authentication
 
@@ -996,27 +1013,28 @@ No authentication required
 
 ```swift
 
-let file = URL(string: "/path/to/file.txt") // URL (required) | 
+let file: URL = URL(string: "/path/to/file.txt")!
 
-try FormParametersAPI.testFileUrlEncoded(file: file) { (result, response, error) in
-    if let error = error {
-        print(error)
+try? FormParametersAPI.testFileUrlEncoded(file: file) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1025,7 +1043,7 @@ try FormParametersAPI.testFileUrlEncoded(file: file) { (result, response, error)
 ### **testFloatFormData**  {#testFloatFormData}
 ---
 ```swift
-public static func testFloatFormData(float: Float, completionHandler: (Float?, Response?, Error?) -> Void) -> Void
+public static func testFloatFormData(float: Float, completionHandler: @escaping (_ returnedData: Float?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1034,10 +1052,10 @@ public static func testFloatFormData(float: Float, completionHandler: (Float?, R
 
 - **float**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Float?`, `Response?` and  `Error?`
+    - closure takes as arguments `Float?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Float**
+`Float`
 
 ### Authentication
 
@@ -1048,27 +1066,28 @@ No authentication required
 
 ```swift
 
-let float = 3.4 // Float (required) | 
+let float: Float = 3.4 // 
 
-FormParametersAPI.testFloatFormData(float: float) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testFloatFormData(float: float) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1077,7 +1096,7 @@ FormParametersAPI.testFloatFormData(float: float) { (result, response, error) in
 ### **testFloatUrlEncoded**  {#testFloatUrlEncoded}
 ---
 ```swift
-public static func testFloatUrlEncoded(float: Float, completionHandler: (Float?, Response?, Error?) -> Void) -> Void
+public static func testFloatUrlEncoded(float: Float, completionHandler: @escaping (_ returnedData: Float?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1086,10 +1105,10 @@ public static func testFloatUrlEncoded(float: Float, completionHandler: (Float?,
 
 - **float**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Float?`, `Response?` and  `Error?`
+    - closure takes as arguments `Float?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Float**
+`Float`
 
 ### Authentication
 
@@ -1100,27 +1119,28 @@ No authentication required
 
 ```swift
 
-let float = 3.4 // Float (required) | 
+let float: Float = 3.4 // 
 
-FormParametersAPI.testFloatUrlEncoded(float: float) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testFloatUrlEncoded(float: float) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1129,7 +1149,7 @@ FormParametersAPI.testFloatUrlEncoded(float: float) { (result, response, error) 
 ### **testIntegerFormData**  {#testIntegerFormData}
 ---
 ```swift
-public static func testIntegerFormData(integer: Int, completionHandler: (Int?, Response?, Error?) -> Void) -> Void
+public static func testIntegerFormData(integer: Int, completionHandler: @escaping (_ returnedData: Int?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1138,10 +1158,10 @@ public static func testIntegerFormData(integer: Int, completionHandler: (Int?, R
 
 - **integer**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Int?`, `Response?` and  `Error?`
+    - closure takes as arguments `Int?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Int**
+`Int`
 
 ### Authentication
 
@@ -1152,27 +1172,28 @@ No authentication required
 
 ```swift
 
-let integer = 56 // Int (required) | 
+let integer: Int = 56 // 
 
-FormParametersAPI.testIntegerFormData(integer: integer) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testIntegerFormData(integer: integer) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1181,7 +1202,7 @@ FormParametersAPI.testIntegerFormData(integer: integer) { (result, response, err
 ### **testIntegerUrlEncoded**  {#testIntegerUrlEncoded}
 ---
 ```swift
-public static func testIntegerUrlEncoded(integer: Int, completionHandler: (Int?, Response?, Error?) -> Void) -> Void
+public static func testIntegerUrlEncoded(integer: Int, completionHandler: @escaping (_ returnedData: Int?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1190,10 +1211,10 @@ public static func testIntegerUrlEncoded(integer: Int, completionHandler: (Int?,
 
 - **integer**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Int?`, `Response?` and  `Error?`
+    - closure takes as arguments `Int?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Int**
+`Int`
 
 ### Authentication
 
@@ -1204,27 +1225,28 @@ No authentication required
 
 ```swift
 
-let integer = 56 // Int (required) | 
+let integer: Int = 56 // 
 
-FormParametersAPI.testIntegerUrlEncoded(integer: integer) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testIntegerUrlEncoded(integer: integer) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1233,7 +1255,7 @@ FormParametersAPI.testIntegerUrlEncoded(integer: integer) { (result, response, e
 ### **testLongFormData**  {#testLongFormData}
 ---
 ```swift
-public static func testLongFormData(long: Int64, completionHandler: (Int64?, Response?, Error?) -> Void) -> Void
+public static func testLongFormData(long: Int64, completionHandler: @escaping (_ returnedData: Int64?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1242,10 +1264,10 @@ public static func testLongFormData(long: Int64, completionHandler: (Int64?, Res
 
 - **long**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Int64?`, `Response?` and  `Error?`
+    - closure takes as arguments `Int64?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Int64**
+`Int64`
 
 ### Authentication
 
@@ -1256,27 +1278,28 @@ No authentication required
 
 ```swift
 
-let long = 789 // Int64 (required) | 
+let long: Int64 = 789 // 
 
-FormParametersAPI.testLongFormData(long: long) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testLongFormData(long: long) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1285,7 +1308,7 @@ FormParametersAPI.testLongFormData(long: long) { (result, response, error) in
 ### **testLongUrlEncoded**  {#testLongUrlEncoded}
 ---
 ```swift
-public static func testLongUrlEncoded(long: Int64, completionHandler: (Int64?, Response?, Error?) -> Void) -> Void
+public static func testLongUrlEncoded(long: Int64, completionHandler: @escaping (_ returnedData: Int64?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1294,10 +1317,10 @@ public static func testLongUrlEncoded(long: Int64, completionHandler: (Int64?, R
 
 - **long**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `Int64?`, `Response?` and  `Error?`
+    - closure takes as arguments `Int64?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Int64**
+`Int64`
 
 ### Authentication
 
@@ -1308,27 +1331,28 @@ No authentication required
 
 ```swift
 
-let long = 789 // Int64 (required) | 
+let long: Int64 = 789 // 
 
-FormParametersAPI.testLongUrlEncoded(long: long) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testLongUrlEncoded(long: long) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1337,7 +1361,7 @@ FormParametersAPI.testLongUrlEncoded(long: long) { (result, response, error) in
 ### **testMultiFormData**  {#testMultiFormData}
 ---
 ```swift
-public static func testMultiFormData(multi: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testMultiFormData(multi: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1346,10 +1370,10 @@ public static func testMultiFormData(multi: [String], completionHandler: ([Strin
 
 - **multi**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -1360,27 +1384,28 @@ No authentication required
 
 ```swift
 
-let multi = ["example"] // [String] (required) | 
+let multi: [String] = [] // 
 
-FormParametersAPI.testMultiFormData(multi: multi) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testMultiFormData(multi: multi) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1389,7 +1414,7 @@ FormParametersAPI.testMultiFormData(multi: multi) { (result, response, error) in
 ### **testMultiUrlEncoded**  {#testMultiUrlEncoded}
 ---
 ```swift
-public static func testMultiUrlEncoded(multi: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testMultiUrlEncoded(multi: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1398,10 +1423,10 @@ public static func testMultiUrlEncoded(multi: [String], completionHandler: ([Str
 
 - **multi**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -1412,27 +1437,28 @@ No authentication required
 
 ```swift
 
-let multi = ["example"] // [String] (required) | 
+let multi: [String] = [] // 
 
-FormParametersAPI.testMultiUrlEncoded(multi: multi) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testMultiUrlEncoded(multi: multi) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1441,7 +1467,7 @@ FormParametersAPI.testMultiUrlEncoded(multi: multi) { (result, response, error) 
 ### **testOptionalsFormData**  {#testOptionalsFormData}
 ---
 ```swift
-public static func testOptionalsFormData(float: Float, double: Double, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, string: String?, integer: Int?, long: Int64?, boolean: Bool = false, completionHandler: (FormModel?, Response?, Error?) -> Void) -> Void
+public static func testOptionalsFormData(float: Float, double: Double, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, string: String? = nil, integer: Int? = nil, long: Int64? = nil, boolean: Bool? = nil, completionHandler: @escaping (_ returnedData: FormModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1463,10 +1489,10 @@ public static func testOptionalsFormData(float: Float, double: Double, csvArray:
 - **boolean**  (optional) 
     - defaults to false
 - **completionHandler** (required)
-    - closure takes as arguments `FormModel?`, `Response?` and  `Error?`
+    - closure takes as arguments `FormModel?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**FormModel**](FormModel.md)
+[`FormModel`](FormModel.md)
 
 ### Authentication
 
@@ -1477,39 +1503,40 @@ No authentication required
 
 ```swift
 
-let float = 3.4 // Float (required) | 
-let double = 1.2 // Double (required) | 
-let csvArray = ["example"] // [String] (required) | 
-let ssvArray = ["example"] // [String] (required) | 
-let tsvArray = ["example"] // [String] (required) | 
-let pipesArray = ["example"] // [String] (required) | 
-let multi = ["example"] // [String] (required) | 
-let date = Date() // Date (required) | 
-let dateTime = Date() // Date (required) | 
-var string: String? // String? (optional) | 
-var integer: Int? // Int? (optional) | 
-var long: Int64? // Int64? (optional) | 
-var boolean: Bool? // Bool? (optional) | 
+let float: Float = 3.4 // 
+let double: Double = 1.2 // 
+let csvArray: [String] = [] // 
+let ssvArray: [String] = [] // 
+let tsvArray: [String] = [] // 
+let pipesArray: [String] = [] // 
+let multi: [String] = [] // 
+let date: Date = Date() // 
+let dateTime: Date = Date() // 
+let string: String = "string_example" // 
+let integer: Int = 56 // 
+let long: Int64 = 789 // 
+let boolean: Bool = false // 
 
-FormParametersAPI.testOptionalsFormData(float: float, double: double, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, multi: multi, date: date, dateTime: dateTime, string: string, integer: integer, long: long, boolean: boolean) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testOptionalsFormData(float: float, double: double, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, multi: multi, date: date, dateTime: dateTime, string: string, integer: integer, long: long, boolean: boolean) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1518,7 +1545,7 @@ FormParametersAPI.testOptionalsFormData(float: float, double: double, csvArray: 
 ### **testOptionalsUrlEncoded**  {#testOptionalsUrlEncoded}
 ---
 ```swift
-public static func testOptionalsUrlEncoded(float: Float, double: Double, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], date: Date, dateTime: Date, string: String?, integer: Int?, long: Int64?, boolean: Bool = false, completionHandler: (FormModel?, Response?, Error?) -> Void) -> Void
+public static func testOptionalsUrlEncoded(float: Float, double: Double, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], date: Date, dateTime: Date, string: String? = nil, integer: Int? = nil, long: Int64? = nil, boolean: Bool? = nil, completionHandler: @escaping (_ returnedData: FormModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1539,10 +1566,10 @@ public static func testOptionalsUrlEncoded(float: Float, double: Double, csvArra
 - **boolean**  (optional) 
     - defaults to false
 - **completionHandler** (required)
-    - closure takes as arguments `FormModel?`, `Response?` and  `Error?`
+    - closure takes as arguments `FormModel?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**FormModel**](FormModel.md)
+[`FormModel`](FormModel.md)
 
 ### Authentication
 
@@ -1553,38 +1580,39 @@ No authentication required
 
 ```swift
 
-let float = 3.4 // Float (required) | 
-let double = 1.2 // Double (required) | 
-let csvArray = ["example"] // [String] (required) | 
-let ssvArray = ["example"] // [String] (required) | 
-let tsvArray = ["example"] // [String] (required) | 
-let pipesArray = ["example"] // [String] (required) | 
-let date = Date() // Date (required) | 
-let dateTime = Date() // Date (required) | 
-var string: String? // String? (optional) | 
-var integer: Int? // Int? (optional) | 
-var long: Int64? // Int64? (optional) | 
-var boolean: Bool? // Bool? (optional) | 
+let float: Float = 3.4 // 
+let double: Double = 1.2 // 
+let csvArray: [String] = [] // 
+let ssvArray: [String] = [] // 
+let tsvArray: [String] = [] // 
+let pipesArray: [String] = [] // 
+let date: Date = Date() // 
+let dateTime: Date = Date() // 
+let string: String = "string_example" // 
+let integer: Int = 56 // 
+let long: Int64 = 789 // 
+let boolean: Bool = false // 
 
-FormParametersAPI.testOptionalsUrlEncoded(float: float, double: double, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, date: date, dateTime: dateTime, string: string, integer: integer, long: long, boolean: boolean) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testOptionalsUrlEncoded(float: float, double: double, csvArray: csvArray, ssvArray: ssvArray, tsvArray: tsvArray, pipesArray: pipesArray, date: date, dateTime: dateTime, string: string, integer: integer, long: long, boolean: boolean) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1593,7 +1621,7 @@ FormParametersAPI.testOptionalsUrlEncoded(float: float, double: double, csvArray
 ### **testPipesFormData**  {#testPipesFormData}
 ---
 ```swift
-public static func testPipesFormData(pipesArray: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testPipesFormData(pipesArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1602,10 +1630,10 @@ public static func testPipesFormData(pipesArray: [String], completionHandler: ([
 
 - **pipesArray**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -1616,27 +1644,28 @@ No authentication required
 
 ```swift
 
-let pipesArray = ["example"] // [String] (required) | 
+let pipesArray: [String] = [] // 
 
-FormParametersAPI.testPipesFormData(pipesArray: pipesArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testPipesFormData(pipesArray: pipesArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1645,7 +1674,7 @@ FormParametersAPI.testPipesFormData(pipesArray: pipesArray) { (result, response,
 ### **testPipesUrlEncoded**  {#testPipesUrlEncoded}
 ---
 ```swift
-public static func testPipesUrlEncoded(pipesArray: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testPipesUrlEncoded(pipesArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1654,10 +1683,10 @@ public static func testPipesUrlEncoded(pipesArray: [String], completionHandler: 
 
 - **pipesArray**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -1668,27 +1697,28 @@ No authentication required
 
 ```swift
 
-let pipesArray = ["example"] // [String] (required) | 
+let pipesArray: [String] = [] // 
 
-FormParametersAPI.testPipesUrlEncoded(pipesArray: pipesArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testPipesUrlEncoded(pipesArray: pipesArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1697,7 +1727,7 @@ FormParametersAPI.testPipesUrlEncoded(pipesArray: pipesArray) { (result, respons
 ### **testSSVFormData**  {#testSSVFormData}
 ---
 ```swift
-public static func testSSVFormData(ssvArray: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testSSVFormData(ssvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1706,10 +1736,10 @@ public static func testSSVFormData(ssvArray: [String], completionHandler: ([Stri
 
 - **ssvArray**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -1720,27 +1750,28 @@ No authentication required
 
 ```swift
 
-let ssvArray = ["example"] // [String] (required) | 
+let ssvArray: [String] = [] // 
 
-FormParametersAPI.testSSVFormData(ssvArray: ssvArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testSSVFormData(ssvArray: ssvArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1749,7 +1780,7 @@ FormParametersAPI.testSSVFormData(ssvArray: ssvArray) { (result, response, error
 ### **testSSVUrlEncoded**  {#testSSVUrlEncoded}
 ---
 ```swift
-public static func testSSVUrlEncoded(ssvArray: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testSSVUrlEncoded(ssvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1758,10 +1789,10 @@ public static func testSSVUrlEncoded(ssvArray: [String], completionHandler: ([St
 
 - **ssvArray**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -1772,27 +1803,28 @@ No authentication required
 
 ```swift
 
-let ssvArray = ["example"] // [String] (required) | 
+let ssvArray: [String] = [] // 
 
-FormParametersAPI.testSSVUrlEncoded(ssvArray: ssvArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testSSVUrlEncoded(ssvArray: ssvArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1801,7 +1833,7 @@ FormParametersAPI.testSSVUrlEncoded(ssvArray: ssvArray) { (result, response, err
 ### **testStringFormData**  {#testStringFormData}
 ---
 ```swift
-public static func testStringFormData(string: String, completionHandler: (String?, Response?, Error?) -> Void) -> Void
+public static func testStringFormData(string: String, completionHandler: @escaping (_ returnedData: String?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1810,10 +1842,10 @@ public static func testStringFormData(string: String, completionHandler: (String
 
 - **string**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `String?`, `Response?` and  `Error?`
+    - closure takes as arguments `String?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**String**
+`String`
 
 ### Authentication
 
@@ -1824,27 +1856,28 @@ No authentication required
 
 ```swift
 
-let string = "string_example" // String (required) | 
+let string: String = "string_example" // 
 
-FormParametersAPI.testStringFormData(string: string) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testStringFormData(string: string) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1853,7 +1886,7 @@ FormParametersAPI.testStringFormData(string: string) { (result, response, error)
 ### **testStringUrlEncoded**  {#testStringUrlEncoded}
 ---
 ```swift
-public static func testStringUrlEncoded(string: String, completionHandler: (String?, Response?, Error?) -> Void) -> Void
+public static func testStringUrlEncoded(string: String, completionHandler: @escaping (_ returnedData: String?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1862,10 +1895,10 @@ public static func testStringUrlEncoded(string: String, completionHandler: (Stri
 
 - **string**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `String?`, `Response?` and  `Error?`
+    - closure takes as arguments `String?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**String**
+`String`
 
 ### Authentication
 
@@ -1876,27 +1909,28 @@ No authentication required
 
 ```swift
 
-let string = "string_example" // String (required) | 
+let string: String = "string_example" // 
 
-FormParametersAPI.testStringUrlEncoded(string: string) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testStringUrlEncoded(string: string) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1905,7 +1939,7 @@ FormParametersAPI.testStringUrlEncoded(string: string) { (result, response, erro
 ### **testTSVFormData**  {#testTSVFormData}
 ---
 ```swift
-public static func testTSVFormData(tsvArray: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testTSVFormData(tsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1914,10 +1948,10 @@ public static func testTSVFormData(tsvArray: [String], completionHandler: ([Stri
 
 - **tsvArray**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -1928,27 +1962,28 @@ No authentication required
 
 ```swift
 
-let tsvArray = ["example"] // [String] (required) | 
+let tsvArray: [String] = [] // 
 
-FormParametersAPI.testTSVFormData(tsvArray: tsvArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testTSVFormData(tsvArray: tsvArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1957,7 +1992,7 @@ FormParametersAPI.testTSVFormData(tsvArray: tsvArray) { (result, response, error
 ### **testTSVUrlEncoded**  {#testTSVUrlEncoded}
 ---
 ```swift
-public static func testTSVUrlEncoded(tsvArray: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testTSVUrlEncoded(tsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1966,10 +2001,10 @@ public static func testTSVUrlEncoded(tsvArray: [String], completionHandler: ([St
 
 - **tsvArray**  (required) 
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -1980,27 +2015,28 @@ No authentication required
 
 ```swift
 
-let tsvArray = ["example"] // [String] (required) | 
+let tsvArray: [String] = [] // 
 
-FormParametersAPI.testTSVUrlEncoded(tsvArray: tsvArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+FormParametersAPI.testTSVUrlEncoded(tsvArray: tsvArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```

@@ -25,6 +25,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testBodyBooleanParam(boolean: Bool, completionHandler: @escaping (_ returnedData: Bool?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/boolean"
         let components = URLComponents(string: self.basePath + path)
 
@@ -45,7 +46,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -75,6 +76,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testBodyDoubleParam(double: Double, completionHandler: @escaping (_ returnedData: Double?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/double"
         let components = URLComponents(string: self.basePath + path)
 
@@ -95,7 +97,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -125,6 +127,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testBodyFloatParam(float: Float, completionHandler: @escaping (_ returnedData: Float?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/float"
         let components = URLComponents(string: self.basePath + path)
 
@@ -145,7 +148,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -175,6 +178,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testBodyIntegerParam(integer: Int, completionHandler: @escaping (_ returnedData: Int?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/integer"
         let components = URLComponents(string: self.basePath + path)
 
@@ -195,7 +199,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -225,6 +229,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testBodyLongParam(long: Int64, completionHandler: @escaping (_ returnedData: Int64?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/long"
         let components = URLComponents(string: self.basePath + path)
 
@@ -245,7 +250,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -275,6 +280,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testBodyStringParam(string: String, completionHandler: @escaping (_ returnedData: String?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/string"
         let components = URLComponents(string: self.basePath + path)
 
@@ -295,7 +301,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -325,6 +331,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testBooleanArrayBodyParam(boolean: [Bool], completionHandler: @escaping (_ returnedData: [Bool]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/array/boolean"
         let components = URLComponents(string: self.basePath + path)
 
@@ -345,7 +352,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -375,6 +382,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testBooleanMapBodyParam(boolean: Any, completionHandler: @escaping (_ returnedData: [String:Bool]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/map/boolean"
         let components = URLComponents(string: self.basePath + path)
 
@@ -395,7 +403,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -425,6 +433,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDateArrayBodyParam(date: [Date], completionHandler: @escaping (_ returnedData: [Date]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/array/date"
         let components = URLComponents(string: self.basePath + path)
 
@@ -445,7 +454,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -475,6 +484,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDateBodyParam(date: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/date"
         let components = URLComponents(string: self.basePath + path)
 
@@ -495,7 +505,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -525,6 +535,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDateMapBodyParam(date: Any, completionHandler: @escaping (_ returnedData: [String:Date]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/map/date"
         let components = URLComponents(string: self.basePath + path)
 
@@ -545,7 +556,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -575,6 +586,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDateTimeArrayBodyParam(dateTime: [Date], completionHandler: @escaping (_ returnedData: [Date]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/array/dateTime"
         let components = URLComponents(string: self.basePath + path)
 
@@ -595,7 +607,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -625,6 +637,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDateTimeBodyParam(dateTime: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/dateTime"
         let components = URLComponents(string: self.basePath + path)
 
@@ -645,7 +658,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -675,6 +688,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDateTimeMapBodyParam(dateTime: Any, completionHandler: @escaping (_ returnedData: [String:Date]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/map/dateTime"
         let components = URLComponents(string: self.basePath + path)
 
@@ -695,7 +709,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -725,6 +739,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDoubleArrayBodyParam(double: [Double], completionHandler: @escaping (_ returnedData: [Double]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/array/double"
         let components = URLComponents(string: self.basePath + path)
 
@@ -745,7 +760,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -775,6 +790,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDoubleMapBodyParam(double: Any, completionHandler: @escaping (_ returnedData: [String:Double]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/map/double"
         let components = URLComponents(string: self.basePath + path)
 
@@ -795,7 +811,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -825,6 +841,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testFloatArrayBodyParam(float: [Float], completionHandler: @escaping (_ returnedData: [Float]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/array/float"
         let components = URLComponents(string: self.basePath + path)
 
@@ -845,7 +862,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -875,6 +892,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testFloatMapBodyParam(float: Any, completionHandler: @escaping (_ returnedData: [String:Float]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/map/float"
         let components = URLComponents(string: self.basePath + path)
 
@@ -895,7 +913,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -925,6 +943,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testGenericObject(body: Any, completionHandler: @escaping (_ returnedData: Any?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/object"
         let components = URLComponents(string: self.basePath + path)
 
@@ -945,7 +964,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -975,6 +994,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testGenericObjectArray(objectArray: Any, completionHandler: @escaping (_ returnedData: Any?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/array/object"
         let components = URLComponents(string: self.basePath + path)
 
@@ -995,7 +1015,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1025,6 +1045,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testGenericObjectMap(objectMap: Any, completionHandler: @escaping (_ returnedData: Any?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/map/object"
         let components = URLComponents(string: self.basePath + path)
 
@@ -1045,7 +1066,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1075,6 +1096,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testIntegerArrayBodyParam(integer: [Int], completionHandler: @escaping (_ returnedData: [Int]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/array/integer"
         let components = URLComponents(string: self.basePath + path)
 
@@ -1095,7 +1117,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1125,6 +1147,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testIntegerMapBodyParam(integer: Any, completionHandler: @escaping (_ returnedData: [String:Int]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/map/integer"
         let components = URLComponents(string: self.basePath + path)
 
@@ -1145,7 +1168,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1175,6 +1198,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testLongArrayBodyParam(long: [Int64], completionHandler: @escaping (_ returnedData: [Int64]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/array/long"
         let components = URLComponents(string: self.basePath + path)
 
@@ -1195,7 +1219,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1225,6 +1249,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testLongMapBodyParam(long: Any, completionHandler: @escaping (_ returnedData: [String:Int64]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/map/long"
         let components = URLComponents(string: self.basePath + path)
 
@@ -1245,7 +1270,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1275,6 +1300,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testModelArrayBodyParam(modelArray: [BodyModel], completionHandler: @escaping (_ returnedData: [BodyModel]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/array/model"
         let components = URLComponents(string: self.basePath + path)
 
@@ -1295,7 +1321,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1325,6 +1351,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testModelBodyParam(model: BodyModel, completionHandler: @escaping (_ returnedData: BodyModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/model"
         let components = URLComponents(string: self.basePath + path)
 
@@ -1345,7 +1372,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1375,6 +1402,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testModelMapBodyParam(modelMap: Any, completionHandler: @escaping (_ returnedData: [String:BodyModel]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/map/model"
         let components = URLComponents(string: self.basePath + path)
 
@@ -1395,7 +1423,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1425,6 +1453,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testStringArrayBodyParam(string: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/array/string"
         let components = URLComponents(string: self.basePath + path)
 
@@ -1445,7 +1474,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1475,6 +1504,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testStringMapBodyParam(string: Any, completionHandler: @escaping (_ returnedData: [String:String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/body/map/string"
         let components = URLComponents(string: self.basePath + path)
 
@@ -1495,7 +1525,7 @@ public class BodyParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }

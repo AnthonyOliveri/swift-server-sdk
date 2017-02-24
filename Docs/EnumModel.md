@@ -5,16 +5,27 @@
 ### Examples
 ```swift
 // Maps JSON string to Swift Object
-let enumModel: EnumModel = EnumModel(JSONString: jsonString)
-
+let jsonString = ""
+let enumModel: EnumModel? = EnumModel(JSONString: jsonString)
+```
+###
+```swift
 // Maps JSON string to array of EnumModel
-let enumModelArray: [EnumModel] = Mapper<EnumModel>().mapArray(JSONString: jsonString)
-
+let jsonString = ""
+let enumModelArray: [EnumModel]? = Mapper<EnumModel>().mapArray(JSONString: jsonString)
+```
+###
+```swift
 // Maps JSON String to Dictionary mapping String to EnumModel
-let Dictionary: [String: EnumModel] = Mapper<EnumModel>().mapDictionary(JSONString: jsonString);
-
+let jsonString = ""
+let Dictionary: [String: EnumModel]? = Mapper<EnumModel>().mapDictionary(JSONString: jsonString)
+```
+###
+```swift
 // Converts Swift Object to JSON string
-let jsonString: String = enumModel.toJSONString(prettyPrint: true)
+let json: [String: Any] = [:]
+let enumModel = EnumModel(JSON: json)
+let jsonString: String? = enumModel?.toJSONString(prettyPrint: true)
 ```
 
 ### Fields 
@@ -33,10 +44,10 @@ let jsonString: String = enumModel.toJSONString(prettyPrint: true)
 var stringEnum: stringenum?
 ```
 
-- ( ***Enum*** ) 
-- Values:
-    - ``
-    - ``
+- (**Enum**) 
+- Possible values:
+    - `xvii = "xvii"`
+    - `xix = "xix"`
 
 ---
 
@@ -47,10 +58,10 @@ var stringEnum: stringenum?
 var floatEnum: floatenum?
 ```
 
-- ( ***Enum*** ) 
-- Values:
-    - ``
-    - ``
+- (**Enum**) 
+- Possible values:
+    - `number17 = 1.7`
+    - `number19 = 1.9`
 
 ---
 
@@ -61,10 +72,10 @@ var floatEnum: floatenum?
 var doubleEnum: doubleenum?
 ```
 
-- ( ***Enum*** ) 
-- Values:
-    - ``
-    - ``
+- (**Enum**) 
+- Possible values:
+    - `number17 = 1.7`
+    - `number19 = 1.9`
 
 ---
 
@@ -75,10 +86,10 @@ var doubleEnum: doubleenum?
 var integerEnum: integerenum?
 ```
 
-- ( ***Enum*** ) 
-- Values:
-    - ``
-    - ``
+- (**Enum**) 
+- Possible values:
+    - `number17 = 17`
+    - `number19 = 19`
 
 ---
 
@@ -89,10 +100,10 @@ var integerEnum: integerenum?
 var longEnum: longenum?
 ```
 
-- ( ***Enum*** ) 
-- Values:
-    - ``
-    - ``
+- (**Enum**) 
+- Possible values:
+    - `number17 = 17`
+    - `number19 = 19`
 
 ---
 

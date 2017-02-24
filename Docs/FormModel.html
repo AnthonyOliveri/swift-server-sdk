@@ -1,17 +1,36 @@
+<link rel="stylesheet" href="markdown.css">
+<style>
+    .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+    }
+</style>
+<article class="markdown-body">
 <p><a href="./README.html"><strong>Back to README</strong></a></p>
 <h1 id="top">FormModel</h1>
 <h3>Examples</h3>
 <pre><code>// Maps JSON string to Swift Object
-let formModel: FormModel = FormModel(JSONString: jsonString)
-
-// Maps JSON string to array of FormModel
-let formModelArray: [FormModel] = Mapper&lt;FormModel&gt;().mapArray(JSONString: jsonString)
-
-// Maps JSON String to Dictionary mapping String to FormModel
-let Dictionary: [String: FormModel] = Mapper&lt;FormModel&gt;().mapDictionary(JSONString: jsonString);
-
-// Converts Swift Object to JSON string
-let jsonString: String = formModel.toJSONString(prettyPrint: true)
+let jsonString = ""
+let formModel: FormModel? = FormModel(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Maps JSON string to array of FormModel
+let jsonString = ""
+let formModelArray: [FormModel]? = Mapper&lt;FormModel&gt;().mapArray(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Maps JSON String to Dictionary mapping String to FormModel
+let jsonString = ""
+let Dictionary: [String: FormModel]? = Mapper&lt;FormModel&gt;().mapDictionary(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Converts Swift Object to JSON string
+let json: [String: Any] = [:]
+let formModel = FormModel(JSON: json)
+let jsonString: String? = formModel?.toJSONString(prettyPrint: true)
 </code></pre>
 <h3>Fields</h3>
 <ul>
@@ -77,7 +96,6 @@ let jsonString: String = formModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="formSSV">formSSV</h4>
@@ -85,7 +103,6 @@ let jsonString: String = formModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="formTSV">formTSV</h4>
@@ -93,7 +110,6 @@ let jsonString: String = formModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="formPipes">formPipes</h4>
@@ -101,7 +117,6 @@ let jsonString: String = formModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="formMulti">formMulti</h4>
@@ -109,7 +124,6 @@ let jsonString: String = formModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="formDate">formDate</h4>
@@ -127,3 +141,4 @@ let jsonString: String = formModel.toJSONString(prettyPrint: true)
 </ul>
 <hr />
 <p><a href="#top"><strong>Back to Top</strong></a></p>
+</article>

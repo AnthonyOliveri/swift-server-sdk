@@ -37,6 +37,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testAllTheThingsFormData(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, completionHandler: @escaping (_ returnedData: FormModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/form/multipart/allTheThings"
         let components = URLComponents(string: self.basePath + path)
 
@@ -98,7 +99,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -138,6 +139,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testAllTheThingsUrlEncoded(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], date: Date, dateTime: Date, completionHandler: @escaping (_ returnedData: FormModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/allTheThings"
         let components = URLComponents(string: self.basePath + path)
@@ -188,7 +190,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -217,6 +219,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testBinaryFormData(binary: Data, completionHandler: @escaping (_ returnedData: Data?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -254,7 +257,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -283,6 +286,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testBinaryUrlEncoded(binary: Data, completionHandler: @escaping (_ returnedData: Data?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/binary"
         let components = URLComponents(string: self.basePath + path)
@@ -314,7 +318,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -343,6 +347,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testBooleanFormData(boolean: Bool, completionHandler: @escaping (_ returnedData: Bool?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -380,7 +385,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -409,6 +414,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testBooleanUrlEncoded(boolean: Bool, completionHandler: @escaping (_ returnedData: Bool?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/boolean"
         let components = URLComponents(string: self.basePath + path)
@@ -440,7 +446,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -469,6 +475,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testByteFormData(byte: Data, completionHandler: @escaping (_ returnedData: Data?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -506,7 +513,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -535,6 +542,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testByteUrlEncoded(byte: Data, completionHandler: @escaping (_ returnedData: Data?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/byte"
         let components = URLComponents(string: self.basePath + path)
@@ -566,7 +574,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -595,6 +603,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testCSVFormData(csvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -634,7 +643,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -663,6 +672,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testCSVUrlEncoded(csvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/csv"
         let components = URLComponents(string: self.basePath + path)
@@ -696,7 +706,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -725,6 +735,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testDateFormData(date: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -762,7 +773,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -791,6 +802,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testDateTimeFormData(dateTime: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -828,7 +840,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -857,6 +869,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testDateTimeUrlEncoded(dateTime: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/dateTime"
         let components = URLComponents(string: self.basePath + path)
@@ -888,7 +901,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -917,6 +930,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testDateUrlEncoded(date: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/date"
         let components = URLComponents(string: self.basePath + path)
@@ -948,7 +962,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -977,6 +991,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testDoubleFormData(double: Double, completionHandler: @escaping (_ returnedData: Double?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -1014,7 +1029,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1043,6 +1058,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testDoubleUrlEncoded(double: Double, completionHandler: @escaping (_ returnedData: Double?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/double"
         let components = URLComponents(string: self.basePath + path)
@@ -1074,7 +1090,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1104,6 +1120,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testFileFormData(file: URL, destinationURL: URL?, completionHandler: @escaping (_ returnedData: URL?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) throws {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -1146,7 +1163,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1176,6 +1193,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testFileUrlEncoded(file: URL, destinationURL: URL?, completionHandler: @escaping (_ returnedData: URL?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) throws {
+
 
         let path = "/params/form/urlencoded/file"
         let components = URLComponents(string: self.basePath + path)
@@ -1209,7 +1227,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1238,6 +1256,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testFloatFormData(float: Float, completionHandler: @escaping (_ returnedData: Float?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -1275,7 +1294,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1304,6 +1323,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testFloatUrlEncoded(float: Float, completionHandler: @escaping (_ returnedData: Float?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/float"
         let components = URLComponents(string: self.basePath + path)
@@ -1335,7 +1355,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1364,6 +1384,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testIntegerFormData(integer: Int, completionHandler: @escaping (_ returnedData: Int?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -1401,7 +1422,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1430,6 +1451,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testIntegerUrlEncoded(integer: Int, completionHandler: @escaping (_ returnedData: Int?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/integer"
         let components = URLComponents(string: self.basePath + path)
@@ -1461,7 +1483,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1490,6 +1512,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testLongFormData(long: Int64, completionHandler: @escaping (_ returnedData: Int64?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -1527,7 +1550,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1556,6 +1579,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testLongUrlEncoded(long: Int64, completionHandler: @escaping (_ returnedData: Int64?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/long"
         let components = URLComponents(string: self.basePath + path)
@@ -1587,7 +1611,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1616,6 +1640,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testMultiFormData(multi: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -1664,7 +1689,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1693,6 +1718,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testMultiUrlEncoded(multi: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/multi"
         let components = URLComponents(string: self.basePath + path)
@@ -1735,7 +1761,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1776,6 +1802,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testOptionalsFormData(float: Float, double: Double, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, string: String? = nil, integer: Int? = nil, long: Int64? = nil, boolean: Bool? = nil, completionHandler: @escaping (_ returnedData: FormModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/multipart/optionals"
         let components = URLComponents(string: self.basePath + path)
@@ -1838,7 +1865,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1878,6 +1905,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testOptionalsUrlEncoded(float: Float, double: Double, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], date: Date, dateTime: Date, string: String? = nil, integer: Int? = nil, long: Int64? = nil, boolean: Bool? = nil, completionHandler: @escaping (_ returnedData: FormModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/optionals"
         let components = URLComponents(string: self.basePath + path)
@@ -1928,7 +1956,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -1957,6 +1985,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testPipesFormData(pipesArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -1996,7 +2025,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -2025,6 +2054,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testPipesUrlEncoded(pipesArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/pipes"
         let components = URLComponents(string: self.basePath + path)
@@ -2058,7 +2088,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -2087,6 +2117,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testSSVFormData(ssvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -2126,7 +2157,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -2155,6 +2186,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testSSVUrlEncoded(ssvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/ssv"
         let components = URLComponents(string: self.basePath + path)
@@ -2188,7 +2220,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -2217,6 +2249,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testStringFormData(string: String, completionHandler: @escaping (_ returnedData: String?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -2254,7 +2287,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -2283,6 +2316,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testStringUrlEncoded(string: String, completionHandler: @escaping (_ returnedData: String?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/string"
         let components = URLComponents(string: self.basePath + path)
@@ -2314,7 +2348,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -2343,6 +2377,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testTSVFormData(tsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let uuid = UUID()
         let boundary = "----\(uuid.uuidString)"
@@ -2382,7 +2417,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -2411,6 +2446,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testTSVUrlEncoded(tsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/form/urlencoded/tsv"
         let components = URLComponents(string: self.basePath + path)
@@ -2444,7 +2480,7 @@ public class FormParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }

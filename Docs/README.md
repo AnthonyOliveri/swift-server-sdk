@@ -20,7 +20,7 @@ Server-side Swift framework for interacting with SDKGen Test
 1. If you have not yet created the Swift server project that will consume this SDK, create one with the command `swift package init --type executable`.
 2. Add the following dependencies to your project's Package.swift file:
     ```Swift
-    .Package(url: "https://github.com/ibm-bluemix-mobile-services/bluemix-simple-http-client-swift.git", majorVersion: 0, minor: 5),
+    .Package(url: "https://github.com/ibm-bluemix-mobile-services/bluemix-simple-http-client-swift.git", majorVersion: 0, minor: 6),
     .Package(url: "https://github.com/Hearst-DD/ObjectMapper", majorVersion: 2, minor: 2)
     ```
 4. Copy the files from the generated SDK `Sources` directory to your project's `Sources` directory.

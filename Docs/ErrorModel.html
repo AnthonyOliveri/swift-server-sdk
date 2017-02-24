@@ -1,17 +1,36 @@
+<link rel="stylesheet" href="markdown.css">
+<style>
+    .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+    }
+</style>
+<article class="markdown-body">
 <p><a href="./README.html"><strong>Back to README</strong></a></p>
 <h1 id="top">ErrorModel</h1>
 <h3>Examples</h3>
 <pre><code>// Maps JSON string to Swift Object
-let errorModel: ErrorModel = ErrorModel(JSONString: jsonString)
-
-// Maps JSON string to array of ErrorModel
-let errorModelArray: [ErrorModel] = Mapper&lt;ErrorModel&gt;().mapArray(JSONString: jsonString)
-
-// Maps JSON String to Dictionary mapping String to ErrorModel
-let Dictionary: [String: ErrorModel] = Mapper&lt;ErrorModel&gt;().mapDictionary(JSONString: jsonString);
-
-// Converts Swift Object to JSON string
-let jsonString: String = errorModel.toJSONString(prettyPrint: true)
+let jsonString = ""
+let errorModel: ErrorModel? = ErrorModel(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Maps JSON string to array of ErrorModel
+let jsonString = ""
+let errorModelArray: [ErrorModel]? = Mapper&lt;ErrorModel&gt;().mapArray(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Maps JSON String to Dictionary mapping String to ErrorModel
+let jsonString = ""
+let Dictionary: [String: ErrorModel]? = Mapper&lt;ErrorModel&gt;().mapDictionary(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Converts Swift Object to JSON string
+let json: [String: Any] = [:]
+let errorModel = ErrorModel(JSON: json)
+let jsonString: String? = errorModel?.toJSONString(prettyPrint: true)
 </code></pre>
 <h3>Fields</h3>
 <ul>
@@ -26,3 +45,4 @@ let jsonString: String = errorModel.toJSONString(prettyPrint: true)
 </ul>
 <hr />
 <p><a href="#top"><strong>Back to Top</strong></a></p>
+</article>

@@ -5,16 +5,27 @@
 ### Examples
 ```swift
 // Maps JSON string to Swift Object
-let formModel: FormModel = FormModel(JSONString: jsonString)
-
+let jsonString = ""
+let formModel: FormModel? = FormModel(JSONString: jsonString)
+```
+###
+```swift
 // Maps JSON string to array of FormModel
-let formModelArray: [FormModel] = Mapper<FormModel>().mapArray(JSONString: jsonString)
-
+let jsonString = ""
+let formModelArray: [FormModel]? = Mapper<FormModel>().mapArray(JSONString: jsonString)
+```
+###
+```swift
 // Maps JSON String to Dictionary mapping String to FormModel
-let Dictionary: [String: FormModel] = Mapper<FormModel>().mapDictionary(JSONString: jsonString);
-
+let jsonString = ""
+let Dictionary: [String: FormModel]? = Mapper<FormModel>().mapDictionary(JSONString: jsonString)
+```
+###
+```swift
 // Converts Swift Object to JSON string
-let jsonString: String = formModel.toJSONString(prettyPrint: true)
+let json: [String: Any] = [:]
+let formModel = FormModel(JSON: json)
+let jsonString: String? = formModel?.toJSONString(prettyPrint: true)
 ```
 
 ### Fields 
@@ -108,7 +119,6 @@ var formCSV: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -120,7 +130,6 @@ var formSSV: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -132,7 +141,6 @@ var formTSV: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -144,7 +152,6 @@ var formPipes: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -156,7 +163,6 @@ var formMulti: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 

@@ -5,16 +5,27 @@
 ### Examples
 ```swift
 // Maps JSON string to Swift Object
-let bodyModel: BodyModel = BodyModel(JSONString: jsonString)
-
+let jsonString = ""
+let bodyModel: BodyModel? = BodyModel(JSONString: jsonString)
+```
+###
+```swift
 // Maps JSON string to array of BodyModel
-let bodyModelArray: [BodyModel] = Mapper<BodyModel>().mapArray(JSONString: jsonString)
-
+let jsonString = ""
+let bodyModelArray: [BodyModel]? = Mapper<BodyModel>().mapArray(JSONString: jsonString)
+```
+###
+```swift
 // Maps JSON String to Dictionary mapping String to BodyModel
-let Dictionary: [String: BodyModel] = Mapper<BodyModel>().mapDictionary(JSONString: jsonString);
-
+let jsonString = ""
+let Dictionary: [String: BodyModel]? = Mapper<BodyModel>().mapDictionary(JSONString: jsonString)
+```
+###
+```swift
 // Converts Swift Object to JSON string
-let jsonString: String = bodyModel.toJSONString(prettyPrint: true)
+let json: [String: Any] = [:]
+let bodyModel = BodyModel(JSON: json)
+let jsonString: String? = bodyModel?.toJSONString(prettyPrint: true)
 ```
 
 ### Fields 
@@ -141,7 +152,6 @@ var bodyStringArray: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -153,7 +163,6 @@ var bodyFloatArray: [Float]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -165,7 +174,6 @@ var bodyDoubleArray: [Double]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -177,7 +185,6 @@ var bodyIntegerArray: [Int]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -189,7 +196,6 @@ var bodyLongArray: [Int64]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -201,7 +207,6 @@ var bodyBooleanArray: [Bool]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -236,7 +241,6 @@ var bodyDateTimeArray: [Date]?
 var bodyStringMap: [String:String]?
 ```
 
- - An array of ****s of this BodyModel object
 
 ---
 
@@ -247,7 +251,6 @@ var bodyStringMap: [String:String]?
 var bodyFloatMap: [String:Float]?
 ```
 
- - An array of ****s of this BodyModel object
 
 ---
 
@@ -258,7 +261,6 @@ var bodyFloatMap: [String:Float]?
 var bodyDoubleMap: [String:Double]?
 ```
 
- - An array of ****s of this BodyModel object
 
 ---
 
@@ -269,7 +271,6 @@ var bodyDoubleMap: [String:Double]?
 var bodyIntegerMap: [String:Int]?
 ```
 
- - An array of ****s of this BodyModel object
 
 ---
 
@@ -280,7 +281,6 @@ var bodyIntegerMap: [String:Int]?
 var bodyLongMap: [String:Int64]?
 ```
 
- - An array of ****s of this BodyModel object
 
 ---
 
@@ -291,7 +291,6 @@ var bodyLongMap: [String:Int64]?
 var bodyBooleanMap: [String:Bool]?
 ```
 
- - An array of ****s of this BodyModel object
 
 ---
 
@@ -302,7 +301,7 @@ var bodyBooleanMap: [String:Bool]?
 var bodyDateMap: [String:Date]?
 ```
 
- - An array of [**Date**](Date.md)s of this BodyModel object
+ - see [**Date**](Date.md)
 
 ---
 
@@ -313,7 +312,7 @@ var bodyDateMap: [String:Date]?
 var bodyDateTimeMap: [String:Date]?
 ```
 
- - An array of [**Date**](Date.md)s of this BodyModel object
+ - see [**Date**](Date.md)
 
 ---
 

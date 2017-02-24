@@ -5,16 +5,27 @@
 ### Examples
 ```swift
 // Maps JSON string to Swift Object
-let queryModel: QueryModel = QueryModel(JSONString: jsonString)
-
+let jsonString = ""
+let queryModel: QueryModel? = QueryModel(JSONString: jsonString)
+```
+###
+```swift
 // Maps JSON string to array of QueryModel
-let queryModelArray: [QueryModel] = Mapper<QueryModel>().mapArray(JSONString: jsonString)
-
+let jsonString = ""
+let queryModelArray: [QueryModel]? = Mapper<QueryModel>().mapArray(JSONString: jsonString)
+```
+###
+```swift
 // Maps JSON String to Dictionary mapping String to QueryModel
-let Dictionary: [String: QueryModel] = Mapper<QueryModel>().mapDictionary(JSONString: jsonString);
-
+let jsonString = ""
+let Dictionary: [String: QueryModel]? = Mapper<QueryModel>().mapDictionary(JSONString: jsonString)
+```
+###
+```swift
 // Converts Swift Object to JSON string
-let jsonString: String = queryModel.toJSONString(prettyPrint: true)
+let json: [String: Any] = [:]
+let queryModel = QueryModel(JSON: json)
+let jsonString: String? = queryModel?.toJSONString(prettyPrint: true)
 ```
 
 ### Fields 
@@ -108,7 +119,6 @@ var queryCSV: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -120,7 +130,6 @@ var querySSV: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -132,7 +141,6 @@ var queryTSV: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -144,7 +152,6 @@ var queryPipes: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -156,7 +163,6 @@ var queryMulti: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 

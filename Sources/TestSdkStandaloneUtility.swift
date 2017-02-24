@@ -11,8 +11,8 @@ import ObjectMapper
 
 public class TestSdkStandaloneUtility {
 
-    internal static let basePath = "http://localhost:9000/api/test"
 
+    internal static let basePath = "http://localhost:9000/api/test"
 
     internal static func delimeter(forCollectionFormat: String) -> String {
 

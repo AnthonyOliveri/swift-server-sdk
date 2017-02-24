@@ -37,6 +37,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testAllTheThingsQueryParam(string: String, float: Float, double: Double, integer: Int, long: Int64, boolean: Bool, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, completionHandler: @escaping (_ returnedData: QueryModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/query/allTheThings"
         var components = URLComponents(string: self.basePath + path)
         var queryParameters: [URLQueryItem] = []
@@ -86,7 +87,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -116,6 +117,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testBooleanQueryParam(boolean: Bool, completionHandler: @escaping (_ returnedData: Bool?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/query/boolean"
         var components = URLComponents(string: self.basePath + path)
         var queryParameters: [URLQueryItem] = []
@@ -143,7 +145,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -172,6 +174,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testCSVQueryParam(csvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/query/csv"
         var components = URLComponents(string: self.basePath + path)
@@ -202,7 +205,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -232,6 +235,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDateQueryParam(date: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/query/date"
         var components = URLComponents(string: self.basePath + path)
         var queryParameters: [URLQueryItem] = []
@@ -259,7 +263,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -289,6 +293,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDateTimeQueryParam(dateTime: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/query/dateTime"
         var components = URLComponents(string: self.basePath + path)
         var queryParameters: [URLQueryItem] = []
@@ -316,7 +321,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -346,6 +351,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testDoubleQueryParam(double: Double, completionHandler: @escaping (_ returnedData: Double?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/query/double"
         var components = URLComponents(string: self.basePath + path)
         var queryParameters: [URLQueryItem] = []
@@ -373,7 +379,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -403,6 +409,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testFloatQueryParam(float: Float, completionHandler: @escaping (_ returnedData: Float?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/query/float"
         var components = URLComponents(string: self.basePath + path)
         var queryParameters: [URLQueryItem] = []
@@ -430,7 +437,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -460,6 +467,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testIntegerQueryParam(integer: Int, completionHandler: @escaping (_ returnedData: Int?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/query/integer"
         var components = URLComponents(string: self.basePath + path)
         var queryParameters: [URLQueryItem] = []
@@ -487,7 +495,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -517,6 +525,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testLongQueryParam(long: Int64, completionHandler: @escaping (_ returnedData: Int64?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/query/long"
         var components = URLComponents(string: self.basePath + path)
         var queryParameters: [URLQueryItem] = []
@@ -544,7 +553,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -573,6 +582,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testMultiQueryParam(multi: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/query/multi"
         var components = URLComponents(string: self.basePath + path)
@@ -603,7 +613,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -644,6 +654,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testOptionalQueryParam(float: Float, double: Double, csvArray: [String], ssvArray: [String], tsvArray: [String], pipesArray: [String], multi: [String], date: Date, dateTime: Date, string: String? = nil, integer: Int? = nil, long: Int64? = nil, boolean: Bool? = nil, completionHandler: @escaping (_ returnedData: QueryModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/query/optionals"
         var components = URLComponents(string: self.basePath + path)
@@ -694,7 +705,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -723,6 +734,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testPipesQueryParam(pipesArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/query/pipes"
         var components = URLComponents(string: self.basePath + path)
@@ -753,7 +765,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -782,6 +794,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testSSVQueryParam(ssvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/query/ssv"
         var components = URLComponents(string: self.basePath + path)
@@ -812,7 +825,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -842,6 +855,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
     */
     public static func testStringQueryParam(string: String, completionHandler: @escaping (_ returnedData: String?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
 
+
         let path = "/params/query/string"
         var components = URLComponents(string: self.basePath + path)
         var queryParameters: [URLQueryItem] = []
@@ -869,7 +883,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }
@@ -898,6 +912,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
         - parameter error: An error that prevented a successful request
     */
     public static func testTSVQueryParam(tsvArray: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) {
+
 
         let path = "/params/query/tsv"
         var components = URLComponents(string: self.basePath + path)
@@ -928,7 +943,7 @@ public class QueryParametersAPI: TestSdkStandaloneUtility {
                 return
             }
 
-            guard error != nil else {
+            guard error == nil else {
                 completionHandler(nil, status, headers, error)
                 return
             }

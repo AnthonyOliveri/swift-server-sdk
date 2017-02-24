@@ -37,7 +37,7 @@
 ### **testBodyBooleanParam**  {#testBodyBooleanParam}
 ---
 ```swift
-public static func testBodyBooleanParam(boolean: Bool, completionHandler: (Bool?, Response?, Error?) -> Void) -> Void
+public static func testBodyBooleanParam(boolean: Bool, completionHandler: @escaping (_ returnedData: Bool?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -45,12 +45,11 @@ public static func testBodyBooleanParam(boolean: Bool, completionHandler: (Bool?
 #### Parameters
 
 - **boolean**  (required) 
-    - see [**Bool**](Bool.md)
 - **completionHandler** (required)
-    - closure takes as arguments `Bool?`, `Response?` and  `Error?`
+    - closure takes as arguments `Bool?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Bool**
+`Bool`
 
 ### Authentication
 
@@ -61,27 +60,28 @@ No authentication required
 
 ```swift
 
-let boolean = true // Bool (required) | 
+let boolean: Bool = true // 
 
-BodyParametersAPI.testBodyBooleanParam(boolean: boolean) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testBodyBooleanParam(boolean: boolean) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -90,7 +90,7 @@ BodyParametersAPI.testBodyBooleanParam(boolean: boolean) { (result, response, er
 ### **testBodyDoubleParam**  {#testBodyDoubleParam}
 ---
 ```swift
-public static func testBodyDoubleParam(double: Double, completionHandler: (Double?, Response?, Error?) -> Void) -> Void
+public static func testBodyDoubleParam(double: Double, completionHandler: @escaping (_ returnedData: Double?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -98,12 +98,11 @@ public static func testBodyDoubleParam(double: Double, completionHandler: (Doubl
 #### Parameters
 
 - **double**  (required) 
-    - see [**Double**](Double.md)
 - **completionHandler** (required)
-    - closure takes as arguments `Double?`, `Response?` and  `Error?`
+    - closure takes as arguments `Double?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Double**
+`Double`
 
 ### Authentication
 
@@ -114,27 +113,28 @@ No authentication required
 
 ```swift
 
-let double = 1.2 // Double (required) | 
+let double: Double = 1.2 // 
 
-BodyParametersAPI.testBodyDoubleParam(double: double) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testBodyDoubleParam(double: double) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -143,7 +143,7 @@ BodyParametersAPI.testBodyDoubleParam(double: double) { (result, response, error
 ### **testBodyFloatParam**  {#testBodyFloatParam}
 ---
 ```swift
-public static func testBodyFloatParam(float: Float, completionHandler: (Float?, Response?, Error?) -> Void) -> Void
+public static func testBodyFloatParam(float: Float, completionHandler: @escaping (_ returnedData: Float?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -151,12 +151,11 @@ public static func testBodyFloatParam(float: Float, completionHandler: (Float?, 
 #### Parameters
 
 - **float**  (required) 
-    - see [**Float**](Float.md)
 - **completionHandler** (required)
-    - closure takes as arguments `Float?`, `Response?` and  `Error?`
+    - closure takes as arguments `Float?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Float**
+`Float`
 
 ### Authentication
 
@@ -167,27 +166,28 @@ No authentication required
 
 ```swift
 
-let float = 3.4 // Float (required) | 
+let float: Float = 3.4 // 
 
-BodyParametersAPI.testBodyFloatParam(float: float) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testBodyFloatParam(float: float) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -196,7 +196,7 @@ BodyParametersAPI.testBodyFloatParam(float: float) { (result, response, error) i
 ### **testBodyIntegerParam**  {#testBodyIntegerParam}
 ---
 ```swift
-public static func testBodyIntegerParam(integer: Int, completionHandler: (Int?, Response?, Error?) -> Void) -> Void
+public static func testBodyIntegerParam(integer: Int, completionHandler: @escaping (_ returnedData: Int?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -204,12 +204,11 @@ public static func testBodyIntegerParam(integer: Int, completionHandler: (Int?, 
 #### Parameters
 
 - **integer**  (required) 
-    - see [**Int**](Int.md)
 - **completionHandler** (required)
-    - closure takes as arguments `Int?`, `Response?` and  `Error?`
+    - closure takes as arguments `Int?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Int**
+`Int`
 
 ### Authentication
 
@@ -220,27 +219,28 @@ No authentication required
 
 ```swift
 
-let integer = 56 // Int (required) | 
+let integer: Int = 56 // 
 
-BodyParametersAPI.testBodyIntegerParam(integer: integer) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testBodyIntegerParam(integer: integer) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -249,7 +249,7 @@ BodyParametersAPI.testBodyIntegerParam(integer: integer) { (result, response, er
 ### **testBodyLongParam**  {#testBodyLongParam}
 ---
 ```swift
-public static func testBodyLongParam(long: Int64, completionHandler: (Int64?, Response?, Error?) -> Void) -> Void
+public static func testBodyLongParam(long: Int64, completionHandler: @escaping (_ returnedData: Int64?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -257,12 +257,11 @@ public static func testBodyLongParam(long: Int64, completionHandler: (Int64?, Re
 #### Parameters
 
 - **long**  (required) 
-    - see [**Int64**](Int64.md)
 - **completionHandler** (required)
-    - closure takes as arguments `Int64?`, `Response?` and  `Error?`
+    - closure takes as arguments `Int64?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Int64**
+`Int64`
 
 ### Authentication
 
@@ -273,27 +272,28 @@ No authentication required
 
 ```swift
 
-let long = 789 // Int64 (required) | 
+let long: Int64 = 789 // 
 
-BodyParametersAPI.testBodyLongParam(long: long) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testBodyLongParam(long: long) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -302,7 +302,7 @@ BodyParametersAPI.testBodyLongParam(long: long) { (result, response, error) in
 ### **testBodyStringParam**  {#testBodyStringParam}
 ---
 ```swift
-public static func testBodyStringParam(string: String, completionHandler: (String?, Response?, Error?) -> Void) -> Void
+public static func testBodyStringParam(string: String, completionHandler: @escaping (_ returnedData: String?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -310,12 +310,11 @@ public static func testBodyStringParam(string: String, completionHandler: (Strin
 #### Parameters
 
 - **string**  (required) 
-    - see [**String**](String.md)
 - **completionHandler** (required)
-    - closure takes as arguments `String?`, `Response?` and  `Error?`
+    - closure takes as arguments `String?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**String**
+`String`
 
 ### Authentication
 
@@ -326,27 +325,28 @@ No authentication required
 
 ```swift
 
-let string = "string_example" // String (required) | 
+let string: String = "string_example" // 
 
-BodyParametersAPI.testBodyStringParam(string: string) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testBodyStringParam(string: string) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -355,7 +355,7 @@ BodyParametersAPI.testBodyStringParam(string: string) { (result, response, error
 ### **testBooleanArrayBodyParam**  {#testBooleanArrayBodyParam}
 ---
 ```swift
-public static func testBooleanArrayBodyParam(boolean: [Bool], completionHandler: ([Bool]?, Response?, Error?) -> Void) -> Void
+public static func testBooleanArrayBodyParam(boolean: [Bool], completionHandler: @escaping (_ returnedData: [Bool]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -363,12 +363,11 @@ public static func testBooleanArrayBodyParam(boolean: [Bool], completionHandler:
 #### Parameters
 
 - **boolean**  (required) 
-    - see [**[Bool]**](.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[Bool]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[Bool]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[Bool]**
+`[Bool]`
 
 ### Authentication
 
@@ -379,27 +378,28 @@ No authentication required
 
 ```swift
 
-let boolean = [[Bool]()] // [Bool] (required) | 
+let boolean: [Bool] = [] // 
 
-BodyParametersAPI.testBooleanArrayBodyParam(boolean: boolean) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testBooleanArrayBodyParam(boolean: boolean) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -408,7 +408,7 @@ BodyParametersAPI.testBooleanArrayBodyParam(boolean: boolean) { (result, respons
 ### **testBooleanMapBodyParam**  {#testBooleanMapBodyParam}
 ---
 ```swift
-public static func testBooleanMapBodyParam(boolean: Any, completionHandler: ([String:Bool]?, Response?, Error?) -> Void) -> Void
+public static func testBooleanMapBodyParam(boolean: Any, completionHandler: @escaping (_ returnedData: [String:Bool]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -416,12 +416,11 @@ public static func testBooleanMapBodyParam(boolean: Any, completionHandler: ([St
 #### Parameters
 
 - **boolean**  (required) 
-    - see [**Any**](Any.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[String:Bool]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String:Bool]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String:Bool]**
+`[String:Bool]`
 
 ### Authentication
 
@@ -432,27 +431,28 @@ No authentication required
 
 ```swift
 
-let boolean = nil // Any (required) | 
+let boolean: Any = nil // 
 
-BodyParametersAPI.testBooleanMapBodyParam(boolean: boolean) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testBooleanMapBodyParam(boolean: boolean) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -461,7 +461,7 @@ BodyParametersAPI.testBooleanMapBodyParam(boolean: boolean) { (result, response,
 ### **testDateArrayBodyParam**  {#testDateArrayBodyParam}
 ---
 ```swift
-public static func testDateArrayBodyParam(date: [Date], completionHandler: ([Date]?, Response?, Error?) -> Void) -> Void
+public static func testDateArrayBodyParam(date: [Date], completionHandler: @escaping (_ returnedData: [Date]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -471,10 +471,10 @@ public static func testDateArrayBodyParam(date: [Date], completionHandler: ([Dat
 - **date**  (required) 
     - see [**[Date]**](Date.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[Date]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[Date]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**[Date]**](Date.md)
+[`[Date]`](Date.md)
 
 ### Authentication
 
@@ -485,27 +485,28 @@ No authentication required
 
 ```swift
 
-let date = [Date()] // [Date] (required) | 
+let date: [Date] = [] // 
 
-BodyParametersAPI.testDateArrayBodyParam(date: date) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testDateArrayBodyParam(date: date) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -514,7 +515,7 @@ BodyParametersAPI.testDateArrayBodyParam(date: date) { (result, response, error)
 ### **testDateBodyParam**  {#testDateBodyParam}
 ---
 ```swift
-public static func testDateBodyParam(date: Date, completionHandler: (Date?, Response?, Error?) -> Void) -> Void
+public static func testDateBodyParam(date: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -522,12 +523,11 @@ public static func testDateBodyParam(date: Date, completionHandler: (Date?, Resp
 #### Parameters
 
 - **date**  (required) 
-    - see [**Date**](Date.md)
 - **completionHandler** (required)
-    - closure takes as arguments `Date?`, `Response?` and  `Error?`
+    - closure takes as arguments `Date?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**Date**](Date.md)
+[`Date`](Date.md)
 
 ### Authentication
 
@@ -538,27 +538,28 @@ No authentication required
 
 ```swift
 
-let date = Date() // Date (required) | 
+let date: Date = Date() // 
 
-BodyParametersAPI.testDateBodyParam(date: date) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testDateBodyParam(date: date) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -567,7 +568,7 @@ BodyParametersAPI.testDateBodyParam(date: date) { (result, response, error) in
 ### **testDateMapBodyParam**  {#testDateMapBodyParam}
 ---
 ```swift
-public static func testDateMapBodyParam(date: Any, completionHandler: ([String:Date]?, Response?, Error?) -> Void) -> Void
+public static func testDateMapBodyParam(date: Any, completionHandler: @escaping (_ returnedData: [String:Date]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -575,12 +576,11 @@ public static func testDateMapBodyParam(date: Any, completionHandler: ([String:D
 #### Parameters
 
 - **date**  (required) 
-    - see [**Any**](Any.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[String:Date]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String:Date]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**[String:Date]**](Date.md)
+[`[String:Date]`](Date.md)
 
 ### Authentication
 
@@ -591,27 +591,28 @@ No authentication required
 
 ```swift
 
-let date = nil // Any (required) | 
+let date: Any = nil // 
 
-BodyParametersAPI.testDateMapBodyParam(date: date) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testDateMapBodyParam(date: date) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(Mapper<Date>().toJSONString(result, prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -620,7 +621,7 @@ BodyParametersAPI.testDateMapBodyParam(date: date) { (result, response, error) i
 ### **testDateTimeArrayBodyParam**  {#testDateTimeArrayBodyParam}
 ---
 ```swift
-public static func testDateTimeArrayBodyParam(dateTime: [Date], completionHandler: ([Date]?, Response?, Error?) -> Void) -> Void
+public static func testDateTimeArrayBodyParam(dateTime: [Date], completionHandler: @escaping (_ returnedData: [Date]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -630,10 +631,10 @@ public static func testDateTimeArrayBodyParam(dateTime: [Date], completionHandle
 - **dateTime**  (required) 
     - see [**[Date]**](Date.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[Date]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[Date]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**[Date]**](Date.md)
+[`[Date]`](Date.md)
 
 ### Authentication
 
@@ -644,27 +645,28 @@ No authentication required
 
 ```swift
 
-let dateTime = [Date()] // [Date] (required) | 
+let dateTime: [Date] = [] // 
 
-BodyParametersAPI.testDateTimeArrayBodyParam(dateTime: dateTime) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testDateTimeArrayBodyParam(dateTime: dateTime) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -673,7 +675,7 @@ BodyParametersAPI.testDateTimeArrayBodyParam(dateTime: dateTime) { (result, resp
 ### **testDateTimeBodyParam**  {#testDateTimeBodyParam}
 ---
 ```swift
-public static func testDateTimeBodyParam(dateTime: Date, completionHandler: (Date?, Response?, Error?) -> Void) -> Void
+public static func testDateTimeBodyParam(dateTime: Date, completionHandler: @escaping (_ returnedData: Date?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -681,12 +683,11 @@ public static func testDateTimeBodyParam(dateTime: Date, completionHandler: (Dat
 #### Parameters
 
 - **dateTime**  (required) 
-    - see [**Date**](Date.md)
 - **completionHandler** (required)
-    - closure takes as arguments `Date?`, `Response?` and  `Error?`
+    - closure takes as arguments `Date?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**Date**](Date.md)
+[`Date`](Date.md)
 
 ### Authentication
 
@@ -697,27 +698,28 @@ No authentication required
 
 ```swift
 
-let dateTime = Date() // Date (required) | 
+let dateTime: Date = Date() // 
 
-BodyParametersAPI.testDateTimeBodyParam(dateTime: dateTime) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testDateTimeBodyParam(dateTime: dateTime) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -726,7 +728,7 @@ BodyParametersAPI.testDateTimeBodyParam(dateTime: dateTime) { (result, response,
 ### **testDateTimeMapBodyParam**  {#testDateTimeMapBodyParam}
 ---
 ```swift
-public static func testDateTimeMapBodyParam(dateTime: Any, completionHandler: ([String:Date]?, Response?, Error?) -> Void) -> Void
+public static func testDateTimeMapBodyParam(dateTime: Any, completionHandler: @escaping (_ returnedData: [String:Date]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -734,12 +736,11 @@ public static func testDateTimeMapBodyParam(dateTime: Any, completionHandler: ([
 #### Parameters
 
 - **dateTime**  (required) 
-    - see [**Any**](Any.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[String:Date]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String:Date]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**[String:Date]**](Date.md)
+[`[String:Date]`](Date.md)
 
 ### Authentication
 
@@ -750,27 +751,28 @@ No authentication required
 
 ```swift
 
-let dateTime = nil // Any (required) | 
+let dateTime: Any = nil // 
 
-BodyParametersAPI.testDateTimeMapBodyParam(dateTime: dateTime) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testDateTimeMapBodyParam(dateTime: dateTime) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(Mapper<Date>().toJSONString(result, prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -779,7 +781,7 @@ BodyParametersAPI.testDateTimeMapBodyParam(dateTime: dateTime) { (result, respon
 ### **testDoubleArrayBodyParam**  {#testDoubleArrayBodyParam}
 ---
 ```swift
-public static func testDoubleArrayBodyParam(double: [Double], completionHandler: ([Double]?, Response?, Error?) -> Void) -> Void
+public static func testDoubleArrayBodyParam(double: [Double], completionHandler: @escaping (_ returnedData: [Double]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -787,12 +789,11 @@ public static func testDoubleArrayBodyParam(double: [Double], completionHandler:
 #### Parameters
 
 - **double**  (required) 
-    - see [**[Double]**](.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[Double]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[Double]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[Double]**
+`[Double]`
 
 ### Authentication
 
@@ -803,27 +804,28 @@ No authentication required
 
 ```swift
 
-let double = [[Double]()] // [Double] (required) | 
+let double: [Double] = [] // 
 
-BodyParametersAPI.testDoubleArrayBodyParam(double: double) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testDoubleArrayBodyParam(double: double) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -832,7 +834,7 @@ BodyParametersAPI.testDoubleArrayBodyParam(double: double) { (result, response, 
 ### **testDoubleMapBodyParam**  {#testDoubleMapBodyParam}
 ---
 ```swift
-public static func testDoubleMapBodyParam(double: Any, completionHandler: ([String:Double]?, Response?, Error?) -> Void) -> Void
+public static func testDoubleMapBodyParam(double: Any, completionHandler: @escaping (_ returnedData: [String:Double]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -840,12 +842,11 @@ public static func testDoubleMapBodyParam(double: Any, completionHandler: ([Stri
 #### Parameters
 
 - **double**  (required) 
-    - see [**Any**](Any.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[String:Double]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String:Double]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String:Double]**
+`[String:Double]`
 
 ### Authentication
 
@@ -856,27 +857,28 @@ No authentication required
 
 ```swift
 
-let double = nil // Any (required) | 
+let double: Any = nil // 
 
-BodyParametersAPI.testDoubleMapBodyParam(double: double) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testDoubleMapBodyParam(double: double) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -885,7 +887,7 @@ BodyParametersAPI.testDoubleMapBodyParam(double: double) { (result, response, er
 ### **testFloatArrayBodyParam**  {#testFloatArrayBodyParam}
 ---
 ```swift
-public static func testFloatArrayBodyParam(float: [Float], completionHandler: ([Float]?, Response?, Error?) -> Void) -> Void
+public static func testFloatArrayBodyParam(float: [Float], completionHandler: @escaping (_ returnedData: [Float]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -893,12 +895,11 @@ public static func testFloatArrayBodyParam(float: [Float], completionHandler: ([
 #### Parameters
 
 - **float**  (required) 
-    - see [**[Float]**](.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[Float]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[Float]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[Float]**
+`[Float]`
 
 ### Authentication
 
@@ -909,27 +910,28 @@ No authentication required
 
 ```swift
 
-let float = [[Float]()] // [Float] (required) | 
+let float: [Float] = [] // 
 
-BodyParametersAPI.testFloatArrayBodyParam(float: float) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testFloatArrayBodyParam(float: float) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -938,7 +940,7 @@ BodyParametersAPI.testFloatArrayBodyParam(float: float) { (result, response, err
 ### **testFloatMapBodyParam**  {#testFloatMapBodyParam}
 ---
 ```swift
-public static func testFloatMapBodyParam(float: Any, completionHandler: ([String:Float]?, Response?, Error?) -> Void) -> Void
+public static func testFloatMapBodyParam(float: Any, completionHandler: @escaping (_ returnedData: [String:Float]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -946,12 +948,11 @@ public static func testFloatMapBodyParam(float: Any, completionHandler: ([String
 #### Parameters
 
 - **float**  (required) 
-    - see [**Any**](Any.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[String:Float]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String:Float]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String:Float]**
+`[String:Float]`
 
 ### Authentication
 
@@ -962,27 +963,28 @@ No authentication required
 
 ```swift
 
-let float = nil // Any (required) | 
+let float: Any = nil // 
 
-BodyParametersAPI.testFloatMapBodyParam(float: float) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testFloatMapBodyParam(float: float) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -991,7 +993,7 @@ BodyParametersAPI.testFloatMapBodyParam(float: float) { (result, response, error
 ### **testGenericObject**  {#testGenericObject}
 ---
 ```swift
-public static func testGenericObject(body: Any, completionHandler: (Any?, Response?, Error?) -> Void) -> Void
+public static func testGenericObject(body: Any, completionHandler: @escaping (_ returnedData: Any?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -999,12 +1001,11 @@ public static func testGenericObject(body: Any, completionHandler: (Any?, Respon
 #### Parameters
 
 - **body**  (required) 
-    - see [**Any**](Any.md)
 - **completionHandler** (required)
-    - closure takes as arguments `Any?`, `Response?` and  `Error?`
+    - closure takes as arguments `Any?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Any**
+`Any`
 
 ### Authentication
 
@@ -1015,16 +1016,18 @@ No authentication required
 
 ```swift
 
-let body = nil // Any (required) | 
+let body: Any = nil
 
-BodyParametersAPI.testGenericObject(body: body) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testGenericObject(body: body) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        // No documented non-default responses
     }
 }
 ```
@@ -1033,7 +1036,7 @@ BodyParametersAPI.testGenericObject(body: body) { (result, response, error) in
 ### **testGenericObjectArray**  {#testGenericObjectArray}
 ---
 ```swift
-public static func testGenericObjectArray(objectArray: Any, completionHandler: (Any?, Response?, Error?) -> Void) -> Void
+public static func testGenericObjectArray(objectArray: Any, completionHandler: @escaping (_ returnedData: Any?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1041,12 +1044,11 @@ public static func testGenericObjectArray(objectArray: Any, completionHandler: (
 #### Parameters
 
 - **objectArray**  (required) 
-    - see [**Any**](Any.md)
 - **completionHandler** (required)
-    - closure takes as arguments `Any?`, `Response?` and  `Error?`
+    - closure takes as arguments `Any?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Any**
+`Any`
 
 ### Authentication
 
@@ -1057,16 +1059,18 @@ No authentication required
 
 ```swift
 
-let objectArray = nil // Any (required) | 
+let objectArray: Any = nil
 
-BodyParametersAPI.testGenericObjectArray(objectArray: objectArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testGenericObjectArray(objectArray: objectArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        // No documented non-default responses
     }
 }
 ```
@@ -1075,7 +1079,7 @@ BodyParametersAPI.testGenericObjectArray(objectArray: objectArray) { (result, re
 ### **testGenericObjectMap**  {#testGenericObjectMap}
 ---
 ```swift
-public static func testGenericObjectMap(objectMap: Any, completionHandler: (Any?, Response?, Error?) -> Void) -> Void
+public static func testGenericObjectMap(objectMap: Any, completionHandler: @escaping (_ returnedData: Any?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1083,12 +1087,11 @@ public static func testGenericObjectMap(objectMap: Any, completionHandler: (Any?
 #### Parameters
 
 - **objectMap**  (required) 
-    - see [**Any**](Any.md)
 - **completionHandler** (required)
-    - closure takes as arguments `Any?`, `Response?` and  `Error?`
+    - closure takes as arguments `Any?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**Any**
+`Any`
 
 ### Authentication
 
@@ -1099,16 +1102,18 @@ No authentication required
 
 ```swift
 
-let objectMap = nil // Any (required) | 
+let objectMap: Any = nil
 
-BodyParametersAPI.testGenericObjectMap(objectMap: objectMap) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testGenericObjectMap(objectMap: objectMap) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        // No documented non-default responses
     }
 }
 ```
@@ -1117,7 +1122,7 @@ BodyParametersAPI.testGenericObjectMap(objectMap: objectMap) { (result, response
 ### **testIntegerArrayBodyParam**  {#testIntegerArrayBodyParam}
 ---
 ```swift
-public static func testIntegerArrayBodyParam(integer: [Int], completionHandler: ([Int]?, Response?, Error?) -> Void) -> Void
+public static func testIntegerArrayBodyParam(integer: [Int], completionHandler: @escaping (_ returnedData: [Int]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1125,12 +1130,11 @@ public static func testIntegerArrayBodyParam(integer: [Int], completionHandler: 
 #### Parameters
 
 - **integer**  (required) 
-    - see [**[Int]**](.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[Int]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[Int]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[Int]**
+`[Int]`
 
 ### Authentication
 
@@ -1141,27 +1145,28 @@ No authentication required
 
 ```swift
 
-let integer = [[Int]()] // [Int] (required) | 
+let integer: [Int] = [] // 
 
-BodyParametersAPI.testIntegerArrayBodyParam(integer: integer) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testIntegerArrayBodyParam(integer: integer) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1170,7 +1175,7 @@ BodyParametersAPI.testIntegerArrayBodyParam(integer: integer) { (result, respons
 ### **testIntegerMapBodyParam**  {#testIntegerMapBodyParam}
 ---
 ```swift
-public static func testIntegerMapBodyParam(integer: Any, completionHandler: ([String:Int]?, Response?, Error?) -> Void) -> Void
+public static func testIntegerMapBodyParam(integer: Any, completionHandler: @escaping (_ returnedData: [String:Int]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1178,12 +1183,11 @@ public static func testIntegerMapBodyParam(integer: Any, completionHandler: ([St
 #### Parameters
 
 - **integer**  (required) 
-    - see [**Any**](Any.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[String:Int]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String:Int]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String:Int]**
+`[String:Int]`
 
 ### Authentication
 
@@ -1194,27 +1198,28 @@ No authentication required
 
 ```swift
 
-let integer = nil // Any (required) | 
+let integer: Any = nil // 
 
-BodyParametersAPI.testIntegerMapBodyParam(integer: integer) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testIntegerMapBodyParam(integer: integer) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1223,7 +1228,7 @@ BodyParametersAPI.testIntegerMapBodyParam(integer: integer) { (result, response,
 ### **testLongArrayBodyParam**  {#testLongArrayBodyParam}
 ---
 ```swift
-public static func testLongArrayBodyParam(long: [Int64], completionHandler: ([Int64]?, Response?, Error?) -> Void) -> Void
+public static func testLongArrayBodyParam(long: [Int64], completionHandler: @escaping (_ returnedData: [Int64]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1231,12 +1236,11 @@ public static func testLongArrayBodyParam(long: [Int64], completionHandler: ([In
 #### Parameters
 
 - **long**  (required) 
-    - see [**[Int64]**](.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[Int64]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[Int64]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[Int64]**
+`[Int64]`
 
 ### Authentication
 
@@ -1247,27 +1251,28 @@ No authentication required
 
 ```swift
 
-let long = [[Int64]()] // [Int64] (required) | 
+let long: [Int64] = [] // 
 
-BodyParametersAPI.testLongArrayBodyParam(long: long) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testLongArrayBodyParam(long: long) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1276,7 +1281,7 @@ BodyParametersAPI.testLongArrayBodyParam(long: long) { (result, response, error)
 ### **testLongMapBodyParam**  {#testLongMapBodyParam}
 ---
 ```swift
-public static func testLongMapBodyParam(long: Any, completionHandler: ([String:Int64]?, Response?, Error?) -> Void) -> Void
+public static func testLongMapBodyParam(long: Any, completionHandler: @escaping (_ returnedData: [String:Int64]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1284,12 +1289,11 @@ public static func testLongMapBodyParam(long: Any, completionHandler: ([String:I
 #### Parameters
 
 - **long**  (required) 
-    - see [**Any**](Any.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[String:Int64]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String:Int64]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String:Int64]**
+`[String:Int64]`
 
 ### Authentication
 
@@ -1300,27 +1304,28 @@ No authentication required
 
 ```swift
 
-let long = nil // Any (required) | 
+let long: Any = nil // 
 
-BodyParametersAPI.testLongMapBodyParam(long: long) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testLongMapBodyParam(long: long) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1329,7 +1334,7 @@ BodyParametersAPI.testLongMapBodyParam(long: long) { (result, response, error) i
 ### **testModelArrayBodyParam**  {#testModelArrayBodyParam}
 ---
 ```swift
-public static func testModelArrayBodyParam(modelArray: [BodyModel], completionHandler: ([BodyModel]?, Response?, Error?) -> Void) -> Void
+public static func testModelArrayBodyParam(modelArray: [BodyModel], completionHandler: @escaping (_ returnedData: [BodyModel]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1339,10 +1344,10 @@ public static func testModelArrayBodyParam(modelArray: [BodyModel], completionHa
 - **modelArray**  (required) 
     - see [**[BodyModel]**](BodyModel.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[BodyModel]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[BodyModel]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**[BodyModel]**](BodyModel.md)
+[`[BodyModel]`](BodyModel.md)
 
 ### Authentication
 
@@ -1353,27 +1358,28 @@ No authentication required
 
 ```swift
 
-let modelArray = [BodyModel()] // [BodyModel] (required) | 
+let modelArray: [BodyModel] = [] // 
 
-BodyParametersAPI.testModelArrayBodyParam(modelArray: modelArray) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testModelArrayBodyParam(modelArray: modelArray) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1382,7 +1388,7 @@ BodyParametersAPI.testModelArrayBodyParam(modelArray: modelArray) { (result, res
 ### **testModelBodyParam**  {#testModelBodyParam}
 ---
 ```swift
-public static func testModelBodyParam(model: BodyModel, completionHandler: (BodyModel?, Response?, Error?) -> Void) -> Void
+public static func testModelBodyParam(model: BodyModel, completionHandler: @escaping (_ returnedData: BodyModel?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1392,10 +1398,10 @@ public static func testModelBodyParam(model: BodyModel, completionHandler: (Body
 - **model**  (required) 
     - see [**BodyModel**](BodyModel.md)
 - **completionHandler** (required)
-    - closure takes as arguments `BodyModel?`, `Response?` and  `Error?`
+    - closure takes as arguments `BodyModel?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**BodyModel**](BodyModel.md)
+[`BodyModel`](BodyModel.md)
 
 ### Authentication
 
@@ -1406,27 +1412,28 @@ No authentication required
 
 ```swift
 
-let model = BodyModel() // BodyModel (required) | 
+let model: BodyModel = BodyModel() // 
 
-BodyParametersAPI.testModelBodyParam(model: model) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testModelBodyParam(model: model) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.toJSONString(prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1435,7 +1442,7 @@ BodyParametersAPI.testModelBodyParam(model: model) { (result, response, error) i
 ### **testModelMapBodyParam**  {#testModelMapBodyParam}
 ---
 ```swift
-public static func testModelMapBodyParam(modelMap: Any, completionHandler: ([String:BodyModel]?, Response?, Error?) -> Void) -> Void
+public static func testModelMapBodyParam(modelMap: Any, completionHandler: @escaping (_ returnedData: [String:BodyModel]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1443,12 +1450,11 @@ public static func testModelMapBodyParam(modelMap: Any, completionHandler: ([Str
 #### Parameters
 
 - **modelMap**  (required) 
-    - see [**Any**](Any.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[String:BodyModel]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String:BodyModel]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-[**[String:BodyModel]**](BodyModel.md)
+[`[String:BodyModel]`](BodyModel.md)
 
 ### Authentication
 
@@ -1459,27 +1465,28 @@ No authentication required
 
 ```swift
 
-let modelMap = nil // Any (required) | 
+let modelMap: Any = nil // 
 
-BodyParametersAPI.testModelMapBodyParam(modelMap: modelMap) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testModelMapBodyParam(modelMap: modelMap) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(Mapper<BodyModel>().toJSONString(result, prettyPrint: true))
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1488,7 +1495,7 @@ BodyParametersAPI.testModelMapBodyParam(modelMap: modelMap) { (result, response,
 ### **testStringArrayBodyParam**  {#testStringArrayBodyParam}
 ---
 ```swift
-public static func testStringArrayBodyParam(string: [String], completionHandler: ([String]?, Response?, Error?) -> Void) -> Void
+public static func testStringArrayBodyParam(string: [String], completionHandler: @escaping (_ returnedData: [String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1496,12 +1503,11 @@ public static func testStringArrayBodyParam(string: [String], completionHandler:
 #### Parameters
 
 - **string**  (required) 
-    - see [**[String]**](.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String]**
+`[String]`
 
 ### Authentication
 
@@ -1512,27 +1518,28 @@ No authentication required
 
 ```swift
 
-let string = [[String]()] // [String] (required) | 
+let string: [String] = [] // 
 
-BodyParametersAPI.testStringArrayBodyParam(string: string) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testStringArrayBodyParam(string: string) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```
@@ -1541,7 +1548,7 @@ BodyParametersAPI.testStringArrayBodyParam(string: string) { (result, response, 
 ### **testStringMapBodyParam**  {#testStringMapBodyParam}
 ---
 ```swift
-public static func testStringMapBodyParam(string: Any, completionHandler: ([String:String]?, Response?, Error?) -> Void) -> Void
+public static func testStringMapBodyParam(string: Any, completionHandler: @escaping (_ returnedData: [String:String]?, _ statusCode: Int?, _ responseHeaders: [String: String]?, _ error: HttpError?) -> Void) -> Void
 ```
 
 >
@@ -1549,12 +1556,11 @@ public static func testStringMapBodyParam(string: Any, completionHandler: ([Stri
 #### Parameters
 
 - **string**  (required) 
-    - see [**Any**](Any.md)
 - **completionHandler** (required)
-    - closure takes as arguments `[String:String]?`, `Response?` and  `Error?`
+    - closure takes as arguments `[String:String]?`, Int?, [String: String]?, HttpError?
 
 #### Response
-**[String:String]**
+`[String:String]`
 
 ### Authentication
 
@@ -1565,27 +1571,28 @@ No authentication required
 
 ```swift
 
-let string = nil // Any (required) | 
+let string: Any = nil // 
 
-BodyParametersAPI.testStringMapBodyParam(string: string) { (result, response, error) in
-    if let error = error {
-        print(error)
+BodyParametersAPI.testStringMapBodyParam(string: string) { (returnedData, statusCode, responseHeaders, error) in
+    guard error == nil else {
+        print(error!)
+        return
     }
-    if let result = result {
-        print(result.description)
-    } else  {
-        switch response!.statusCode {
+    if let result = returnedData {
+        let resultString = TestSdkStandaloneUtility.convertToString(result)
+        print(resultString ?? "Failed to convert the result to a string")
+    } else if let status = statusCode {
+        switch status {
         case 400:
             // Response body is of type ErrorModel
             print("bad request")
-            ErrorModel(JSONString: response!.responseText!)
         case 500:
             // Response body is of type ErrorModel
             print("server error")
-            ErrorModel(JSONString: response!.responseText!)
         default:
-            print(response!.responseText!)
+            break
         }
+        print(responseHeaders)
     }
 }
 ```

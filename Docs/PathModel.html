@@ -1,17 +1,36 @@
+<link rel="stylesheet" href="markdown.css">
+<style>
+    .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+    }
+</style>
+<article class="markdown-body">
 <p><a href="./README.html"><strong>Back to README</strong></a></p>
 <h1 id="top">PathModel</h1>
 <h3>Examples</h3>
 <pre><code>// Maps JSON string to Swift Object
-let pathModel: PathModel = PathModel(JSONString: jsonString)
-
-// Maps JSON string to array of PathModel
-let pathModelArray: [PathModel] = Mapper&lt;PathModel&gt;().mapArray(JSONString: jsonString)
-
-// Maps JSON String to Dictionary mapping String to PathModel
-let Dictionary: [String: PathModel] = Mapper&lt;PathModel&gt;().mapDictionary(JSONString: jsonString);
-
-// Converts Swift Object to JSON string
-let jsonString: String = pathModel.toJSONString(prettyPrint: true)
+let jsonString = ""
+let pathModel: PathModel? = PathModel(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Maps JSON string to array of PathModel
+let jsonString = ""
+let pathModelArray: [PathModel]? = Mapper&lt;PathModel&gt;().mapArray(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Maps JSON String to Dictionary mapping String to PathModel
+let jsonString = ""
+let Dictionary: [String: PathModel]? = Mapper&lt;PathModel&gt;().mapDictionary(JSONString: jsonString)
+</code></pre>
+<h3></h3>
+<pre><code>// Converts Swift Object to JSON string
+let json: [String: Any] = [:]
+let pathModel = PathModel(JSON: json)
+let jsonString: String? = pathModel?.toJSONString(prettyPrint: true)
 </code></pre>
 <h3>Fields</h3>
 <ul>
@@ -74,7 +93,6 @@ let jsonString: String = pathModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="pathSSV">pathSSV</h4>
@@ -82,7 +100,6 @@ let jsonString: String = pathModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="pathTSV">pathTSV</h4>
@@ -90,7 +107,6 @@ let jsonString: String = pathModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <h4 id="pathPipes">pathPipes</h4>
@@ -98,7 +114,7 @@ let jsonString: String = pathModel.toJSONString(prettyPrint: true)
 </code></pre>
 <ul>
 <li></li>
-<li>see <a href=".html"><strong></strong></a></li>
 </ul>
 <hr />
 <p><a href="#top"><strong>Back to Top</strong></a></p>
+</article>

@@ -5,16 +5,27 @@
 ### Examples
 ```swift
 // Maps JSON string to Swift Object
-let headerModel: HeaderModel = HeaderModel(JSONString: jsonString)
-
+let jsonString = ""
+let headerModel: HeaderModel? = HeaderModel(JSONString: jsonString)
+```
+###
+```swift
 // Maps JSON string to array of HeaderModel
-let headerModelArray: [HeaderModel] = Mapper<HeaderModel>().mapArray(JSONString: jsonString)
-
+let jsonString = ""
+let headerModelArray: [HeaderModel]? = Mapper<HeaderModel>().mapArray(JSONString: jsonString)
+```
+###
+```swift
 // Maps JSON String to Dictionary mapping String to HeaderModel
-let Dictionary: [String: HeaderModel] = Mapper<HeaderModel>().mapDictionary(JSONString: jsonString);
-
+let jsonString = ""
+let Dictionary: [String: HeaderModel]? = Mapper<HeaderModel>().mapDictionary(JSONString: jsonString)
+```
+###
+```swift
 // Converts Swift Object to JSON string
-let jsonString: String = headerModel.toJSONString(prettyPrint: true)
+let json: [String: Any] = [:]
+let headerModel = HeaderModel(JSON: json)
+let jsonString: String? = headerModel?.toJSONString(prettyPrint: true)
 ```
 
 ### Fields 
@@ -107,7 +118,6 @@ var headerCSV: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -119,7 +129,6 @@ var headerSSV: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -131,7 +140,6 @@ var headerTSV: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
@@ -143,7 +151,6 @@ var headerPipes: [String]?
 ```
 
 - 
- - see [****](.md)
 
 ---
 
