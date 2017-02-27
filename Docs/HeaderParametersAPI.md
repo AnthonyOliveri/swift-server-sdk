@@ -87,7 +87,7 @@ HeaderParametersAPI.testAllTheThingsHeaderParam(xString: xString, xFloat: xFloat
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -140,7 +140,7 @@ HeaderParametersAPI.testBooleanHeaderParam(xBoolean: xBoolean) { (returnedData, 
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -193,7 +193,7 @@ HeaderParametersAPI.testCSVHeaderParam(xCsvArray: xCsvArray) { (returnedData, st
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -289,7 +289,7 @@ HeaderParametersAPI.testDateTimeHeaderParam(dateTime: dateTime) { (returnedData,
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -342,7 +342,7 @@ HeaderParametersAPI.testDoubleHeaderParam(xDouble: xDouble) { (returnedData, sta
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -395,7 +395,7 @@ HeaderParametersAPI.testFloatHeaderParam(xFloat: xFloat) { (returnedData, status
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -448,7 +448,7 @@ HeaderParametersAPI.testIntegerHeaderParam(xInteger: xInteger) { (returnedData, 
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -501,7 +501,7 @@ HeaderParametersAPI.testLongHeaderParam(xLong: xLong) { (returnedData, statusCod
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -578,7 +578,7 @@ HeaderParametersAPI.testOptionalHeaderParam(xFloat: xFloat, xDouble: xDouble, xC
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -631,7 +631,7 @@ HeaderParametersAPI.testPipesHeaderParam(xPipesArray: xPipesArray) { (returnedDa
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -684,7 +684,7 @@ HeaderParametersAPI.testSSVHeaderParam(xSsvArray: xSsvArray) { (returnedData, st
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -737,7 +737,7 @@ HeaderParametersAPI.testStringHeaderParam(xString: xString) { (returnedData, sta
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -790,7 +790,7 @@ HeaderParametersAPI.testTSVHeaderParam(xTsvArray: xTsvArray) { (returnedData, st
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```

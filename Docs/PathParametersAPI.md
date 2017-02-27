@@ -80,7 +80,7 @@ PathParametersAPI.testAllTheThingsPathParam(string: string, float: float, double
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -133,7 +133,7 @@ PathParametersAPI.testBooleanPathParam(boolean: boolean) { (returnedData, status
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -186,7 +186,7 @@ PathParametersAPI.testCSVPathParam(csvArray: csvArray) { (returnedData, statusCo
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -239,7 +239,7 @@ PathParametersAPI.testDoublePathParam(double: double) { (returnedData, statusCod
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -292,7 +292,7 @@ PathParametersAPI.testFloatPathParam(float: float) { (returnedData, statusCode, 
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -345,7 +345,7 @@ PathParametersAPI.testIntegerPathParam(integer: integer) { (returnedData, status
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -398,7 +398,7 @@ PathParametersAPI.testLongPathParam(long: long) { (returnedData, statusCode, res
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -451,7 +451,7 @@ PathParametersAPI.testPipesPathParam(pipesArray: pipesArray) { (returnedData, st
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -504,7 +504,7 @@ PathParametersAPI.testSSVPathParam(ssvArray: ssvArray) { (returnedData, statusCo
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -557,7 +557,7 @@ PathParametersAPI.testStringPathParam(string: string) { (returnedData, statusCod
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -610,7 +610,7 @@ PathParametersAPI.testTSVPathParam(tsvArray: tsvArray) { (returnedData, statusCo
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```

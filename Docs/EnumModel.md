@@ -44,7 +44,7 @@ let jsonString: String? = enumModel?.toJSONString(prettyPrint: true)
 var stringEnum: stringenum?
 ```
 
-- (**Enum**) 
+- (**enum**) 
 - Possible values:
     - `xvii = "xvii"`
     - `xix = "xix"`
@@ -58,7 +58,7 @@ var stringEnum: stringenum?
 var floatEnum: floatenum?
 ```
 
-- (**Enum**) 
+- (**enum**) 
 - Possible values:
     - `number17 = 1.7`
     - `number19 = 1.9`
@@ -72,7 +72,7 @@ var floatEnum: floatenum?
 var doubleEnum: doubleenum?
 ```
 
-- (**Enum**) 
+- (**enum**) 
 - Possible values:
     - `number17 = 1.7`
     - `number19 = 1.9`
@@ -86,7 +86,7 @@ var doubleEnum: doubleenum?
 var integerEnum: integerenum?
 ```
 
-- (**Enum**) 
+- (**enum**) 
 - Possible values:
     - `number17 = 17`
     - `number19 = 19`
@@ -100,7 +100,7 @@ var integerEnum: integerenum?
 var longEnum: longenum?
 ```
 
-- (**Enum**) 
+- (**enum**) 
 - Possible values:
     - `number17 = 17`
     - `number19 = 19`

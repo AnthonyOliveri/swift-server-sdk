@@ -90,7 +90,7 @@ QueryParametersAPI.testAllTheThingsQueryParam(string: string, float: float, doub
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -143,7 +143,7 @@ QueryParametersAPI.testBooleanQueryParam(boolean: boolean) { (returnedData, stat
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -196,7 +196,7 @@ QueryParametersAPI.testCSVQueryParam(csvArray: csvArray) { (returnedData, status
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -249,7 +249,7 @@ QueryParametersAPI.testDateQueryParam(date: date) { (returnedData, statusCode, r
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -302,7 +302,7 @@ QueryParametersAPI.testDateTimeQueryParam(dateTime: dateTime) { (returnedData, s
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -355,7 +355,7 @@ QueryParametersAPI.testDoubleQueryParam(double: double) { (returnedData, statusC
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -408,7 +408,7 @@ QueryParametersAPI.testFloatQueryParam(float: float) { (returnedData, statusCode
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -461,7 +461,7 @@ QueryParametersAPI.testIntegerQueryParam(integer: integer) { (returnedData, stat
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -514,7 +514,7 @@ QueryParametersAPI.testLongQueryParam(long: long) { (returnedData, statusCode, r
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -567,7 +567,7 @@ QueryParametersAPI.testMultiQueryParam(multi: multi) { (returnedData, statusCode
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -646,7 +646,7 @@ QueryParametersAPI.testOptionalQueryParam(float: float, double: double, csvArray
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -699,7 +699,7 @@ QueryParametersAPI.testPipesQueryParam(pipesArray: pipesArray) { (returnedData, 
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -752,7 +752,7 @@ QueryParametersAPI.testSSVQueryParam(ssvArray: ssvArray) { (returnedData, status
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -805,7 +805,7 @@ QueryParametersAPI.testStringQueryParam(string: string) { (returnedData, statusC
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -858,7 +858,7 @@ QueryParametersAPI.testTSVQueryParam(tsvArray: tsvArray) { (returnedData, status
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```

@@ -81,7 +81,7 @@ BodyParametersAPI.testBodyBooleanParam(boolean: boolean) { (returnedData, status
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -134,7 +134,7 @@ BodyParametersAPI.testBodyDoubleParam(double: double) { (returnedData, statusCod
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -187,7 +187,7 @@ BodyParametersAPI.testBodyFloatParam(float: float) { (returnedData, statusCode, 
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -240,7 +240,7 @@ BodyParametersAPI.testBodyIntegerParam(integer: integer) { (returnedData, status
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -293,7 +293,7 @@ BodyParametersAPI.testBodyLongParam(long: long) { (returnedData, statusCode, res
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -346,7 +346,7 @@ BodyParametersAPI.testBodyStringParam(string: string) { (returnedData, statusCod
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -399,7 +399,7 @@ BodyParametersAPI.testBooleanArrayBodyParam(boolean: boolean) { (returnedData, s
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -452,7 +452,7 @@ BodyParametersAPI.testBooleanMapBodyParam(boolean: boolean) { (returnedData, sta
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -506,7 +506,7 @@ BodyParametersAPI.testDateArrayBodyParam(date: date) { (returnedData, statusCode
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -559,7 +559,7 @@ BodyParametersAPI.testDateBodyParam(date: date) { (returnedData, statusCode, res
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -612,7 +612,7 @@ BodyParametersAPI.testDateMapBodyParam(date: date) { (returnedData, statusCode, 
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -666,7 +666,7 @@ BodyParametersAPI.testDateTimeArrayBodyParam(dateTime: dateTime) { (returnedData
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -719,7 +719,7 @@ BodyParametersAPI.testDateTimeBodyParam(dateTime: dateTime) { (returnedData, sta
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -772,7 +772,7 @@ BodyParametersAPI.testDateTimeMapBodyParam(dateTime: dateTime) { (returnedData, 
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -825,7 +825,7 @@ BodyParametersAPI.testDoubleArrayBodyParam(double: double) { (returnedData, stat
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -878,7 +878,7 @@ BodyParametersAPI.testDoubleMapBodyParam(double: double) { (returnedData, status
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -931,7 +931,7 @@ BodyParametersAPI.testFloatArrayBodyParam(float: float) { (returnedData, statusC
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -984,7 +984,7 @@ BodyParametersAPI.testFloatMapBodyParam(float: float) { (returnedData, statusCod
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -1166,7 +1166,7 @@ BodyParametersAPI.testIntegerArrayBodyParam(integer: integer) { (returnedData, s
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -1219,7 +1219,7 @@ BodyParametersAPI.testIntegerMapBodyParam(integer: integer) { (returnedData, sta
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -1272,7 +1272,7 @@ BodyParametersAPI.testLongArrayBodyParam(long: long) { (returnedData, statusCode
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -1325,7 +1325,7 @@ BodyParametersAPI.testLongMapBodyParam(long: long) { (returnedData, statusCode, 
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -1379,7 +1379,7 @@ BodyParametersAPI.testModelArrayBodyParam(modelArray: modelArray) { (returnedDat
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -1433,7 +1433,7 @@ BodyParametersAPI.testModelBodyParam(model: model) { (returnedData, statusCode, 
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -1486,7 +1486,7 @@ BodyParametersAPI.testModelMapBodyParam(modelMap: modelMap) { (returnedData, sta
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -1539,7 +1539,7 @@ BodyParametersAPI.testStringArrayBodyParam(string: string) { (returnedData, stat
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```
@@ -1592,7 +1592,7 @@ BodyParametersAPI.testStringMapBodyParam(string: string) { (returnedData, status
         default:
             break
         }
-        print(responseHeaders)
+        print(responseHeaders ?? "No reponse headers")
     }
 }
 ```

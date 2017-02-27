@@ -7,6 +7,7 @@
 
 import Foundation
 import ObjectMapper
+import Dispatch
 
 
 public class TestSdkStandaloneUtility {
@@ -33,8 +34,7 @@ public class TestSdkStandaloneUtility {
 }
 
 
-// MARK: Convert header of any type to String
-// Covers all types except for Date, which is handled by the `Date` extension in this file
+// MARK: Convert various types to String
 public extension TestSdkStandaloneUtility {
 
     internal static func convertToString<T>(_ input: T) -> String? {
